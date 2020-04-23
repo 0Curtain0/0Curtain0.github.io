@@ -1,0 +1,739 @@
+<html>
+
+<head>
+<style>
+html {
+    background-color:black;
+    font-family:Verdana, Geneva, sans-serif;
+    color:white;
+}
+body.bodytut {
+    background-color:gray;
+    color:orange;
+    font-family:Verdana, Geneva, sans-serif;
+}
+div.tut {
+    background-color:black;
+    color:white;
+    font-family:Verdana, Geneva, sans-serif;
+}
+pre {
+    background-color:black;
+    color:white;
+    font-family:Verdana, Geneva, sans-serif;
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+h1.title {color:orange;font-weight:bold;}
+summary.click {color:lime;font-weight:bold;font-size:x-large;text-shadow:2px 2px #FF0000;padding:2px 6px;width:10em;background-color:#2C3539;border:none;box-shadow:3px 3px 4px black;}
+hr.redorange {height:10px;color:orange;background-color:red;border-width:1;}
+.section {color:green;font-weight:bold;}
+.demo {border:10px dotted orange;}
+.object {color:orange;font-weight:bold;}
+.hotkey {color:yellow;font-weight:bold;}
+.red {color:red;}
+.green {color:green;}
+.blue {color:blue;}
+.orange {color:orange;}
+.lime {color:lime;}
+</style>
+</head>
+
+<body class="bodytut">
+<div class="tut">
+<!--Title Image-->
+<div align="center"><img src="https://i.imgur.com/RBrLfkN.png" width="256" height="256"></div>
+<!--Title-->
+<h1 class="title" align="center"><u>Blender - Common Mistakes &amp; Tips</u></h1>
+<div align="center"><b>[Updated: April 20th 2020]</b></div>
+<div align="center"><a href="#mistakeschangelog"><b>Change Log</b></a> at the bottom.</div>
+<hr class="redorange">
+
+<!--1. How do I use Old and New versions of Blender?-->
+<h2 class="section">1. How do I use <u>Old</u> and <u>New</u> versions of Blender?</h2>
+<a href="https://www.blender.org/download/releases/"><img class="demo" src="https://i.imgur.com/a50iuq2m.jpg" alt="Blender Versions" title="Blender Versions" width="320" height="261"></a>
+<!--INDENT START--><blockquote>
+<pre>
+I recommend downloading the <u>portable</u> versions of <a href="https://download.blender.org/release/Blender2.79/"><b>Blender 2.79b</b></a> and <a href="https://download.blender.org/release/Blender2.81/"><b>Blender 2.8X</b></a>. 
+You can switch between versions anytime, or run them both simultaneously.<ul>
+<li><span style="color:yellow"><b>.zip</b></span> = Windows Portable</li>
+<li><span style="color:yellow"><b>.tar.bz2</b></span> = Linux Portable</li></ul>
+Unzip and run Blender, no installation required.
+<b class="orange">a</b>, <b class="orange">b</b>, <b class="orange">c</b>, <b class="orange">d</b> releases include the latest official fixes for Blender.
+</pre>
+<!--INDENT END--></blockquote>
+<hr class="redorange">
+
+<!--Help! I installed a Blender Add-on, but nothing happened-->
+<h2 class="section">2. Help! I installed a Blender <u>Add-on</u>, but <u>nothing happened</u> or it doesn't appear to work.</h2>
+<img src="https://i.stack.imgur.com/kk0PZm.jpg" width="320" height="253">
+<BR>[Before continuing, make sure to read the official instructions from the add-on author.]
+<BR>[Sometimes you may find instructions within the <FONT COLOR="orange" style="background-color:black;"><b>.py</b></FONT> file (<FONT COLOR="orange"><b>Python</b></FONT> file) using Notepad/Text Editor]
+<details><summary class="click">Click to Show</summary>
+<!--INDENT START--><blockquote>
+<P>
+If the Blender add-on comes with a <u>single</u> <FONT COLOR="orange" style="background-color:black;"><b>.py</b></FONT> file, you can install it as it is.
+<BR>If the Blender add-on comes with <u>multiple</u> <FONT COLOR="orange" style="background-color:black;"><b>.py</b></FONT> files, you may need to do the following:
+
+<BLOCKQUOTE style="background-color:#0c090a;">
+<FONT COLOR="White">
+If the add-on comes with a <FONT COLOR="orange"><b>__init__.py</b></FONT> file, then you will have to zip up that entire folder (using WinZip, 7zip, or WinRAR).
+<BR>Here is what the file structure should look like inside the zipped add-on folder:
+</FONT>
+<BLOCKQUOTE style="background-color:black;">
+<FONT COLOR="White">
+<B>
+<FONT COLOR="Cyan">Addon_Folder.zip</FONT>
+<BR>|_ <FONT COLOR="Tan">Addon_Folder</FONT>
+<BR><FONT COLOR="BLACK">....</FONT>|_ <FONT COLOR="orange" style="background-color:black;">__init__.py</FONT>
+<BR><FONT COLOR="BLACK">....</FONT>|_<FONT COLOR="orange">other.py</FONT>
+<BR><FONT COLOR="BLACK">....</FONT>|_<FONT COLOR="orange">other.py</FONT>
+</b>
+<hr>
+EXAMPLE:
+<P><B>
+<FONT COLOR="Cyan">XPS_Tools.zip</FONT>
+<BR>|_<FONT COLOR="Tan">XNALaraMesh</FONT>
+<BR><FONT COLOR="BLACK">....</FONT>|_ <FONT COLOR="Tan">icons</FONT>
+<BR><FONT COLOR="BLACK">....</FONT>|_ <FONT COLOR="orange">__init__.py</FONT>
+<BR><FONT COLOR="BLACK">....</FONT>|_ README.md
+<BR><FONT COLOR="BLACK">....</FONT>|_ <FONT COLOR="orange">addon_updater.py</FONT>
+<BR><FONT COLOR="BLACK">....</FONT>|_ <FONT COLOR="orange">xps_tools.py</FONT>
+<BR><FONT COLOR="BLACK">....</FONT>|_ <FONT COLOR="orange">...</FONT>
+</B></P>
+<HR>
+The <FONT COLOR="orange"><b>__init__.py</b></FONT> file tells Blender there are <u>multiple</u> <FONT COLOR="orange"><b>.py</b></FONT> files needed for the add-on to function.
+
+<P>
+When you are ready, click on <b>Install Add-on from File..</b>
+<BR> Using the zipped folder will make it possible for Blender to recognize all the needed python files.
+</P>
+</FONT>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</P>
+<BR>Important, make sure there are <u>no extra periods</u> in the zip filename:
+<blockquote><b style="color:cyan">Addon_Folder2.79.zip</b> <b>[<b class="red">BAD</b>]</b>
+<BR><b style="color:cyan">Addon_Folder2-79.zip</b> <b>[<b class="green">GOOD</b>]</b></blockquote>
+<a href="https://www.youtube.com/watch?v=JyDGZW5i4ik"><b>Demo</b></a> - Installing <b>Screencast Keys</b> add-on
+<BR><a href="https://www.youtube.com/watch?v=tf-pRdu1GE0"><b>Demo</b></a> - Installing <b>XPS Tools</b> add-on
+<!--INDENT END--></blockquote>
+</details>
+<hr class="redorange">
+
+<!--How do I open old .BLEND files in the latest version of Blender-->
+<h2 class="section">3. How do I open <u>old</u> <u>.BLEND</u> files in the latest version of Blender?</h2>
+<img src="https://i.stack.imgur.com/i9rFfm.gif" width="312" height="320">
+<details><summary class="click">Click to Show</summary>
+<!--INDENT START--><blockquote>
+<pre>
+1. Disable <b>Load UI</b> before opening the .BLEND file.
+- <a href="https://gfycat.com/imperfectequatorialbumblebee"><b>Demo</b></a>
+
+<a href="https://i.stack.imgur.com/20mN9.jpg"><img class="demo" src="https://i.stack.imgur.com/20mN9m.jpg" width="320" height="237"></a><a href="https://i.stack.imgur.com/eSg9F.jpg"><img class="demo" src="https://i.stack.imgur.com/eSg9Fm.jpg" width="320" height="237"></a>
+2. Option A. Open the <a href="https://i.stack.imgur.com/20mN9.jpg"><b>Filter</b></a> in the <b>Outliner</b> and activate the following <b>Restriction Toggles</b>:
+  - <b>Selectable</b> and <b>Enable in Viewports</b>
+  - <a href="https://gfycat.com/naiveagonizingdromedary"><b>Demo A</b></a>
+2. Option B. In the <b>Outliner</b>, <b class="hotkey">RIGHTCLICK</b> the <b>Collection</b>, go to <b>Visibility</b>, then select <b>Enable in Viewports</b>.
+  - <a href="https://gfycat.com/sharpshorttermcopperhead"><b>Demo B</b></a>
+
+If you notice any <b>bones</b>, <b>faces</b>, <b>vertices</b>, <b>edges</b>, etc. <a href="https://gfycat.com/realpeacefulfanworms">missing or invisible</a>, try:
+  <b class="hotkey">ALT</b>+<b class="hotkey">H</b> (Unhide)
+
+Related:
+- <a href="https://blender.stackexchange.com/questions/146983/missing-objects-when-opening-old-file-in-blender-2-8">Missing objects when opening old file in blender 2.8</a>
+- <a href="https://blender.stackexchange.com/questions/145931/why-cant-i-unhide-objects-in-2-8-that-were-hidden-in-2-79-blend-files">Why can't I unhide objects in 2.8 that were hidden in 2.79 blend files?</a>
+- <a href="https://www.katsbits.com/codex/old/">https://www.katsbits.com/codex/old/</a>
+- <a href="https://www.youtube.com/watch?v=eb41o7lHYL0">How to fix greyed out collections and their visibility after opening an old Blender file in 2.8</a>
+</pre>
+<!--INDENT END--></blockquote>
+</details>
+<hr class="redorange">
+
+<!--4. Help! I can't Scale or Rotate anymore in Blender!-->
+<h2 class="section">4. Help! I can't <u>Scale</u> or <u>Rotate</u> anymore in Blender!</h2>
+<!--INDENT START--><blockquote>
+- You may have accidentally enabled <b>Only Origins</b> (Manipulate Center Points).
+<BR><img src="https://i.imgur.com/sy4OMpI.png" title="Blender 2.7" width="542" height="283">
+<BR>- <a href="http://www.youtube.com/watch?v=6viFpjdOkjk" title="Watch Video"><b>Blender 2.7 - Disable 'Manipulate Center Points'</b></a>
+<BR>- <a href="https://i.imgur.com/rgEIgZt.png" title="Blender 2.8 - Disable 'Only Origins'"><b>Blender 2.8 - Disable 'Only Origins'</b></a>
+<!--INDENT END--></blockquote>
+<hr class="redorange">
+
+<h2 class="section">5. Help! My selection is <u>Rotating</u> or <u>Moving</u> <u>incorrectly</u>!</h2>
+<!--INDENT START--><blockquote>
+<b>Example:</b>
+<BR><a href="https://gfycat.com/FewWarpedAfricanparadiseflycatcher"><img class="demo" src="https://i.imgur.com/c715qxvt.jpg" title="Blender 2.7 - My selection is Rotating or Moving incorrectly" alt="Animated Image" width="160" height="98"></a>
+
+<P>
+<b>Transformation Manipulators:</b>
+<BR><a href="https://i.imgur.com/jCwgK3L.png"><img src="https://i.imgur.com/jCwgK3L.png" alt="Blender 2.7 - Transformation Manipulators" title="Blender 2.7" width="228" height="40"></a>
+<BR>- Keep both Transformation Manipulators (Rotate and Translate) enabled.
+<BR>- This will help you see the pivot point during rotation and other operations.
+<BR>- Then change the Pivot Point.
+<BR><a href="https://i.imgur.com/ylSvi0F.png"><img class="demo" src="https://i.imgur.com/ylSvi0F.png" alt="Blender 2.7 - Pivot Point" title="Blender 2.7 - Pivot Point" width="188" height="150"></a> <a href="https://i.imgur.com/2klSoKA.png"><img class="demo" src="https://i.imgur.com/2klSoKA.png" alt="Blender 2.8 - Pivot Point" title="Blender 2.8 - Pivot Point" width="184" height="150"></a>
+<BR><a href="https://www.youtube.com/watch?v=y3ECvX6DdNE" title="Watch Video: Blender 2.8 - Pivot and Orientation Points"><b>Blender 2.8 - Pivot and Orientation Points</b></a>
+</P>
+<!--INDENT END--></blockquote>
+<hr class="redorange">
+
+<!--6. Textures are not showing correctly while Viewport Shading is set to Texture-->
+<h2 class="section">6. Textures are not showing correctly while <u>Viewport Shading</u> is set to <u>Texture</u>.</h2>
+<!--INDENT START--><blockquote>
+If your <b>Viewport Shading</b> is set to <b>Texture</b>, the model will only show the <u>active selected</u> <b>Image Texture Node</b>.
+<BR><b>Example:</b> 
+<BR><a href="https://gfycat.com/LoneAngryJackrabbit"><img class="demo" src="https://i.imgur.com/8OWlbPct.jpg" title="Active Selected Texture is Shown" alt="Animated Image" width="160" height="87"></a>
+<!--INDENT END--></blockquote>
+<hr style="height:10px;border-width:1;color:red;background-color:orange">
+
+<!--7. Help! Objects are disappearing/clipping while zooming in 3D Viewport Editor-->
+<h2 class="section">7. Help! Objects are <u>disappearing</u> / <u>clipping</u> while zooming in <u>3D Viewport Editor</u>.</h2>
+<!--INDENT START--><blockquote>
+<BR><b>Example:</b> 
+<BR><a href="https://gfycat.com/MajorDefensiveGangesdolphin"><img class="demo" src="https://i.imgur.com/xlSzI5pt.jpg" alt="Animated Image Demo" title="Viewport Clipping" width="160" height="90"></a>
+<BR>- In the <span style="color:#1569C7"><b>3D Viewport Editor</b></span>, press the <span style="color:yellow"><b>N</b></span> key to open the <b>Properties Shelf</b>.
+<BR><a href="https://i.imgur.com/mc87x00.png"><img class="demo" src="https://i.imgur.com/mc87x00m.png" alt="[Image] Properties Shelf (N key)" title="Properties Shelf (N key)" width="150" height="320"></a>
+<BLOCKQUOTE>
+<BR>For <u>large</u> <b class="orange">Mesh Objects</b>:
+<UL>
+<LI>Try increasing the <b>Clip</b> value for <b>End</b>.</LI>
+<LI>Or try reducing the <b>Scale</b> of the Objects.</LI>
+</UL>
+For <u>small</u> <b class="orange">Mesh Objects</b>:
+<UL>
+<LI>Try decreasing the <b>Clip</b> value for <b>Start</b>.</LI>
+<LI>Or try increasing the <b>Scale</b> of the Objects.</LI>
+</UL>
+</BLOCKQUOTE>
+
+<P>
+You can also change the <b>Clip</b> values for the <u>selected</u> <b class="object">Camera Object</b> in the <b>Properties Editor</b>.
+</P>
+<!--INDENT END--></blockquote>
+<hr class="redorange">
+
+<!--8. Help! My objects in the 3D Viewport scene are too far away or offscreen!-->
+<h2 class="section">8. Help! My objects in the <u>3D Viewport</u> scene are <u>too far away</u> or <u>offscreen</u>!</h2>
+<!--INDENT START--><blockquote>
+Two Solutions:
+<ul><li><a href="https://i.imgur.com/8scsA6n.png"><img class="demo" src="https://i.imgur.com/8scsA6ns.png" alt="Home Key" title="Home Key" width="90" height="90"></a>
+<BR><span style="color:yellow"><b>Home</b></span> key - 3D Viewport will reveal all objects in scene</li>
+<li><a href="https://i.imgur.com/390aaWm.png"><img class="demo" src="https://i.imgur.com/390aaWms.png" alt="Numpad_Period" title="Numpad_Period" width="90" height="90"></a>
+<BR><span style="color:yellow"><b>Numpad_Period</b></span> key - 3D Viewport will reveal selected Object(s)</li></ul>
+
+Also check the <span style="color:#1569C7"><b>Visible Layers</b></span> or <span style="color:platinum"><b>Collections</b></span>.
+<BR><img src="https://i.imgur.com/wh0UzfR.png" alt="Blender 2.7 - View Layers" title="Blender 2.7 - View Layers" width="155" height="36">
+<BR><a href="https://thumbs.gfycat.com/SoulfulBeautifulGarpike-small.gif"><img class="demo" src="https://thumbs.gfycat.com/SoulfulBeautifulGarpike-small.gif" alt="Blender 2.8 - Collections" title="Blender 2.8 - Collections" width="332" height="202"></a>
+<!--INDENT END--></blockquote>
+<hr class="redorange">
+
+<!--9. My rigged character isn't deforming properly when posing.-->
+<h2 class="section">9. My rigged character isn't deforming properly when posing.</h2>
+<img src="https://i.imgur.com/KnDpQxNm.jpg" width="272" height="320">
+<details><summary class="click">Click to Show</summary>
+<!--INDENT START--><blockquote>
+<BR>Before rigging a character, make sure both the <b class="object">Armature</b> (Skeleton) and the <b class="object">Mesh Object</b>(s) (Character Meshes) have their <b>Transforms</b> applied:
+<BR><a href="https://gfycat.com/RareElatedBobwhite"><img class="demo" src="https://i.imgur.com/nipmh4Ut.jpg" alt="Animated Demonstration" title="Demo" width="145" height="160"></a>
+<BR>Mode: <b class="object">Object Mode</b>
+<BR>Hotkey: <b class="hotkey">CTRL</b>+<b class="hotkey">A</b>
+<BR>- <b>Object</b> → <b>Apply</b> → <b>Location</b> | <b>Rotation</b> | <b>Scale</b>
+
+<pre>
+You can also tell if an Object's transform hasn't been applied by looking at the location of the <span style="color:orange"><b>Object Origin</b></span> (Origin Point)
+<a href="https://i.imgur.com/IcjVJ5u.png"><img class="demo" src="https://i.imgur.com/IcjVJ5um.png" alt="[Image] Object Origin" title="Object Origin" width="320" height="217"></a>
+
+Don't forget to adjust your bone rolls:
+<a href="https://gfycat.com/maleidolizedcrow"><img class="demo" src="https://thumbs.gfycat.com/MaleIdolizedCrow-mobile.jpg" width="356" height="200" alt="Demo: Recalculate Bone Rolls to Active Bone" title="Demo: Recalculate Bone Rolls to Active Bone"></a>
+Related:
+- <a href="https://www.youtube.com/watch?v=6lXKX93fcyc">Blender 3D / rigging: How to adjust the roll of bones in a bones chain the proper way / HD</a>
+- <a href="https://www.youtube.com/watch?v=Gz22XdrVqp0">Orientation of Bones-Blender Tip</a>
+- <a href="https://archive.blender.org/wiki/index.php/Extensions:2.6/Py/Scripts/Rigging/Rigify/">Rigify (Archived)</a>
+</pre>
+
+<a href="https://open3dlab.com/tutorials/view/15/"><b>Blender Guide - Rigging &amp; Weight Painting</b></a>
+<!--INDENT END--></blockquote>
+</details>
+<hr class="redorange">
+
+<!--10. Checkered 3D mesh, strange checkered hair mesh!?-->
+<h2 class="section">10. Checkered 3D mesh, strange checkered hair mesh!?</h2>
+<div align="center"><a href="https://i.imgur.com/7D6WrxSl.jpg"><img class="demo" src="https://i.imgur.com/7D6WrxSm.jpg" width="274" height="320"></a></div>
+<details><summary class="click">Click to Show</summary>
+<BLOCKQUOTE>
+this happens mostly from doa hair rips. 
+<BR>what the creator did was add a front and back to the mesh instead of just making the mesh double sided (or its made from ripping, not too sure). so.. in places there's 2 faces right on top of another, causing the colliding and ugly shadows; and that criss-cross/checker pattern too. 
+<BR>maybe it looks good in the doa games, but for gmod/sfm it looks like shit XD
+it would take some time. but you would have to manually delete one of the sides where you see that collision.
+<BR>I had this issue with one of Christies hairpieces, and instead of going through all that, i found another download where her hair looked normal and that issue was already fixed; you might wanna try to find another download for that specific hair; i'm sure there's a few Sarah Bryant models with this already fixed ;) 
+<BR>- Alan13
+</BLOCKQUOTE>
+<!--INDENT START--><blockquote>
+<b>Example:</b> 
+<BR><a href="https://gfycat.com/OnlyPersonalEthiopianwolf"><img class="demo" src="https://i.imgur.com/0OosFJ3t.jpg" alt="Animated Demonstration" title="Demo: Fixing Mesh" width="160" height="86"></a>
+<pre>
+<b class="lime">1.</b> In <b class="orange">[Edit Mode]</b>, you can hover your mouse over the overlapping meshes and press the <b class="hotkey">L</b> key.
+- This will select 1 of the overlapping meshes.
+<b class="lime">2.</b> Press the <b class="hotkey">G</b> key and Grab/Move the selection to find out which overlapping mesh you selected.
+<b class="lime">3.</b> <b class="hotkey">Right_Click</b> to cancel Grab/Move.
+<b class="lime">4.</b> If you selected the mesh with it's normals facing outward, hide it temporarily with the <b class="hotkey">H</b> key.
+<b class="lime">5.</b> Then press the <b class="hotkey">L</b> key on the mesh with it's normals facing the wrong way.
+<b class="lime">6.</b> Press <b class="hotkey">X</b> key to Delete that mesh.
+<b class="lime">7.</b> Now press <b class="hotkey">ALT</b>+<b class="hotkey">H</b> to unhide the correct mesh.
+</pre>
+<BLOCKQUOTE>
+<BR><b class="hotkey">L</b> Key = Select Linked [Faces, Edges, Vertices]
+<BR>- This will select the connected faces on the hair mesh.
+<BR><b class="hotkey">H</b> Key = Temporarily Hide Selection
+<BR>- This makes it easier to work with overlapping meshes.
+<BR><b class="hotkey">ALT</b> + <b class="hotkey">H</b> = Unhide Selection
+</BLOCKQUOTE> 
+If the 3D model is only being used in Blender, you can just enable <b>Backface Culling</b>.
+<BR><a href="https://i.imgur.com/qebvylt.jpg"><img class="demo" src="https://i.imgur.com/qebvyltm.jpg" alt="Fix Checkered Mesh with Backface Culling" title="Fix Checkered Mesh with Backface Culling" width="320" height="174"></a>
+<BR>- <a href="https://i.imgur.com/qebvylt.jpg"><b>Blender 2.80 Demo</b></a>
+<BR>- <a href="https://i.stack.imgur.com/llXVv.png"><b>Blender 2.79 Demo</b></a>
+<!--INDENT END--></blockquote>
+</details>
+<hr class="redorange">
+
+<!--11. My 3D model has a blocky appearance or weird shading-->
+<a name="10"></a>
+<h2 class="section">11. My 3D model has a <u>blocky appearance</u> or <u>weird shading</u>, even when there are no lights or textures/materials applied.</h2>
+<div align="center"><img src="https://i.imgur.com/v61RuLdm.jpg" width="274" height="320"></div>
+<details><summary class="click">Click to Show</summary>
+<!--INDENT START--><blockquote>
+<b>Examples:</b> 
+<BR><a href="https://gfycat.com/MatureRedDaddylonglegs"><img class="demo" src="https://i.imgur.com/AB6zVtKt.jpg" title="Demo 1" alt="Demo 1" width="160" height="90"></a><a href="https://gfycat.com/ShowyTerrificHoneycreeper"><img class="demo" src="https://i.imgur.com/ORUUC5tt.jpg" title="Demo 2" alt="Demo 2" width="160" height="90"></a>
+
+<P>
+You can use <b>Face Orientation</b> to see the direction of the faces/normals:
+<BR>- <a href="https://www.youtube.com/watch?v=Z--dnYonag0"><b>Blender 2.8</b></a>
+<BR>- <a href="https://gfycat.com/onlypersonalethiopianwolf"><b>Blender 2.7</b></a>
+</P>
+
+Try 1 of the solutions below:
+<BR>- Select the Object, switch to <b>Edit Mode</b>, select the whole mesh, and <a href="https://gfycat.com/elegantlastingcrayfish" title="Watch Demo"><b>Set Normals from Faces</b></a>.
+<BR>- Select the Object, switch to <b>Edit Mode</b>, select the whole mesh, and <a href="https://www.youtube.com/watch?v=ADBmqYzxcwo" title="Video: Remove Doubles"><b>Remove Doubles</b></a> or <a href="https://www.youtube.com/watch?v=5CQpbSiiZS8" title="Video: Merge by Distance"><b>Merge by Distance</b></a> [<a href="https://gfycat.com/impracticallameblowfish" title="Demo: Merge by Distance (Remove Doubles)"><b>Extra Demo</b></a>].
+<BR>- Select the Object, switch to <b>Edit Mode</b>, select the whole mesh, and <a href="https://www.youtube.com/watch?v=NWrtxR4oxTs" title="Watch Demo"><b>Recalculate Normals</b></a>.
+<BR><a href="https://gfycat.com/elegantlastingcrayfish"><img class="demo" src="https://thumbs.gfycat.com/ElegantLastingCrayfish-mobile.jpg" alt="Blender - Set Normals from Faces" title="Blender - Set Normals from Faces" width="160" height="90"></a><a href="https://gfycat.com/impracticallameblowfish" title="Blender - Fix Mesh Seam"><img class="demo" src="https://thumbs.gfycat.com/ImpracticalLameBlowfish-mobile.jpg" width="160" height="90"></a>
+
+<P>
+<a href="https://i.stack.imgur.com/oRxyL.png"><img class="demo" src="https://i.stack.imgur.com/oRxyLs.png" alt="Vertex Normals" title="Vertex Normals" width="90" height="90"></a>
+<BR><b>*BONUS*</b> What the hell is a <b>Vertex Normal</b>? 
+<BR>- <A href="https://www.youtube.com/watch?v=0xB7nb0E448">https://www.youtube.com/watch?v=0xB7nb0E448</a>
+</P>
+<!--INDENT END--></blockquote>
+</details>
+<hr class="redorange">
+
+<!--12. My Normal Map texture makes my 3D model look block or inaccurate-->
+<h2 class="section">12. My <u>Normal Map texture</u> makes my 3D model look <u>blocky</u> or <u>inaccurate</u>.</h2>
+<div align="center">
+<img src="https://i.imgur.com/kpNYOyll.jpg" width="640" height="261">
+<BLOCKQUOTE>
+<a href="https://gfycat.com/quickableanemonecrab"><img class="demo" src="https://thumbs.gfycat.com/QuickAbleAnemonecrab-mobile.jpg" alt="Demo: Bad Normal Map confuses Lighting" title="Demo: Bad Normal Map confuses Lighting" width="150" height="150"></a><a href="https://i.imgur.com/VOiZ0Gv.png"><img class="demo" src="https://i.imgur.com/VOiZ0Gvm.png" alt="Bad Normal Map" title="Bad Normal Map" width="150" height="150"></a>
+<BR>Bad Normal Map
+</BLOCKQUOTE>
+<BLOCKQUOTE>
+<a href="https://gfycat.com/bitesizededibleamericanbulldog"><img class="demo" src="https://thumbs.gfycat.com/BitesizedEdibleAmericanbulldog-mobile.jpg" alt="Demo: Fixed Normal Map" title="Demo: Fixed Normal Map" width="150" height="150"></a><a href="https://i.imgur.com/o55lfQE.png"><img class="demo" src="https://i.imgur.com/o55lfQEm.png" alt="Fixed Normal Map" title="Fixed Normal Map" width="150" height="150"></a>
+<BR>Fixed Normal Map
+</BLOCKQUOTE>
+</div>
+
+<details><summary class="click">Click to Show</summary>
+<!--INDENT START--><blockquote>
+<blockquote><hr>
+<a href="https://i.imgur.com/3Cd3kqB.png"><img class="demo" src="https://i.imgur.com/3Cd3kqBm.png" alt="Normal Map - Color Direction" title="Normal Map - Color Direction" width="256" height="256"></a><a href="https://i.imgur.com/dxfvWSW.png"><img class="demo" src="https://i.imgur.com/dxfvWSWm.png" alt="Normal Map - RGB Channels" title="Normal Map - RGB Channels" width="320" height="219"></a>
+<BR>If you look closely at the <u>bright</u> <b class="red">Red</b> and <u>bright</u> <b class="green">Green</b>, you can see the "handedness" of the Normal Map texture:
+<BR><b class="red">X</b> = <b>+</b> (<b class="red">Red</b> is on the <u>right</u> side)
+<BR><b class="green">Y</b> = <b>+</b> (<b class="green">Green</b> is on the <u>top</u> side)
+<BR><b class="blue">Z</b> = <b>+</b> (<b class="blue">Blue</b> is the predominant <u>front</u> view)
+<BR><a href="http://wiki.polycount.com/wiki/Normal_Map_Technical_Details#RGB_Channels"><b>Normal Map Technical Details (RGB Channels)</b></a>
+<hr></blockquote>
+
+Keep in mind, if you're only using Blender for rendering, then your Normal Map should be <a href="https://i.imgur.com/hJyb4MP.jpg"><b>Blue</b>-ish</a>. 
+<BR>If you want your Normal Map texture to be <u>Blender-friendly</u>, you can use either an <u>Image Editor</u> (Photoshop/GIMP) or Blender's <u>Node Editor</u>:
+<ul>[<a href="https://i.imgur.com/brSf2B6.png"><b>Example - Node Editor</b></a>] by <b>TSelman61</b>
+<BR><figure><a href="https://i.imgur.com/0zq4kfi.png"><img class="demo" src="https://i.imgur.com/0zq4kfim.png" alt="Image: Before" title="Image: Before" width="160" height="90"></a><figcaption><b>Before</b></figcaption></figure><figure>
+<a href="https://i.imgur.com/wtgb7PV.png"><img class="demo" src="https://i.imgur.com/wtgb7PVm.png" alt="Image: After" title="Image: After" width="160" height="90"></a><figcaption><b>After</b></figcaption>
+</figure>
+<!-- <li>[<a href="https://i.imgur.com/0zq4kfi.png"><b>Before</b></a>] [<a href="https://i.imgur.com/wtgb7PV.png"><b>After</b></a>]</li> -->
+<li>Why is the <b class="blue">B</b> (<b class="blue">Blue</b>) socket disconnected from the <b>Combine RGB</b> node?
+<BR>- Interestingly, the <b class="red">Red</b>+<b class="green">Green</b> color channels actually have enough information about the Normal Map:
+<BR><a href="https://i.imgur.com/AwBR5QQ.jpg"><img class="demo" src="https://i.imgur.com/AwBR5QQt.jpg" width="90" height="90" alt="Image: Normal Map Texture (Red + Green)" title="Normal Map Texture (Red + Green)"></a>
+<BR>(<b class="red">Red</b>+<b class="green">Green</b> Only)</li>
+<li>But to make it Blender-friendly, we can create an artificial Blue channel that affects the entire Normal Map texture:
+<BR>- Manually change the <b class="blue">B</b> (<b class="blue">Blue</b>) channel value to <b>1.00</b>, as shown <a href="https://i.imgur.com/brSf2B6.png"><b>HERE</b></a>.
+<BR><a href="https://i.imgur.com/o55lfQE.png"><img class="demo" src="https://i.imgur.com/o55lfQEt.png" width="90" height="90" alt="Image: Normal Map Texture (Red + Green + Blue)" title="Normal Map Texture (Red + Green + Blue)"></a>
+<BR>(<b class="red">Red</b>+<b class="green">Green</b>+<b class="blue">Blue</b>) - This is how Blender will interpret it</li>
+<li><BLOCKQUOTE>Blue channel information is not lost?
+<BR>--&gt; Yes you are right. In fact, the blue channel is also important on the normal map. This is a much better way to determine depth and height. (Bump like the map.) But the normal map works without the blue channel.
+Now many game companies do this. They're ignoring the blue channel. And they're adding another map instead of the blue channel. So instead of creating two different maps, they form a single map. in this way, fewer files are created and reduced in size. <b>- TSelman61</b></BLOCKQUOTE></li><hr></ul>
+Other game engines may have different requirements for their Normal Maps.
+<BR>You may need to convert the Normal Map texture. 
+<BR>Try 1 or more of the options below to get your Normal Map working in Blender.
+
+<ul><li>Option 1.
+<BR>- In the <b>Node Editor</b>, change the <b>Color Space</b> of the <b>Normal Map Texture Node</b> to <b>Non-Color Data</b>.
+<BR><a href="https://i.imgur.com/ujb4EzC.jpg"><img class="demo" src="https://i.imgur.com/ujb4EzCt.jpg" alt="Color Data" title="Color Data" width="160" height="100"></a><a href="https://i.imgur.com/u85eB5p.jpg"><img class="demo" src="https://i.imgur.com/u85eB5pt.jpg" alt="Non-Color Data" title="Non-Color Data" width="160" height="100"></a>
+<BR>- <b>Example:</b> [<a href="https://i.imgur.com/ujb4EzC.jpg">Color Data</a>] [<a href="https://i.imgur.com/u85eB5p.jpg">Non-Color Data</a>]
+<BR>- <a href="https://blender.stackexchange.com/questions/87000/color-vs-non-color-data" title="Click for Details">Color vs Non-Color Data?</a></li>
+
+<li>Option 2. 
+<BR>- In the <b>Node Editor</b>, select the <b>Normal Map Texture Node</b>, open the <b>Properties Shelf</b> (<span style="color:yellow"><b>N</b></span> key), and then uncheck <b>'Use alpha'</b>.
+<BR><a href="https://i.imgur.com/G5ispHe.jpg"><img class="demo" src="https://i.imgur.com/G5ispHet.jpg" alt="Alpha Enabled" title="Alpha Enabled" width="160" height="100"></a><a href="https://i.imgur.com/vwLiJ2W.jpg"><img class="demo" src="https://i.imgur.com/vwLiJ2Wt.jpg" alt="Alpha Disabled" title="Alpha Disabled" width="160" height="100"></a>
+<BR>- <b>Example:</b> [<a href="https://i.imgur.com/G5ispHe.jpg">Alpha Enabled</a>] [<a href="https://i.imgur.com/vwLiJ2W.jpg">Alpha Disabled</a>]
+<BR>- You can try disabling alpha on other Image Textures too, if necessary.</li>
+
+<li>Option 3. 
+<BR>- <b>XnaFreak's Tip:</b> Different <b>Game Engines</b> have different <b>Normal Map</b> requirements.
+<BR>- <a href="https://comments.deviantart.com/1/756854058/4675101532">https://comments.deviantart.com/1/756854058/4675101532</a></li>
+
+<li>Option 4. [This changes bump direction] 
+<BR>- <b>Invert</b> the image color.
+<BR>- <b>Example:</b> <a href="https://gfycat.com/WideeyedScentedCoypu">https://gfycat.com/WideeyedScentedCoypu</a> </li>
+
+<li>Option 5. [Not Recommended]
+<BR>- Change the <b>Blue layer</b> of the image to <b>White</b>.
+<BR>- <b>Example:</b> <a href="https://gfycat.com/HealthyNegativeIndianrockpython">https://gfycat.com/HealthyNegativeIndianrockpython</a>
+<BR>- Take a look at Option 3.</li>
+
+<li>Option 6. 
+<BR>- Invert the green channel of the normal map by adding a <b>Invert Color Node</b> between the Texture Map Node and the Normal Map Node. - tip by @Starbrain
+<BR>- <b>Example:</b> <a href="https://i.imgur.com/FcxGLoZ.png">https://i.imgur.com/FcxGLoZ.png</a>
+<BR>- <b>More Info:</b> <a href="http://wiki.polycount.com/wiki/Normal_Map_Technical_Details">http://wiki.polycount.com/wiki/Normal_Map_Technical_Details</a></li></ul>
+<!--INDENT END--></blockquote>
+</details>
+<hr class="redorange">
+
+<!--13. Help! I can't import FBX model into Blender!-->
+<h2 class="section">13. Help! I <u>can't Import FBX model</u> into Blender! (Unsupported version/ASCII FBX)</h2>
+<div align="center"><img src="https://i.imgur.com/OH9OwRC.jpg" width="320" height="320"></div>
+<div align="center"><img src="https://i.imgur.com/C9RgzDn.png" alt="ASCII FBX files are not supported" title="ASCII FBX files are not supported" width="298" height="83"></div>
+<div align="center"><img src="https://i.imgur.com/xhGLcSf.png" alt="Version 6000 unsupported, must be 7100 or later" title="Version 6000 unsupported, must be 7100 or later" width="446" height="84"></div>
+
+<details><summary class="click">Click to Show</summary>
+<!--INDENT START--><blockquote>
+<ul><hr><li><b>**</b> Option 1. <a href="http://richwhitehouse.com/index.php?content=inc_projects.php&amp;showproject=91"><b>Noesis</b></a> [Recommended]
+<BR><a href="https://gfycat.com/shinyfrightenedcalf"><img class="demo" src="https://thumbs.gfycat.com/ShinyFrightenedCalf-mobile.jpg" alt="Noesis: Convert FBX to DAE" title="Noesis: Convert FBX to DAE" width="150" height="90"></a>
+<BR>- You can use <a href="http://richwhitehouse.com/index.php?content=inc_projects.php&amp;showproject=91">Noesis</a> to convert FBX to DAE (Collada).
+<BR>- You may need to enable <b>Flip UV's</b>.
+<BR>- Import <b>DAE</b> into <b>Blender</b>.
+<BR><a href="https://gfycat.com/poisedsickleopardseal"><img class="demo" src="https://thumbs.gfycat.com/PoisedSickLeopardseal-mobile.jpg" alt="Blender: Import DAE" title="Blender: Import DAE" width="150" height="90"></a></li>
+<hr>
+
+<li><b>**</b> Option 2. <a href="https://www.autodesk.com/developer-network/platform-technologies/fbx-converter-archives"><b>Autodesk's FBX Converter</b></a>
+<BR>- You can use <a href="https://www.autodesk.com/developer-network/platform-technologies/fbx-converter-archives">Autodesk's FBX Converter</a> to convert unsupported FBX files to the latest binary version of FBX.
+<BR><a href="https://www.youtube.com/watch?v=N9KncpPI3RM"><img class="demo" src="https://img.youtube.com/vi/N9KncpPI3RM/maxresdefault.jpg" width="150" height="90" title="Watch Video"></a>
+<BR>- There is still a chance that some rigged character models may appear incorrectly in Blender.
+<BR><a href="https://gfycat.com/enlightenedembellishedbanteng"><img class="demo" src="https://thumbs.gfycat.com/EnlightenedEmbellishedBanteng-mobile.jpg" width="150" height="90" title="Watch Demo"></a></li>
+<hr>
+
+<li><b>**</b> Option 3. <a href="https://www.deviantart.com/amyaimei/gallery/?catpath=%2F&amp;edit=0&amp;q=BOS+FBX"><b>Bos FBX add-on</b></a> for <b>Blender</b>
+<BR>- The add-on will allow you to import some <u>ASCII</u> FBX models or other <u>unsupported</u> FBX versions.
+<BR>- There is still a chance that some rigged character models may appear incorrectly in Blender.
+<BR><a href="https://gfycat.com/plumpfarflungcutworm"><img class="demo" src="https://thumbs.gfycat.com/PlumpFarflungCutworm-mobile.jpg" width="150" height="90" title="Watch Demo"></a>
+<BR>- The Bos FBX add-on is no longer being supported.</li><hr></ul>
+
+<b>Ton Roosendaal</b> (Blender Founder): <blockquote>...Everybody is using FBX, but it's a locked-in format, and <u>Autodesk is frustrating everybody who tries to reverse engineer it, by changing the format every year, just for fun</u>.</blockquote> 
+Full Interview: <a href="https://www.youtube.com/watch?v=qJEWOTZnFeg&amp;t=47m40s">https://www.youtube.com/watch?v=qJEWOTZnFeg&amp;t=47m40s</a>
+<!--INDENT END--></blockquote>
+</details>
+<hr class="redorange">
+
+<!--14. The textures on my 3D model are Pink/Purple in the 3D Viewport Render-->
+<h2 class="section">14. The <u>textures</u> on my <u>3D model</u> are <u>Pink</u>/<u>Purple</u> in the <u>3D Viewport Render</u>.</h2>
+<div align="center"><a href="https://i.imgur.com/kR9t6cU.gif"><img class="demo" src="https://i.imgur.com/kR9t6cU.gif" alt="Blender - Textures not loading?" title="Blender - Textures not loading?" width="360" height="480"></a></div>
+<details><summary class="click">Click to Show</summary>
+<!--INDENT START--><blockquote>
+<BR>Three reasons for why a texture may turn pink/purple:
+<ul><li>1. Corrupt texture or poorly supported texture format
+<BR>- Example: You may find some variant of DDS textures that may not play well with Blender. 
+<BR>- You may need to convert the image texture to a different image format (TGA, PNG, JPG, etc).
+<BR>- Possible Workaround: Pack the image texture file into the .blend file.
+<hr></li>
+<li>2. Missing texture [<b class="orange">.BLEND</b>]
+<BR>- If the blend file is referencing an image texture file from outside of Blender, it's possible that the texture file or its folder may have been accidentally deleted, renamed or moved. [If moved, go to <b>File</b> -&gt; <b>External Data</b> -&gt; <b>Find Missing Files</b>]
+<BR>- When a blend file is saved, Blender will not save any unused textures/materials (external or packed).
+<BR>- If you let a friend open that blend file, those unused textures/materials will not be available within the Blender session. 
+<BR>- If you want Blender to protect/keep the unused textures/materials, press the <b>Fake User</b> button (<a href="https://i.stack.imgur.com/RN8o3.png"><b>F</b></a> or <b>Shield</b> button) before saving the blend file.
+<BR><a href="https://i.imgur.com/CKXDrps.png"><img class="demo" src="https://i.imgur.com/CKXDrpst.png" title="Fake User - Image Texture" width="152" height="150"></a> <a href="https://i.imgur.com/x1FYiOV.png"><img class="demo" src="https://i.imgur.com/x1FYiOVt.png" title="Fake User - Material" width="211" height="150"></a>
+<hr></li>
+<li>3. Missing texture/material [<b class="orange">.OBJ</b>]
+<BR>- When importing .OBJ into Blender, enable <a href="https://i.stack.imgur.com/QNitU.png"><b>Image Search</b></a> option in the import properties menu. 
+<BR>- When exporting .OBJ from Blender, enable <a href="https://i.stack.imgur.com/WvxMa.png"><b>Write Materials</b></a> option in the export properties menu.
+<BR>- Make sure the material names have no spaces.
+<BR>- Make sure the textures are <u>not</u> packed within the .BLEND file, they need to exist in the same folder as the .OBJ.
+<BR>- The .OBJ format doesn't support advanced shader node setups (details below).
+<small>
+<p>Related Questions and Notes:
+<BR>- <a href="https://blender.stackexchange.com/questions/121650/unable-to-export-textures-with-obj-files"><b>Blender 2.77: Unable to export textures with .obj files</b></a>
+<BR>- <a href="https://blender.stackexchange.com/questions/47915/when-i-save-something-as-an-obj-file-the-texture-does-not-save-with-it-why"><b>Blender 2.76: When I save something as an OBJ file, the texture does not save with it, why?</b></a>
+<BR>- <a href="https://stackoverflow.com/questions/49001586/how-to-export-obj-format-file-with-texture-in-blender"><b>Blender 2.79: How to export .obj format file with texture in blender?</b></a>
+<BR>- <a href="https://developer.blender.org/T68399"><b>Blender 2.80: Blender 2.8 drops textures and materials when exporting to OBJ (and others)</b></a>
+<BR>- <a href="https://developer.blender.org/T68704"><b>Blender 2.80: Documentation: explain that Blender 2.80 Exporting a textured OBJ with any shader other than Principled BSDF will result in an MTL without map_Kd pointing to texture file</b></a>
+</p>
+</small>
+</li></ul>
+<!--INDENT END--></blockquote>
+</details>
+<hr class="redorange">
+
+<!--15. My 3D Model is missing faces (see-through) or has completely black texture!-->
+<h2 class="section">15. My 3D Model is missing faces (see-through) or has completely black texture!</h2>
+<!--INDENT START--><blockquote>
+<ul><li><a href="https://gfycat.com/mintylatehen"><img class="demo" src="https://thumbs.gfycat.com/MintyLateHen-mobile.jpg" alt="Blender - Eevee and Blend Mode" title="Blender - Eevee and Blend Mode" width="150" height="90"></a>
+<BR><u>Blend Mode:</u> <b>Opaque</b> (For objects that need to be solid)
+<BR><u>Blend Mode:</u> <b>Alpha Hashed</b> or <b>Alpha Clip</b> (For objects that need transparency)
+<BR>- <b>Alpha Clip</b> gives the user more control of alpha clipping with <u>Clip Threshold</u>.
+<BR>- <b>Alpha Hashed</b> appears to do some automatic calculations on its own.</li>
+<li><a href="https://gfycat.com/waterloggedbriskjenny"><img class="demo" src="https://thumbs.gfycat.com/WaterloggedBriskJenny-mobile.jpg" alt="Watch Demo" title="Watch Demo" width="150" height="90"></a>
+<BR>For the cartoonish outline, apply <b>Backface Culling</b> to the black Mesh Object.</li>
+<li><a href="https://gfycat.com/piercingdeliciouskitfox"><img class="demo" src="https://thumbs.gfycat.com/PiercingDeliciousKitfox-mobile.jpg" alt="Watch Demo" title="Watch Demo" width="150" height="90"></a>
+<BR>Sometimes the 3D cartoon model and it's black mesh outline are <u>within the same Mesh Object</u>.
+<BR>You can either separate the black mesh outline as its own Mesh Object, or you can assign the black mesh outline to a separate Material.</li></ul>
+<!--INDENT END--></blockquote>
+<hr class="redorange">
+
+<!--16. My 3D Model is supposed to be Symmetrical, but there are a few vertices that are not.-->
+<h2 class="section">16. My 3D Model is supposed to be <u>Symmetrical</u>, but there are a few vertices that are not.</h2>
+<div align="center"><a href="https://i.stack.imgur.com/MH2kI.png"><img class="demo" src="https://i.stack.imgur.com/MH2kIm.png" title="Image: The vertices are not symmetrical" width="320" height="255"></a></div>
+<!--INDENT START--><blockquote>
+<BR>You have 2 options: <a href="https://docs.blender.org/manual/en/dev/modeling/meshes/editing/basics/symmetry.html" title="Symmetry Options"><b>Symmetry</b></a>
+<ul><li><a href="https://gfycat.com/sandyvillainousacornbarnacle"><img class="demo" src="https://thumbs.gfycat.com/SandyVillainousAcornbarnacle-mobile.jpg" alt="Demo: Snap to Symmetry" title="Demo: Snap to Symmetry" width="160" height="90"></a>
+<BR><b>Snap to Symmetry</b> (Safe)
+<BR>- The Snap to Symmetry tool lets you snap a mesh vertices to their mirrored neighbors.
+<BR>- Useful when dealing with meshes which are mostly symmetrical, but have vertices which have been moved enough that Blender does not detect them as mirrored (when X Mirror option is enabled for example).
+<BR>- This can be caused by accident when editing without X Mirror enabled. Sometimes models imported from other applications are asymmetrical enough that mirror fails too.
+<BR>- This is also a good option to use after removing overlapping/double vertices with <a href="https://www.youtube.com/watch?v=ADBmqYzxcwo" title="Watch Demo"><b>Remove Doubles</b></a> or <a href="https://www.youtube.com/watch?v=5CQpbSiiZS8" title="Watch Demo"><b>Merge by Distance</b></a>.
+<BLOCKQUOTE>
+Mode: <b>Edit Mode</b>
+<BR>Menu: <b>Mesh</b> ‣ <b>Snap to Symmetry</b>
+</BLOCKQUOTE></li>
+<li><b>Symmetrize</b> (Destructive)
+<BR>- The Symmetrize tool is a quick way to make a mesh symmetrical. 
+<BR>- Symmetrize works by cutting the mesh at the pivot point of the object, and mirroring over the geometry in the specified axis, and merges the two halves together (if they are connected). 
+<BR>- Also the mesh data is copied from one side to the other: e.g. UVs, vertex colors, vertex weights.
+<BLOCKQUOTE>
+Mode:	<b>Edit Mode</b>
+<BR>Menu:	<b>Mesh</b> ‣ <b>Symmetrize</b>
+</BLOCKQUOTE></li></ul>
+<a href="https://blender.stackexchange.com/questions/32659/why-is-x-mirror-not-working-on-a-mesh">Related Question</a>
+<!--INDENT END--></blockquote>
+<hr class="redorange">
+
+<!--17. How do I give my 3D character model a specific height?-->
+<h2 class="section">17. How do I give my 3D character model a specific height?</h2>
+<div align="center"><a href="https://i.imgur.com/KagvyRv.png"><img class="demo" src="https://i.imgur.com/KagvyRvl.png" title="Blender 2.80 - Dimensions" width="371" height="255"></a></div>
+<details><summary class="click">Click to Show</summary>
+<!--INDENT START--><blockquote>
+<BR>In Blender, the dimensions of a 3D model are measured in meters (1 Blender Unit = 1 Meter). 
+<BR>To get the height of a 3D model, you have to look at the <b>Z</b> dimension. 
+<BR>There are 2 ways to set a specific height for your 3D model:<ol>
+<li>In <b class="orange">[Object Mode]</b>, while scaling your 3D model, you can hold the <b class="hotkey">SHIFT</b> key and fine tune the scale till you reach your desired <b>Z</b> dimension (height).
+<BR>- <a href="https://i.stack.imgur.com/spHXJ.gif"><b>Demo</b></a></li>
+<li>In <b class="orange">[Object Mode]</b>, you can manually enter the height (in meters) into the <b>Z</b> dimension. 
+<BR>You will notice the value of the <b>Z</b> scale has changed too. 
+Copy/Paste the value from <b>Z</b> scale to the <b>X</b> and <b>Y</b> scales.
+<BR>- <a href="https://gfycat.com/watchfultimelygalapagospenguin"><b>Demo</b></a></li></ol>
+Once you are happy with the new height, don't forget to <b>Apply</b> the scales.
+<BLOCKQUOTE>
+Mode: <b class="orange">Object Mode</b>
+<BR> Hotkey: <b class="hotkey">CTRL</b>+<b class="hotkey">A</b>
+</BLOCKQUOTE>
+
+<P>
+<small><a href="https://blender.stackexchange.com/questions/87243/how-to-scale-dimensions-proportionally-to-a-specific-size" title="How to scale dimensions proportionally to a specific size?">Related Question</a></small>
+</P>
+<!--INDENT END--></blockquote>
+</details>
+<hr class="redorange">
+
+<!--18. My UV Maps/Channels are conflicting or in the wrong order!-->
+<h2 class="section">18. My UV Maps/Channels are conflicting or in the wrong order!</h2>
+<div align="center"><a href="https://i.imgur.com/uwqEWnG.png"><img class="demo" src="https://i.imgur.com/uwqEWnGm.png" title="Image: UV Maps/Channels Conflict" width="320" height="255"></a></div>
+<details><summary class="click">Click to Show</summary>
+<!--INDENT START--><blockquote>
+<BR>The ability to <a href="https://i.stack.imgur.com/bL3fr.gif"><b>re-order</b></a> the UVs is very useful for people who are importing files into other 3D programs. 
+<BR>Some workflows require UVs in the following order: texture, baked, lighting, realtime lighting. 
+<BR>So the additional UVs can just be spare UVs for debugging.
+
+<!--TSelman_START--><blockquote>
+<u>XNALara</u> models can <u>support multiple UV channels</u>. So you can export a model with two different UV channels.
+<BR>- However, XNALara models will always use the <u>first</u> UV channel slot. 
+<BR><u>Blender</u> models will use the UV channel slot that has the <u>active</u> <u>camera icon</u>.
+<BR>
+<a href="https://i.imgur.com/rnZeekQ.jpg"><img class="demo" src="https://i.imgur.com/rnZeekQm.jpg" title="Image: UV Slot 1" alt="Image: UV Slot 1" width="320" height="227"></a> 
+<a href="https://i.imgur.com/b4zIocZ.jpg"><img class="demo" src="https://i.imgur.com/b4zIocZm.jpg" title="Image: UV Slot 2" alt="Image: UV Slot 2" width="320" height="227"></a>
+<BR>Here are steps needed in order to change the order of UV Maps:<ul>
+    <li>Select the first UV Map.</li>
+    <li>Click on the Plus button. (This technically creates a duplicate of the selected UV Map)</li>
+    <li>Delete the first UV map.</li>
+    <li>Rename the last UV Map to not contain the .001 suffix.</li></ul>
+
+<BR>
+<a href="https://i.imgur.com/TptJrB0.png"><img class="demo" src="https://i.imgur.com/TptJrB0t.png" alt="Image: LEFT" width="160" height="118"></a> 
+<a href="https://i.imgur.com/PQcfBeB.png"><img class="demo" src="https://i.imgur.com/PQcfBeBt.png" alt="Image: RIGHT" width="160" height="118"></a> 
+<a href="https://i.imgur.com/iVAZxjy.png"><img class="demo" src="https://i.imgur.com/iVAZxjyt.png" alt="Image: PLUS" width="160" height="118"></a> 
+<a href="https://i.imgur.com/etu4Gcx.png"><img class="demo" src="https://i.imgur.com/etu4Gcxt.png" alt="Image: 1" width="160" height="118"></a> 
+<a href="https://i.imgur.com/WKlySdh.png"><img class="demo" src="https://i.imgur.com/WKlySdht.png" alt="Image: 2" width="160" height="118"></a>
+<BR> -- <a href="https://www.deviantart.com/dddkhakha1/art/Kara-W-I-P-837033740">Resources</a> provided by <a href="https://www.deviantart.com/tselman61"><b>TSelman61</b></a>
+<!--TSelman_END--></blockquote>
+<BR><a href="https://www.youtube.com/watch?v=vJPJIXUkpqY">Blender Quick Tip - Clothes, Layers, and Multiple UV Channels in Cycles Materials</a>
+<BR><a href="https://blender.stackexchange.com/questions/67266/changing-order-of-uv-maps">Related Question</a>
+<!--INDENT END--></blockquote>
+</details>
+<hr class="redorange">
+
+<!--Please don't throw away any of these valuable texture maps!-->
+<div align="center">Please don't throw away any of these valuable texture maps! 
+<BR>They are extremely helpful!</div>
+<div align="center"><a href="https://i.imgur.com/pCxrBBn.jpg"><img class="demo" src="https://i.imgur.com/pCxrBBnm.jpg" alt="Texture Maps" title="Texture Maps" width="320" height="161"></a></div>
+<hr class="redorange">
+
+<!--Below will be moved to a Rigging Tutorial in the future-->
+<h1 align="center" style="color:green;">[Below will be moved to a Rigging Tutorial in the future]</h1>
+<!--INDENT START--><blockquote>
+<P>
+I just had a thought about the weird placement of the pelvis bones from the <b>Rigify's Human (Meta-Rig)</b>.
+<BR><a href="https://i.imgur.com/m7CC2NL.gif"><img class="demo" src="https://i.imgur.com/m7CC2NLs.gif" alt="Animated Gif" title="Animated Gif" width="90" height="90"></a>
+<P>
+
+I don't think I've ever seen a tutorial address how to use the bottom tips of the <b>pelvis.L</b> and <b>pelvis.R</b> bones.
+
+<BR>Then I thought, why not try using them as butt bones. It kind of makes sense.
+<BR><a href="https://i.imgur.com/QliRQkS.png"><img class="demo" src="https://i.imgur.com/QliRQkSm.png" width="218" height="320"></a><a href="https://i.imgur.com/hVuGZzV.png"><img class="demo" src="https://i.imgur.com/hVuGZzVm.png" width="279" height="320"></a>
+<BR>Before
+<BR><a href="https://i.imgur.com/PXUGM0F.png"><img class="demo" src="https://i.imgur.com/PXUGM0Ft.png" alt="Before" title="Before" width="160" height="160"></a>
+<BR>After
+<BR><a href="https://i.imgur.com/pmOHKW6.png"><img class="demo" src="https://i.imgur.com/pmOHKW6t.png" alt="After" title="After" width="160" height="160"></a>
+
+<P>
+If you're working with <b>Automatic Weights</b>, it requires some experimentation.
+</P>
+<!--INDENT END--></blockquote>
+
+<hr>
+<div align="center">For more tutorials, click here: 
+<BR><a href="https://www.blender.org/support/tutorials/"><b>Blender Tutorials</b></a>
+<BR><a href="https://www.youtube.com/channel/UC2U5mRfclG1Rrr1ztNkpGKA/playlists"><b>Fast Blender Tutorials by Royal Skies LLC</b></a>
+<BR><a href="https://open3dlab.com/tutorials/view/15/"><b>Blender Guide - Rigging / Weight Painting</b></a>
+<BR><a href="https://www.deviantart.com/xcurtainx/journal/"><b>Journals by XCurtainX</b></a></div>
+
+<pre>
+<b><u>EXTRAS:</u></b>
+<strong>
+<a href="https://www.youtube.com/watch?v=n9YYrVQdCMY">Blender 2.79 - Common Blender Problems, Mistakes & Fixes for Beginners</a>
+<a href="https://www.youtube.com/watch?v=zQVr9qyM00w">Blender 2.79 - 7 KEY MISTAKES Blender Beginners Make</a>
+<a href="https://www.youtube.com/watch?v=EO-ikIsVdIo">Blender 2.80 - Top Tips in Blender 2.8 You Probably Didn't Know</a>
+<a href="https://www.youtube.com/watch?v=ihp5zXnLosk">Blender 2.80 - Blender3D Beginner Tips(Mistakes that can waste your time!)</a>
+<a href="https://www.youtube.com/watch?v=u65tkucV9o8">Blender 2.80 - Top 10 Blender Best Practices</a>
+<a href="https://www.youtube.com/watch?v=F06n6VmNEio">Why You Should Never Model with Subdivisions Active - 3D Modeling Fundamentals</a>
+</strong>
+</pre>
+
+<pre>
+<b>dddkhakha1:</b> Can you show me how to add eye bones for supergirl model?
+- Demo: [<a href="https://gfycat.com/wellwornunlawfularctichare"><b>Part 1</b></a>] [<a href="https://gfycat.com/speedyelementaryinsect"><b>Part 2</b></a>]
+<b>dddkhakha1:</b> and how to fix <a href="https://sta.sh/0djmyuv4nt4"><b>this</b></a>? (SFM DAZv4 legs)
+- Demo: [<a href="https://gfycat.com/disguisedpersonalkite"><b>Part 1</b></a>] [<a href="https://gfycat.com/fatblackesok"><b>Part 2</b></a>]
+</pre>
+<hr>
+<div align="center"><a href="https://www.youtube.com/watch?v=JTD0OJq_rF4" title="Watch: How to Report a Bug in 5 Steps - Blender"><b>How to report a Blender bug?</b></a></div>
+<hr>
+<b><u>Contact:</u></b>
+<BR><a href="https://www.deviantart.com/xcurtainx"><b>https://www.deviantart.com/xcurtainx</b></a>
+<hr class="redorange">
+
+<DETAILS ID=mistakeschangelog><SUMMARY><b>Click for Change Log</b></SUMMARY>
+<pre>
+Apr 20, 2020
+Added: My UV Maps/Channels are conflicting or in the wrong order!
+- https://i.stack.imgur.com/bL3fr.gif
+- https://i.imgur.com/rnZeekQ.jpg
+- https://i.imgur.com/b4zIocZ.jpg
+
+Dec 19, 2019
+Added: How do I open old .BLEND files in the latest version of Blender?
+- https://gfycat.com/imperfectequatorialbumblebee
+- https://gfycat.com/naiveagonizingdromedary
+- https://gfycat.com/sharpshorttermcopperhead
+Updated: My rigged character isn't deforming properly when posing.
+- Recalculate Bone Rolls to Active Bone: 
+- https://gfycat.com/maleidolizedcrow
+
+Nov 23, 2019
+Update: The textures on my 3D model are Pink/Purple in the 3D Viewport Render
+- Added info about missing textures/materials for imported/exported .OBJ files.
+- Added more info about texture exports for different versions
+
+Nov 10, 2019
+Added: 
+- How do I give my 3D character model a specific height?
+- Snap to Symmetry demo: https://gfycat.com/sandyvillainousacornbarnacle
+
+Oct 23, 2019
+Update: My 3D Model is supposed to be <u>Symmetrical</u>, but there are a few vertices that are not.
+- [Snap to Symmetry] 
+- [Symmetrize]
+
+Oct 13, 2019
+Minor Update: Help! My selection is Rotating or Moving incorrectly!
+- Added Video - Blender 2.8 - Pivot and Orientation Points
+- https://www.youtube.com/watch?v=y3ECvX6DdNE
+
+Oct 12, 2019
+Updated: The textures on my 3D model are pink/purple in the 3D Viewport
+- Added tip about opening blend files with pink/purple textures (missing textures).
+- Added tip about the Fake User button to protect/keep your textures/materials from being deleted from blend file. 
+
+Sep 17, 2019
+Minor Update:
+Added Backface Culling tip for checkered meshes.
+- https://i.imgur.com/qebvylt.jpg
+
+Sep 11, 2019
+Added - My 3D Model is missing faces (see-through) or has completely black texture!
+- https://gfycat.com/mintylatehen
+- https://gfycat.com/waterloggedbriskjenny
+- https://gfycat.com/piercingdeliciouskitfox
+
+Aug 27, 2019
+Minor Update:
+- Added Demo: Set Normals from Faces - https://gfycat.com/elegantlastingcrayfish
+
+Aug 16, 2019
+- Added a video to show Face Orientation (See the direction of faces/normals).
+- https://www.youtube.com/watch?v=Z--dnYonag0
+
+Aug 15, 2019 
+- Added how to use Old and New versions of Blender at the same time.
+- Added more Normal Map Texture tips by TSelman61 and XnaFreak.
+
+Feb 25, 2019
+- Added: Help! I can't Import FBX model into Blender! (Unsupported version/ASCII FBX)
+- Added tips to import unsupported FBX files into Blender.
+
+Oct 15, 2018
+Added 2 more tips to fix Normal Map problems:
+- Disable Alpha on Normal Map Texture Node
+- Invert Color Node between the Texture Map Node and Normal Map Node.
+
+Aug 26, 2018
+- Added: Help! I installed a Blender addon, but nothing happened or it doesn't appear to work.
+- Added: The textures on my 3D model are turning Pink (or Black) in the 3D Viewport Render after few minutes or hours in Blender.
+
+Aug 13, 2018
+- Added info about converting yellow Normal Map textures to blue ones.
+- Added info about shading issues or dark edges on 3D models.
+</pre>
+</DETAILS>
+<hr class="redorange">
+<a href="https://www.blender.org/foundation/donation-payment/"><b style="color:lime">DONATE!</b> <b style="color:orange">Blender Development Fund</b></a>
+
+</div>
+</body>
+
+</html>
