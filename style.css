@@ -1,3 +1,36 @@
+/*Testing out CSS stuff*/
+
+/*New CSS*/
+iframe, address, fieldset, form, label, legend, caption, 
+tbody, tfoot, thead, article, aside, canvas, embed, 
+figure, figcaption, footer, header, hgroup, menu, nav, output, 
+ruby, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+article, aside, figcaption, figure, footer, header, hgroup, menu, nav {
+    display: block;
+}
+mark {
+    background-color: transparent;
+    color: inherit;
+}
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+input, select, textarea {
+    -moz-appearance: none; 
+    -webkit-appearance: none; 
+    -ms-appearance: none; 
+    appearance: none;
+}
+
+/*My Old CSS*/
 html {
     background-color:black;
     font-family:Verdana, Geneva, sans-serif;
