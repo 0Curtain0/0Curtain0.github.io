@@ -1,0 +1,919 @@
+<html>
+
+<head>
+<style>
+html {
+    background-color:black;
+    font-family:Verdana, Geneva, sans-serif;
+    color:white;
+}
+body.bodytut {
+    background-color:gray;
+    color:orange;
+    font-family:Verdana, Geneva, sans-serif;
+}
+div.tut {
+    background-color:black;
+    color:white;
+    font-family:Verdana, Geneva, sans-serif;
+}
+pre {
+    background-color:black;
+    color:white;
+    font-family:Verdana, Geneva, sans-serif;
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+summary {
+    font-family:Verdana, Geneva, sans-serif;
+    font-size:15px;
+    color:#090;
+    font-weight:bold;
+    padding:2px 6px;
+    width:14em;
+    background-color:#2C3539;
+    border:none;
+    box-shadow:3px 3px 4px black;
+}
+table {
+  color:white;
+  font-family: Verdana, Geneva, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  background-color: black;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+hr.redorange {height:10px;color:orange;background-color:red;}
+.parentoption {color:black;background-color:orange;}
+.object {color:orange;font-weight:bold;}
+.weight {color:#A74AC7;font-weight:bold;}
+b.hotkey {color:yellow;font-weight:bold;}
+.section {color:green;font-weight:bold;}
+.orange {color:orange;font-weight:bold;}
+.red {color:red;font-weight:bold;}
+.green {color:green;font-weight:bold;}
+.blue {color:blue;font-weight:bold;}
+.cyan {color:cyan;font-weight:bold;}
+.demo {border:10px dotted orange;}
+</style>
+</head>
+
+<body class="bodytut">
+<div class="tut">
+
+<div align="center">Give Life to Your 3D Model!</div>
+
+<!-- IMAGE: BLENDER GUIDE -->
+<pre>
+<div align="center"><a href="https://www.deviantart.com/xcurtainx/journal/Blender-Guide-Rigging-Weight-Painting-785437846"><img class="demo" src="https://i.imgur.com/GLNg9Rsm.png" alt="Blender Guide - Rigging/Weight Painting" title="Blender Guide - Rigging/Weight Painting" width="320" height="267"></a>
+<!-- TITLE --><h1 align="center"><font color="#FF6600"><u>Blender Guide
+Rigging and Weight Painting</u></font></h1></div>
+<div align="center"><b>*Updated: Apr 22nd 2020*</b>
+Check <a href="#riggingchangelog"><b><u>Change Log</u></b></a> at the bottom of the guide for important updates.</div>
+</pre>
+
+<!-- BEFORE WE START -->
+<hr class="redorange">
+<pre>
+Before we start, please take a quick look at the following resources:
+
+<b class="orange">Blender 2.7X Fundamentals:</b>
+- <a href="https://www.youtube.com/watch?v=Ab5UkKob-PA" title="click to watch"><b>Introduction to Rigging</b></a>
+- <a href="https://www.youtube.com/watch?v=vMGTQFOgV_0" title="click to watch"><b>Character Rigging</b></a>
+</pre>
+<hr width="50%" align="left">
+<pre>
+<b class="orange">Blender 2.8X Fundamentals:</b> 
+- <a href="https://www.youtube.com/watch?v=cZ3o5tjO51s" title="click to watch"><b>Armature</b></a>
+- <a href="https://www.youtube.com/watch?v=f2pTkW-1JkE" title="click to watch"><b>Character Rigging</b></a>
+- <a href="https://www.youtube.com/watch?v=dKZrzG5r13g" title="click to watch"><b>Vertex Groups</b></a> <b>[More info later in the guide]</b>
+- <a href="https://www.youtube.com/watch?v=MVl7FQw-x6M" title="click to watch"><b>Bone Layers</b></a>
+- <a href="https://www.youtube.com/watch?v=fx33sPEAZEk" title="click to watch"><b>Copy Limit Constraint</b></a> <b>[OPTIONAL]</b>
+- <a href="https://www.youtube.com/watch?v=S-2v_CKmVE8" title="click to watch"><b>Inverse Kinematics (IK)</b></a> <b>[OPTIONAL]</b>
+</pre>
+<hr width="50%" align="left">
+If the Gfycat demos are too fast, you can right click them to change speed.
+<hr width="50%" align="left">
+
+You can still learn from this guide, even if you don't use <b>Rigify</b>.
+<br><a href="https://gfycat.com/exhaustedgoodnaturedcuttlefish"><img class="demo" src="https://thumbs.gfycat.com/ExhaustedGoodnaturedCuttlefish-mobile.jpg" alt="Blender - Rigify Demo" title="Blender - Rigify Demo" width="320" height="180"></a>
+<a href="https://i.imgur.com/MNKRhxk.png"><img class="demo" src="https://i.imgur.com/MNKRhxkm.png" alt ="Image: metarig vs rig" title="Image: metarig vs rig" width="320" height="180"></a>
+<!-- IMPORTANT -->
+<br><span style="color:yellow;background-color:red;"><b>* IMPORTANT *</b></span> 
+<blockquote>
+There is a known bug in Blender that occurs when attempting to <b>Undo</b> (<b class="hotkey">CTRL</b>+<b class="hotkey">Z</b>) in <b>Weight Paint</b> mode or <b>Sculpt</b> mode.
+<br>- <a href="https://gfycat.com/completeskinnycougar"><b>Demo: Undo Bug</b></a>
+<br>- <a href="https://developer.blender.org/T71759"><b>Bug Reported</b></a>
+<br><b>Workaround:</b> After adjusting the brush values (<b class="cyan">Weight</b>, <b class="cyan">Radius</b>, or <b class="cyan">Strength</b>), switch to a different paint brush (<b class="cyan">Add</b>, <b class="cyan">Subtract</b>, <b class="cyan">Mix</b>, etc.), and then switch back to your previous paint brush. 
+<br>- <b>Undo</b> should now work as expected.
+</blockquote>
+<hr width="50%" align="left">
+<blockquote>If you plan on rigging with the <b>Rigify</b> add-on, make sure you are familiar with the <b>Bone Positioning Guide</b> here:
+<br>- <a href="https://archive.blender.org/wiki/index.php/Extensions:2.6/Py/Scripts/Rigging/Rigify/"><b>Rigify</b> (Archive)</a>
+<br>- It's a little old, but the tips are still applicable to the current version of Rigify.
+<br>- More details will be available below.</blockquote>
+<hr width="50%" align="left">
+<blockquote>If you have <a href="https://github.com/powroupi/blender_mmd_tools" title="Import MMD models into Blender"><b>MMD Tools</b></a> add-on active, it will conflict with Rigify's <a href="https://i.imgur.com/1XEcKyn.png" title="Click for image"><b>Generate Rig</b></a> functionality. 
+<br>- <a href="https://github.com/powroupi/blender_mmd_tools/issues/101" title="Click to see bug report">MMD Tools Reported Bug</a>
+<br>- If you plan to use Rigify's <b>Generate Rig</b> function, make sure to disable the <b>MMD Tools</b> add-on before using the Rigify armature.</blockquote>
+<hr width="50%" align="left">
+<blockquote>For beginners, I recommend starting with rigging character models that don't have face bones, like a masked character:
+<br><a href="https://i.imgur.com/00W7uqA.png"><img class="demo" src="https://i.imgur.com/00W7uqAm.png" width="229" height="320" alt="Character Model from Xenko StarBreach" title="Character Model from Xenko StarBreach"></a> <a href="https://i.imgur.com/xolE8m9.png"><img class="demo" src="https://i.imgur.com/xolE8m9m.png" width="229" height="320" alt="Character Model from Xenko StarBreach" title="Character Model from Xenko StarBreach"></a>
+<br>After you've mastered the basic body rigging, you can then move on to Face Rigging. 
+<br>[Explained later in <b class="green">SECTION 8</b>]
+</blockquote>
+<hr width="50%" align="left">
+<!--INDENT START--><blockquote>
+<a href="https://i.imgur.com/uF9BbR0.png"><img class="demo" src="https://i.imgur.com/uF9BbR0m.png" width="320" height="193" alt="Blender - Bone Naming Conventions" title="Blender - Bone Naming Conventions"></a>
+<br><b class="orange">Bone Naming Conventions</b> [<a href="https://docs.blender.org/manual/en/latest/animation/armatures/bones/editing/naming.html"><b>INFO</b></a>]
+<details>
+<summary>Click to Show</summary>
+<blockquote>
+<pre>
+Naming conventions in Blender are not only useful for you in finding the right bone, but also to tell Blender when any two of them are counterparts.
+If you have a bone that has a copy on the other side (a pair), like a hand, give it one of the following separators:
+
+<table>
+ <tr>
+  <th>Separators</th>
+  <th><b class="green">LEFT</b></th>
+  <th><b class="red">RIGHT</b></th>
+ </tr>
+ <tr>
+  <td></td>
+  <td>hand<b class="green">Left</b></td>
+  <td>hand<b class="red">Right</b></td>
+ </tr>
+ <tr>
+  <td>underscore _</td>
+  <td>hand<b class="green">_L</b></td>
+  <td>hand<b class="red">_R</b></td>
+ </tr>
+ <tr>
+  <td>dot .</td>
+  <td>hand<b class="green">.l</b></td>
+  <td>hand<b class="red">.r</b></td>
+ </tr>
+ <tr>
+  <td>dash -</td>
+  <td>hand<b class="green">-l</b></td>
+  <td>hand<b class="red">-r</b></td>
+ </tr>
+ <tr>
+  <td>space</td>
+  <td>hand <b class="green">LEFT</b></td>
+  <td>hand <b class="red">RIGHT</b></td>
+ </tr>
+</table>
+If there is a lower or upper case “<b class="green">L</b>”, “<b class="red">R</b>”, “<b class="green">left</b>” or “<b class="red">right</b>”, Blender handles the counterpart correctly. 
+Pick one and stick to it as close as possible when rigging; it will pay off.
+Note:
+- Placing the <b class="green">left</b>/<b class="red">right</b> part <u>before</u> the bone name is also valid.
+- The short "<b class="green">L</b>"/"<b class="red">R</b>" code can only be used with a separator (e.g. “hand<b class="green">L</b>”/ “hand<b class="red">R</b>” will not work!).
+</pre>
+</blockquote>
+</details>
+<!--INDENT END--></blockquote>
+
+
+<hr class="redorange">
+
+<!-- SECTION 1 -->
+<h1 class="section">[SECTION 1]</h1>
+Here are different types of <b class="object">Objects</b> you may encounter in Blender:
+<br><img src="https://i.imgur.com/wDjVQL2.png" alt="Object Types" title="Object Types" width="300" height="300"><img src="https://i.imgur.com/LxYyaOC.png" alt="Single Bone of an Armature" title="Single Bone of an Armature" width="140" height="204">
+<br>We will focus on only 2 Object Types:
+<br>- <b class="object">Armature Object</b>
+<br>- <b class="object">Mesh Object</b>
+<hr class="redorange">
+
+<!-- SECTION 2 -->
+<h1 class="section">[SECTION 2]</h1>
+A rigged 3D character model contains 2 essential things:
+<br>- Skeleton <b>(<span class="object">Armature Object</span>)</b>
+<br>- 3D Model <b>(<span class="object">Mesh Object</span>)</b>
+
+<P>
+The 3D model is the <b>Child</b>.
+<br>The Skeleton is the <b>Parent</b>.
+<br>Wherever the Skeleton moves, the 3D model follows.
+<br><a href="https://gfycat.com/IcyMarriedEyra"><img class="demo" src="https://i.imgur.com/E8VkmiQt.jpg" width="160" height="90"></a>
+</P>
+
+<P>
+In Blender, you parent the <b class="object">Mesh Object</b> to the <b class="object">Armature Object</b>, then you can continue with the <b class="weight">Weighting</b> or <b class="weight">Weight Painting</b> process (explained later).
+</P>
+
+<!-- SET PARENT OPTIONS -->
+<P>
+Select <b>children</b> first, then select the <b>parent</b> last.
+<br>Hotkey: <b class="hotkey">CTRL</b> + <b class="hotkey">P</b> [Opens the Parent Menu]
+<br><img src="https://i.imgur.com/IaMq5vZ.gif" alt="Menu: Set Parent To" title="Menu: Set Parent To" width="320" height="260">
+</P>
+
+<!-- [OBJECT] -->
+<ul><hr> 
+<li>Set Parent To:
+<h3><span class="parentoption">[ Object ]</span></h3>
+<DETAILS>
+<SUMMARY>Click to Show</SUMMARY>
+<blockquote>
+<pre>
+<a href="https://gfycat.com/IcyMarriedEyra"><img class="demo" src="https://i.imgur.com/E8VkmiQt.jpg" alt="Demo: Set Parent to Object" title="Demo: Set Parent to Object" width="160" height="90"></a>
+- This is a basic parent option <u>without any deformation</u> to the <b class="object">Mesh Object</b>.
+</pre>
+</blockquote>
+</DETAILS>
+</li>
+
+<!-- ARMATURE DEFORM -->
+<hr> 
+<li>Set Parent To:
+<h3><span class="parentoption">[ Armature Deform ]</span></h3>
+<DETAILS>
+<SUMMARY>Click to Show</SUMMARY>
+<blockquote>
+<pre>
+This parent option adds an <b>Armature Modifier</b> which <u>allows deformation</u> to your <b class="object">Mesh Object</b>.
+The purpose of the <b>Armature Modifier</b> is to sync the <u>bone names</u> of the <b class="object">Armature Object</b> with the <a href="https://www.youtube.com/watch?v=dKZrzG5r13g" title="Watch Video"><b>Vertex Groups</b></a> of the <b class="object">Mesh Object</b>.
+<a href="https://streamable.com/n73te"><img class="demo" src="https://i.imgur.com/o5HCpqo.jpg" alt="Demo: Vertex Groups" title="Demo: Vertex Groups" width="160" height="90"></a>
+- <b>Vertex Groups</b> (Bone Vertex Groups) are not created automatically for all your bones, with this option.
+- This is good if you want to manually add only a few <b>Vertex Groups</b> (Bone Vertex Groups) to your <b class="object">Mesh Object</b> for Weight Painting.
+- If you are confused about Vertex Groups, scroll down to <font color="Green"><b>[SECTION 4]</b></font> <b><u>What is the purpose of Vertex Groups?</u></b>
+</pre>
+</blockquote>
+</DETAILS>
+</li>
+
+<!-- ARMATURE DEFORM WITH EMPTY GROUPS -->
+<hr> 
+<li>Set Parent To:
+<h3><span class="parentoption">[ Armature Deform with <u>Empty Groups</u> ]</span></h3>
+<DETAILS>
+<SUMMARY>Click to Show</SUMMARY>
+<blockquote>
+<pre>
+<a href="https://gfycat.com/arcticmistygopher"><img class="demo" src="https://thumbs.gfycat.com/ArcticMistyGopher-mobile.jpg" alt="Demo: Empty Groups" title="Demo: Empty Groups" width="160" height="90"></a>
+- This parent option will use the <u>bone names</u> from the <b class="object">Armature</b> (Skeleton) and automatically add them as <u>empty</u> <b>Vertex Groups</b> on the <b class="object">Mesh Object</b>.
+- The <u>empty</u> <b>Vertex Groups</b> will have <u>no weights assigned to vertices</u>, so it's ready for fresh weight painting.
+</pre>
+</blockquote>
+</DETAILS>
+</li>
+
+<!-- ARMATURE DEFORM WITH AUTOMATIC WEIGHTS -->
+<hr> 
+<li>Set Parent To:
+<h3><span class="parentoption">[ Armature Deform with <u>Automatic Weights</u> ]</span></h3>
+<DETAILS>
+<SUMMARY>Click to Show</SUMMARY>
+<blockquote>
+<pre>
+<a href="https://gfycat.com/CookedExaltedDiscus"><img class="demo" src="https://thumbs.gfycat.com/CookedExaltedDiscus-mobile.jpg" alt="Demo: Automatic Weights" title="Demo: Automatic Weights" width="160" height="90"></a>
+- This parent option <u>includes everything above</u> and attempts to <u>automatically calculate the weight values</u> for each <b>Vertex Group</b> (Bone Vertex Group).
+- It's not always perfect, but it can be fixed (explained later in guide).
+</pre>
+</blockquote>
+</DETAILS>
+</li>
+
+<!-- ARMATURE DEFORM WITH ENVELOPE WEIGHTS -->
+<hr> 
+<li>Set Parent To:
+<h3><span class="parentoption">[<b>Armature Deform with <u>Envelope Weights</u></b>]</span></h3> 
+<DETAILS>
+<SUMMARY>Click to Show</SUMMARY>
+<blockquote>
+<pre>
+[We can skip this, for now]
+- This parent option works in a similar way to Automatic Weights. 
+- The difference is that the influences are calculated based on the Bone Envelopes settings. 
+- It will assign a weight to each vertex group the vertices that is inside its bone’s influence volume, depending on their distance to this bone.
+- Not as easy to edit.
+</pre>
+</blockquote>
+</DETAILS>
+</li>
+
+<!--[BONE]-->
+<hr>
+<li>Set Parent To:
+<h3><span class="parentoption">[ Bone ]</span></h3>
+<details>
+<summary>Click to Show</summary>
+<blockquote>
+<pre>
+<a href="https://gfycat.com/appropriateadmiredgrosbeak"><img class="demo" src="https://thumbs.gfycat.com/AppropriateAdmiredGrosbeak-mobile.jpg" alt="Blender 2.8 Demo: Set Parent to Bone" title="Blender 2.8 Demo: Set Parent to Bone" width="160" height="90"></a>
+Great for simply attaching something to a bone:
+-- Glasses --&gt; <a href="https://i.imgur.com/XAUnt9D.jpg">Head Bone</a>
+-- Gun --&gt; <a href="https://i.imgur.com/dr3ihQX.jpg">Thigh Bone</a>
+-- Knife --&gt; <a href="https://i.imgur.com/ynfiKbO.jpg">Calf Bone</a>
+No weights or vertex groups needed.
+
+- First select the <b class="orange">Mesh Object</b>, and then the <b class="orange">Armature Object</b>.
+- Switch to <b class="cyan">Pose Mode</b> and select a <b class="cyan">Bone</b>. 
+- Press <b class="hotkey">CTRL</b>+<b class="hotkey">P</b>.
+- <b>Set Parent to Bone</b>
+</pre>
+</blockquote>
+</details>
+</li>
+</ul>
+<hr class="redorange">
+
+<!-- SECTION 3 -->
+<h1 class="section">[SECTION 3]</h1>
+<a href="https://i.imgur.com/PmiUkEx.png"><img class="demo" src="https://i.imgur.com/PmiUkExm.png" alt="Single Mesh Object" title="Single Mesh Object" width="320" height="277"></a> <a href="https://i.imgur.com/WaeGkUK.png"><img class="demo" src="https://i.imgur.com/WaeGkUKm.png" alt="Multiple Mesh Objects" title="Multiple Mesh Objects" width="320" height="277"></a>
+<blockquote>A 3D model can be a <a href="https://i.imgur.com/PmiUkEx.png">single</a> <b class="object">Mesh Object</b> 
+<br>- this is common with low-poly character models.
+<hr width="50%" align="left">A 3D model can be composed of <a href="https://i.imgur.com/WaeGkUK.png">multiple</a> <b class="object">Mesh Objects</b> 
+<br>- this is common with high-poly models with optional clothing, weapons, etc.</blockquote>
+You can parent multiple <b class="object">Mesh Objects</b> (Head, Arms, Legs, Clothing, etc.) to a single <b class="object">Armature Object</b>.
+<hr class="redorange">
+
+<!-- SECTION 4 -->
+<h1 class="section">[SECTION 4]</h1>
+<a name="vertexgroups"></a><div align="center"><img src="https://i.imgur.com/d7FzXVa.png" width="260" height="198"></div><h2 align="center"><u>What is the purpose of Vertex Groups?</u></h2>
+
+<b>Vertex Groups</b> are extremely useful for different things: 
+<br>Rigging, Organizing, Physics Simulation, etc.
+<P>
+<DETAILS>
+<SUMMARY>Click Here to Show</SUMMARY>
+<blockquote>
+<ul><hr><li>Vertex Groups can be used for organizing and making it easier to Select/Deselect vertices/faces on a Mesh.
+<br>[<b>Example:</b> If your character is a <u>single</u> <b class="object">Mesh Object</b>, you can <u>assign</u> different parts of the character (Hat, Weapon, Jewelry, Clothing, etc.) into their own <b>Vertex Groups</b>, which will make it easier to separate them later as their own <b class="object">Mesh Objects</b>.]
+<br><a href="https://www.youtube.com/watch?v=QSivZH6YydA"><img class="demo" src="https://i.imgur.com/xE9rmadm.png" alt="Vertex Groups - Demonstration" title="Vertex Groups - Full Demonstration" width="320" height="180"></a>
+<br><a href="https://i.stack.imgur.com/yBdAi.gif"><img class="demo" src="https://i.stack.imgur.com/yBdAis.gif" alt="Demo 1" title="Demo 1" width="90" height="90"></a> <a href="https://i.imgur.com/qROsz8u.gif"><img class="demo" src="https://i.imgur.com/qROsz8ut.gif" alt="Demo 2" title="Demo 2" width="167" height="90"></a> <a href="https://i.stack.imgur.com/1DU1u.gif"><img class="demo" src="https://i.stack.imgur.com/1DU1us.gif" alt="Demo 3" title="Demo 3" width="90" height="90"></a></li>
+<hr><li>Vertex Groups can be used for physics simulation/collisions.
+<br>[<b>Example:</b> Assign vertices from clothing, hair, or breasts to react to physics]
+<br><a href="https://i.stack.imgur.com/Sj9bL.gif"><img class="demo" src="https://i.stack.imgur.com/Sj9bLs.gif" width="90" height="90"></a> <a href="https://i.stack.imgur.com/oyFUe.gif"><img class="demo" src="https://i.stack.imgur.com/oyFUes.gif" width="90" height="90"></a></li>
+<hr><li>Vertex Groups can be used as Bone Vertex Groups for rigging/weight painting.
+<br>- <a href="https://streamable.com/n73te">https://streamable.com/n73te</a>
+<br>[<b>Example:</b> Assign vertices from the character's left upperarm to the Vertex Group "upperarm_L" (bone name) with a weight value from <b>1</b> to <b>0</b> or <b>100%</b> to <b>0%</b> ]
+<br>Weight influence <b>100%</b>(<b class="red">Red</b>) - <b>0%</b>(<b class="blue">Blue</b>)
+<br><a href="https://i.imgur.com/Gmmnu8W.png"><img class="demo" src="https://i.imgur.com/Gmmnu8Ws.png" width="90" height="90"></a> <a href="https://i.stack.imgur.com/IZybM.gif"><img class="demo" src="https://i.stack.imgur.com/IZybMs.gif" width="90" height="90"></a> <a href="https://i.stack.imgur.com/yyTQp.gif"><img class="demo" src="https://i.stack.imgur.com/yyTQps.gif" width="90" height="90"></a>
+<br>This will be explained later in the guide.</li><hr></ul>
+<a href="https://www.youtube.com/watch?v=zOOXyulyies">How to Create, Assign, Select, Deselect and Remove a vertex group in Blender 2.79?</a>
+</blockquote>
+</DETAILS>
+</P>
+<hr class="redorange">
+
+<!-- SECTION 5 -->
+<a name="prepmesh"></a><h1 class="section">[SECTION 5]</h1>
+<!-- IMAGES: SECTION 5 -->
+<div align="center"><a href="https://gfycat.com/ecstaticnegativedachshund"><img class="demo" src="https://i.imgur.com/Vur01s6m.jpg" alt="Demo" title="Demo" width="320" height="320"></a></div>
+<div align="center"><a href="https://gfycat.com/elegantlastingcrayfish"><img class="demo" src="https://i.imgur.com/u9rbd9hm.png" alt="Blender - Set Normals from Faces" title="Blender - Set Normals from Faces" width="160" height="90"></a> <a href="https://gfycat.com/occasionalillinformedeland"><img class="demo" src="https://thumbs.gfycat.com/OccasionalIllinformedEland-mobile.jpg" alt="View Clipping Region" title="View Clipping Region" width="160" height="90"></a></div>
+<!-- TITLE: HOW TO PREPARE/CLEAN 3D MODEL BEFORE RIGGING -->
+<h2 align="center">How to Prepare/Clean the 3D model before rigging?</h2>
+
+<!-- EXAMPLE 1: [Symmetry] -->
+<a href="https://gfycat.com/occasionalillinformedeland"></a><a href="https://i.stack.imgur.com/MH2kI.png"><img class="demo" src="https://i.stack.imgur.com/MH2kIt.png" alt="Image: Fix Symmetry" title="Image: Fix Symmetry" width="160" height="127"></a>
+<BR><a href="https://i.stack.imgur.com/MH2kI.png">Example 1</a>: [<b>Symmetry</b>]
+<P>
+<DETAILS>
+<SUMMARY>Click to Show</SUMMARY>
+<blockquote>
+<pre>
+<a href="https://gfycat.com/sandyvillainousacornbarnacle"><img class="demo" src="https://thumbs.gfycat.com/SandyVillainousAcornbarnacle-mobile.jpg" alt="Demo: Snap to Symmetry" title="Demo: Snap to Symmetry" width="160" height="90"></a>
+If you have a <u>symmetrical</u> <b class="object">Mesh Object</b> that has a few <u>non-symmetrical</u> vertices, use <a href="https://docs.blender.org/manual/en/dev/modeling/meshes/editing/basics/symmetry.html"><b>Snap to Symmetry</b></a>.
+- The Snap to Symmetry tool lets you snap a mesh vertices to their mirrored neighbors.
+- Useful when dealing with meshes which are mostly symmetrical, but have vertices which have been moved enough that Blender does not detect them as mirrored (when X Mirror option is enabled for example).
+- This can be caused by accident when editing without X Mirror enabled. Sometimes models imported from other applications are asymmetrical enough that mirror fails too.
+- This is also a good option to use after removing overlapping/double vertices with <a href="https://www.youtube.com/watch?v=ADBmqYzxcwo" title="Video: Remove Doubles"><b>Remove Doubles</b></a> or <a href="https://www.youtube.com/watch?v=5CQpbSiiZS8" title="Video: Merge by Distance"><b>Merge by Distance</b></a>.
+
+<b style="color:yellow;background-color:red;">WARNING:</b> The <b>Symmetrize</b> tool is not as safe as <b>Snap to Symmetry</b>, and it may destroy mesh or UV data.
+
+<small><a href="https://blender.stackexchange.com/questions/32659/why-is-x-mirror-not-working-on-a-mesh">Related Question</a></small>
+
+Having a <u>symmetrical</u> <b class="orange">Mesh Object</b> will make assigning weights easier when mirroring across the <b class="red">X</b><b>-axis</b>.
+</pre>
+</blockquote>
+</DETAILS>
+</P>
+
+<!-- EXAMPLE 2: Alignment -->
+<hr><a href="https://gfycat.com/RareElatedBobwhite"><img class="demo" src="https://i.imgur.com/nipmh4Ut.jpg" alt="Demo: Alignment" title="Demo: Alignment" width="145" height="160"></a>
+<BR><a href="https://gfycat.com/RareElatedBobwhite">Example 2</a>: [<b>Alignment</b>]
+<P>
+<DETAILS>
+<SUMMARY>Click to Show</SUMMARY>
+<blockquote>
+<BR>Scale and position your <b class="object">Armature</b> (skeleton) to fit inside the character <b class="object">Mesh Object</b>.
+<BR>Before rigging a character, make sure both the <b class="object">Armature</b> (Skeleton) and the <b class="object">Mesh Object</b>(s) (Character Meshes) have their <b>Transforms</b> applied.
+<BR>- Hotkey: <b class="hotkey">CTRL</b>+<b class="hotkey">A</b> [Object Mode]
+<BR>- <b>Object</b> --&gt; <b>Apply</b> --&gt; <b>Location</b> | <b>Rotation</b> | <b>Scale</b>
+
+ <pre>
+You can also tell if an Object's transform hasn't been applied by looking at the location of the <b class="object">Object Origin</b> (Origin Point).
+<a href="https://i.imgur.com/IcjVJ5u.png"><img class="demo" src="https://i.imgur.com/IcjVJ5um.png" alt="Object Origin Point" title="Object Origin Point" width="320" height="217"></a>
+According to some reports, Mesh Objects with <a href="https://i.imgur.com/KagvyRv.png" title="Image: How to see the dimensions of an Object. (N key)"><b>dimensions</b></a> smaller than <b>1m</b> (1 Meter = 1 Blender Unit) may fail with Automatic Weights.
+
+<a href="https://i.imgur.com/KlHVMMv.jpg"><img class="demo" src="https://i.imgur.com/KlHVMMvm.jpg" alt="Image: Bone outside of mesh" title="Bone outside of mesh" width="320" height="180"></a>
+Make sure the bones are inside the mesh, otherwise you will get the following error with <b>Automatic Weights</b>:
+- <b class="red">Bone Heat Weighting: failed to find solution for one or more bones</b>
+
+Don't forget to adjust your bone rolls:
+<a href="https://gfycat.com/maleidolizedcrow"><img class="demo" src="https://thumbs.gfycat.com/MaleIdolizedCrow-mobile.jpg" width="356" height="200" alt="Demo: Recalculate Bone Rolls to Active Bone" title="Demo: Recalculate Bone Rolls to Active Bone"></a>
+Related:
+- <a href="https://www.youtube.com/watch?v=6lXKX93fcyc">Blender 3D / rigging: How to adjust the roll of bones in a bones chain the proper way / HD</a>
+- <a href="https://www.youtube.com/watch?v=Gz22XdrVqp0">Orientation of Bones-Blender Tip</a>
+- <a href="https://archive.blender.org/wiki/index.php/Extensions:2.6/Py/Scripts/Rigging/Rigify/">Rigify (Archived)</a>
+ </pre>
+</blockquote>
+</DETAILS>
+</P>
+
+<!--EXAMPLE 3: Bad Seams -->
+<hr><a href="https://gfycat.com/CookedExaltedDiscus"><img class="demo" src="https://thumbs.gfycat.com/CookedExaltedDiscus-mobile.jpg" alt="Demo: Bad Seams" title="Example 3: Bad Seams" width="160" height="90"></a>
+<BR><a href="https://gfycat.com/CookedExaltedDiscus">Example 3</a> [<b>Bad Seams</b>]
+<P>
+<DETAILS>
+<SUMMARY>Click to Show</SUMMARY>
+<blockquote>
+In Example 3, you will want to join all the <b class="object">Mesh Objects</b> together before rigging, to avoid the seams.
+<BR>Select all the <b class="object">Mesh Objects</b> and join them together <b class="hotkey">CTRL</b>+<b class="hotkey">J</b>.
+<BR>Afterwards, in <b>[Edit Mode]</b>, select the seams (overlapping vertices) and <a href="https://www.youtube.com/watch?v=ADBmqYzxcwo"><b>Remove Doubles</b></a> or <a href="https://www.youtube.com/watch?v=5CQpbSiiZS8"><b>Merge by Distance</b></a>.
+<BR><a href="https://gfycat.com/impracticallameblowfish"><img class="demo" src="https://thumbs.gfycat.com/ImpracticalLameBlowfish-mobile.jpg" width="160" height="90" alt="Demo: Fix Mesh Seam" title="Demo: Fix Mesh Seam"></a>
+<BR>Later in the guide, you will learn how to <u>separate</u> the <b class="object">Mesh Objects</b>.
+</blockquote>
+</DETAILS>
+</P>
+
+<!--EXAMPLE 4: BONE HEAT FAILURE-->
+<hr><a href="https://gfycat.com/FlamboyantWellgroomedEmu"><img class="demo" src="https://thumbs.gfycat.com/FlamboyantWellgroomedEmu-mobile.jpg" alt="Example 3: Bone Heat Weighting" title="Example 3: Bone Heat Weighting" width="160" height="90"></a> <a href="https://gfycat.com/ecstaticnegativedachshund"><img class="demo" src="https://i.imgur.com/Vur01s6s.jpg" alt="[Demo: Non-Manifolds 1]" title="Demo: Non-Manifolds 1" width="90" height="90"> </a><a href="https://i.imgur.com/By31B6h.gif"><img class="demo" src="https://i.imgur.com/By31B6ht.gif" alt="[Demo: Non-Manifolds 2]" title="Demo: Non-Manifolds 2" width="160" height="90"></a>
+<BR><a href="https://gfycat.com/FlamboyantWellgroomedEmu">Example 4</a> [<b>Bone Heat Weighting: failed to find solution for one or more bones</b>]
+<P>
+<DETAILS>
+<SUMMARY>Click to Show</SUMMARY>
+<blockquote>
+<pre><a href="https://i.imgur.com/KlHVMMv.jpg"><img class="demo" src="https://i.imgur.com/KlHVMMvt.jpg" alt="Image: Bone outside of mesh" title="Bone outside of mesh" width="160" height="90"></a>
+Make sure the bones are inside the mesh, otherwise you will get the following error with <b>Automatic Weights</b>:
+  - <b class="red">Bone Heat Weighting: failed to find solution for one or more bones</b></pre>
+
+<pre><a href="https://i.imgur.com/jfI2EQd.png"><img class="demo" src="https://i.imgur.com/jfI2EQdt.png" alt="Image: Non-Manifolds" title="Image: Non-Manifolds" width="171" height="90"></a> <a href="https://gfycat.com/rapidvigorousgeese"><img class="demo" src="https://thumbs.gfycat.com/RapidVigorousGeese-mobile.jpg" alt="Demo - Fixing Non-Manifolds" title="Demo - Fixing Non-Manifolds" width="160" height="90"></a>
+Check for <b>Loose Geometry</b> or <a href="https://blender.stackexchange.com/questions/7910/what-is-non-manifold-geometry"><b>Non-Manifolds</b></a> (loose vertices/edges/faces)
+  - [<a href="https://i.imgur.com/By31B6h.gif"><b>Demo1</b></a>] [<a href="https://gfycat.com/WigglyObedientDunnart"><b>Demo2</b></a>] [<a href="https://gfycat.com/WellinformedPoisedDutchsmoushond"><b>Demo3</b></a>]
+  - <a href="https://www.youtube.com/watch?v=ADBmqYzxcwo"><b>Remove Doubles</b></a> or <a href="https://www.youtube.com/watch?v=5CQpbSiiZS8"><b>Merge By Distance</b></a>
+  - <a href="https://www.youtube.com/watch?v=NWrtxR4oxTs"><b>Recalculate Normals</b></a> [<a href="https://gfycat.com/OnlyPersonalEthiopianwolf"><b>Show Normal Direction</b></a>] [<a href="https://gfycat.com/elegantlastingcrayfish"><b>Set Normals from Faces</b></a>]</pre>
+
+ <P>
+Check if your character <b class="object">Mesh Object</b> has: 
+<UL><LI><b>Overlapping</b> mesh parts: 
+<BR>- <a href="https://i.imgur.com/39Nz6ee.jpg">armor</a>, clothing, hair, <a href="https://i.imgur.com/QmpiAWk.jpg">tactical gear</a>, <a href="https://i.pinimg.com/736x/28/ad/95/28ad951026ca55f1bd819494f0243e1f.jpg">ammo pockets</a>, <a href="https://i.imgur.com/zE9oZnh.jpg">holstered sword</a></LI>
+<LI><b>Internal</b> mesh parts: 
+<BR>- <a href="https://i.imgur.com/RDDn7HV.jpg">eye balls and teeth</a></LI></UL>
+ </P>
+
+ <P>
+Then try separating them into separate <b class="object">Mesh Objects</b> which will be excluded from <b>Automatic Weights</b>, for now.
+<BR><a href="https://gfycat.com/thickwavycormorant"><img class="demo" src="https://thumbs.gfycat.com/ThickWavyCormorant-mobile.jpg" alt="Demo" title="Demo" width="150"></a>
+<BR>- Hotkey: <b class="hotkey">L</b> [Edit Mode] <u>Select Linked</u> (Vertices, Edges, Faces)
+<BR>- Hotkey: <b class="hotkey">P</b> [Edit Mode] <u>Separate Mesh</u>
+ </P>
+</blockquote>
+</DETAILS>
+</P>
+<hr>
+<div align="center">If you don't want to clean your 3D model, you will need to manually assign weights or weight paint the uncleaned areas.
+<BR>[Explained in <b class="section">SECTION 7</b>]</div>
+<hr class="redorange">
+
+<!-- SECTION 6 -->
+<h1 class="section">[SECTION 6]</h1>
+<div align="center"><img src="https://img.youtube.com/vi/yyNRGbqSfxQ/mqdefault.jpg" alt="How to properly switch to Weight Paint mode?" title="How to properly switch to Weight Paint mode?" width="320" height="180">
+<h2>How to properly switch to Weight Paint mode?</h2></div>
+<pre>
+<ul>
+<li><u><b class="object">Blender 2.7</b></u>
+<a href="https://www.youtube.com/watch?v=Tl4qTgwQwYw"><img class="demo" src="https://img.youtube.com/vi/Tl4qTgwQwYw/1.jpg" alt="Blender 2.7 - Weight Painting" title="Blender 2.7 - Weight Painting" width="160" height="90"></a>
+- While the <b class="object">Armature</b> is in <b class="cyan">Pose Mode</b>, select a <b class="cyan">Bone</b>.
+- Then select your <b class="object">Mesh Object</b> and switch it to <b class="weight">Weight Paint Mode</b>.
+- <b class="weight">Weight Paint Mode</b> will now allow you to pose your selected <b>Bone</b> while weight painting the <b class="object">Mesh Object</b> to it.
+- While in <b class="weight">Weight Paint Mode</b>, you can select bones with <b class="hotkey">RIGHTCLICK</b>.</li> 
+
+<li><u><b class="object">Blender 2.8</b></u>
+<a href="https://www.youtube.com/watch?v=l9S-jhBIEiU"><img class="demo" src="https://img.youtube.com/vi/l9S-jhBIEiU/1.jpg" width="160" height="90" alt="Blender 2.8 - Weight Painting + Automatic Weights" title="Blender 2.8 - Weight Painting + Automatic Weights"></a>
+- While in <b class="orange">Object Mode</b>, select the <b class="orange">Armature Object</b> first and the <b class="orange">Mesh Object</b> last.
+- Then switch to <b class="weight">Weight Paint Mode</b>.
+- While in <b class="weight">Weight Paint Mode</b>, you can select <u>individual</u> bones with <b class="hotkey">CTRL</b>+<b class="hotkey">LEFTCLICK</b>, or select <u>multiple</u> bones with <b class="hotkey">SHIFT</b>+<b class="hotkey">LEFTCLICK</b>
+- You won't be able to select bones properly while <a href="https://gfycat.com/wellinformedsomberchihuahua" title="Demo: Face Selection Masking"><b>Face</b></a> or <a href="https://gfycat.com/oddaromaticbangeltiger" title="Demo: Vertex Selection Masking"><b>Vertex Selection Masking</b></a> is enabled. More details in [<b class="section">SECTION 7</b>].</li>
+</ul>
+</pre>
+<hr class="redorange">
+
+<!-- SECTION 7 -->
+<h1 class="section">[SECTION 7]</h1>
+<div align="center"><a href="https://i.imgur.com/F5L13r7.jpg"><img class="demo" src="https://i.imgur.com/F5L13r7m.jpg" alt="Methods for Assigning Weights" title="Click to Enlarge" width="320" height="250"></a><h1><u>Methods for Assigning Weights</u></h1></div>
+<details><summary>Click to Show</summary>
+<ul><hr><li><h2>Method: [Weight Painting]</h2>
+<blockquote><a href="https://www.youtube.com/watch?v=Tl4qTgwQwYw"><img class="demo" src="https://img.youtube.com/vi/Tl4qTgwQwYw/1.jpg" width="160" height="90" alt="Blender 2.7 - Weight Painting" title="Blender 2.7 - Weight Painting"></a>
+<a href="https://www.youtube.com/watch?v=l9S-jhBIEiU"><img class="demo" src="https://img.youtube.com/vi/l9S-jhBIEiU/1.jpg" width="160" height="90" alt="Blender 2.8 - Weight Painting + Automatic Weights" title="Blender 2.8 - Weight Painting + Automatic Weights"></a>
+<BR>- Weight Painting is recommended for high quality rigging.
+<BR>- Make weight painting in Blender 2.8 similar to Blender 2.7 by disabling <a href="https://i.imgur.com/FBdpPoR.png" title="Click for Image"><b>Lock Object Modes</b></a> (Optional). 
+<BR><a href="https://gfycat.com/arcticmistygopher"><img class="demo" src="https://thumbs.gfycat.com/ArcticMistyGopher-mobile.jpg" alt="Weight Painting with Empty Groups | Right click video to change speed" title="Weight Painting with Empty Groups | Right click video to change speed" width="150" height="84"></a><a href="https://i.stack.imgur.com/QnqHc.gif"><img class="demo" src="https://i.stack.imgur.com/QnqHcs.gif" alt="Weight Paint front and back of mesh" title="Weight Paint front and back of mesh" width="90" height="90"></a>
+<BR>- Right click video to change speed. 
+
+<P>
+<a href="https://www.youtube.com/watch?v=v6_m3xFSlIU" title="Click to watch"><b>Normalize Weights - Tip</b></a>
+<BR><a href="https://www.youtube.com/watch?v=_y8mOQBOHxA" title="Click to watch"><b>Normalize Weights - Troubleshoot</b></a>
+</P>
+
+<P>
+<a href="https://gfycat.com/oddaromaticbangeltiger" title="Click to watch"><b>Weight Paint - Vertex Selection Masking</b></a>
+<BR><a href="https://gfycat.com/wellinformedsomberchihuahua" title="Click to watch"><b>Weight Paint - Face Selection Masking</b></a> (Bug Fixed in <b class="orange">Blender 2.81</b>)
+<BR>- Select a Face or Vertex: <b class="hotkey">CTRL</b>+<b class="hotkey">LEFTCLICK</b>
+<BR>- Select <u>multiple</u> Faces or Vertices: <b class="hotkey">SHIFT</b>+<b class="hotkey">LEFTCLICK</b></blockquote></li>
+
+<hr><li><h2>Method: [Vertex Weights Panel]</h2>
+<blockquote><a href="https://i.imgur.com/YvcRVyR.png"><img class="demo" src="https://i.imgur.com/YvcRVyRm.png" alt="Vertex Weights Panel" title="Vertex Weights Panel" width="160" height="90"></a> <a href="https://gfycat.com/clutteredbiodegradablehectorsdolphin"><img class="demo" src="https://thumbs.gfycat.com/ClutteredBiodegradableHectorsdolphin-mobile.jpg" alt="Blender Demo - Vertex Weights Panel" title="Blender Demo - Vertex Weights Panel" width="160" height="90"></a> <a href="https://i.imgur.com/XN9oxsB.jpg"><img class="demo" src="https://i.imgur.com/XN9oxsBm.jpg" alt="Interface: Vertex Weights Panel" title="Interface: Vertex Weights Panel" width="160" height="90"></a>
+<BR>The <a href="https://docs.blender.org/manual/en/latest/modeling/meshes/properties/vertex_groups/vertex_weights.html"><b>Vertex Weights</b></a> panel is only available while <a href="https://gfycat.com/oddaromaticbangeltiger"><b>Vertex Selection Masking</b></a> is enabled.
+<BR>You can open the <b>Vertex Weights</b> panel with the <b class="hotkey">N</b> key.
+<BR>You will only be able to view/edit the weights of individual vertices, one vertex at a time.
+<BR>This is a great way to troubleshoot weighting issues:
+<BR>- [<a href="https://sta.sh/026m8utj5p69"><b>Example 1</b></a>] [<a href="https://gfycat.com/formalemptyichneumonfly"><b>Example 2</b></a>]
+<BR>You can also copy the weight values from one vertex to another:
+<BR>- [<a href="https://gfycat.com/barrenshamelesskingbird"><b>Demo</b></a>]</blockquote></li>
+
+<hr><li><h2>Method: [Automatic Weights]</h2>
+<blockquote><a href="https://gfycat.com/cookedexalteddiscus"><img class="demo" src="https://thumbs.gfycat.com/CookedExaltedDiscus-mobile.jpg" width="160" height="90" alt="Blender 2.7 - Automatic Weights" title="Blender 2.7 - Automatic Weights"></a>
+<a href="https://www.youtube.com/watch?v=l9S-jhBIEiU"><img class="demo" src="https://img.youtube.com/vi/l9S-jhBIEiU/1.jpg" width="160" height="90" alt="Blender 2.8 - Automatic Weights + Weight Paint" title="Blender 2.8 - Automatic Weights + Weight Paint"></a>
+<BR>- It's a quick way to weight the mesh object(s) to the bones in the Armature.
+<BR>- It's not always perfect.
+<BR>- If you take a look at the Vertex Groups, weight values will have already been generated for each bone (Bone Vertex Group).
+</P>
+
+<P>
+<u><b>Fixing Automatic Weights Demo:</b></u>
+<BR><a href="https://gfycat.com/formalemptyichneumonfly"><img class="demo" src="https://thumbs.gfycat.com/FormalEmptyIchneumonfly-mobile.jpg" alt="Watch: Part 1" title="Watch: Part 1" width="160" height="90"></a>
+<a href="https://gfycat.com/mixedjauntyhochstettersfrog"><img class="demo" src="https://thumbs.gfycat.com/MixedJauntyHochstettersfrog-mobile.jpg" alt="Watch: Part 2" title="Watch: Part 2" width="160" height="90"></a>
+<a href="https://gfycat.com/barrenshamelesskingbird"><img class="demo" src="https://thumbs.gfycat.com/BarrenShamelessKingbird-mobile.jpg" alt="Watch: Part 3" title="Watch: Part 3" width="160" height="90"></a>
+<BR>- Right click video to change speed.
+<BR>- <a href="https://i.imgur.com/XN9oxsB.jpg"><b>Vertex Weights Panel</b></a> [<a href="https://docs.blender.org/manual/en/latest/modeling/meshes/properties/vertex_groups/vertex_weights.html"><b>INFO</b></a>]
+</P>
+
+<P>
+<b><u>View Clipping Region</u></b>:
+<BR><a href="https://gfycat.com/occasionalillinformedeland"><img class="demo" src="https://thumbs.gfycat.com/OccasionalIllinformedEland-mobile.jpg" alt="Demo: View Clipping Region" title="Demo: View Clipping Region" width="150" height="84"></a>
+<BR>- Use <a href="https://docs.blender.org/manual/en/dev/editors/3dview/navigate/regions.html"><b>View Clipping Region</b></a> to easily work in difficult areas in a 3D model.
+<BR>- <b>Demo:</b> <a href="https://www.youtube.com/watch?v=g-iFNaiQHIk"><b>View Clipping Region and Weight Paint</b></a> [Starts at 04:10]
+<BR>- Blender 2.8 Shortcut: <b class="hotkey">ALT</b> + <b class="hotkey">B</b></blockquote></li>
+</P>
+
+<hr><li><h2>Method: [Assign Automatic from Bones]</h2>
+<blockquote><a href="https://gfycat.com/fatherlyindolentborderterrier"><img class="demo" src="https://thumbs.gfycat.com/FatherlyIndolentBorderterrier-mobile.jpg" alt="Blender 2.8 Demo: Assign Automatic from Bones" title="Blender 2.8 Demo: Assign Automatic from Bones" width="160" height="90"></a>
+<BR>[<a href="https://streamable.com/w3a5u">Blender 2.7 Demo</a>]
+<BR>Similar to Automatic Weights, except it is for <u>individual</u> <u>bones</u>.</blockquote></li>
+
+<hr><li><h2>Method: [Transfer Weights]</h2>
+<blockquote><a href="https://gfycat.com/badhighlevelkissingbug"><img class="demo" src="https://thumbs.gfycat.com/BadHighlevelKissingbug-mobile.jpg" alt="Blender 2.8 Demo: Transfer Weights" Title="Blender 2.8 - Transfer Weights" width="160" height="90"></a> <a href="https://www.youtube.com/watch?v=d2_9uicFJXw"><img class="demo" src="https://img.youtube.com/vi/d2_9uicFJXw/mqdefault.jpg" alt="Blender 2.7 - Transfer Weights" title="Blender 2.7 - Transfer Weights" width="160" height="90"></a>
+<BR>Great for clothes or other loose parts.
+<p>Related:
+<BR><a href="https://www.youtube.com/watch?v=OCpXiz-8bjY"><b>Transferring Armatures and Weights from One model to Another</b></a>
+<BR><a href="https://www.youtube.com/watch?v=U7lKIFfHffY"><b>How To attach Clothes to A Rigged Character Mesh In Blender 2.8</b></a></p></blockquote></li>
+<hr>
+<li><h2>Method: [Parent to Bone]</h2>
+<blockquote><a href="https://gfycat.com/appropriateadmiredgrosbeak"><img class="demo" src="https://thumbs.gfycat.com/AppropriateAdmiredGrosbeak-mobile.jpg" alt="Demo: Set Parent to Bone" title="Demo: Set Parent to Bone" width="160" height="90"></a>
+<BR>- First select the <b class="orange">Mesh Object</b> and then the <b class="orange">Armature Object</b>.
+<BR>- Switch to <b class="cyan">Pose Mode</b> and select a <b class="cyan">Bone</b>. 
+<BR>- Press <b class="hotkey">CTRL</b>+<b class="hotkey">P</b>.
+<BR>- <b>Set Parent to Bone</b>
+<BR>
+<BR>Great for simply attaching something to a bone:
+<BR>-- Glasses --&gt; <a href="https://i.imgur.com/XAUnt9D.jpg">Head Bone</a>
+<BR>-- Gun --&gt; <a href="https://i.imgur.com/dr3ihQX.jpg">Thigh Bone</a>
+<BR>-- Knife --&gt; <a href="https://i.imgur.com/ynfiKbO.jpg">Calf Bone</a>
+<BR>No weights or vertex groups needed.</blockquote></li></ul>
+</details>
+<hr class="redorange">
+
+<!-- SECTION 8 -->
+<h1 class="section">[SECTION 8]</h1>
+<div align="center"><a href="https://gfycat.com/composedsnoopyfawn"><img class="demo" src="https://i.imgur.com/YPpKsKMm.jpg" alt="Rigging a Face" title="Rigging a Face" width="320" height="281"></a></div><h1 align="center">Rigging a Face</h1>
+<details><summary>Click to Show</summary>
+<pre>
+<ul><hr>
+<li>Rigging a face <u>without</u> the Rigify Add-on | Setup Eye Bones:
+<a href="https://www.youtube.com/watch?v=4iBkwVQHRzA"><img class="demo" src="https://img.youtube.com/vi/4iBkwVQHRzA/mqdefault.jpg" width="320" height="180" alt="[BLENDER TUTORIAL] Basic Face Rig &amp; Eye track" title="[BLENDER TUTORIAL] Basic Face Rig &amp; Eye track"></a><a href="https://gfycat.com/femalepowerlesslamb"><img class="demo" src="https://thumbs.gfycat.com/FemalePowerlessLamb-mobile.jpg" width="320" height="180" alt="Blender - Setup Eye Bone" title="Blender - Setup Eye Bone"></a>
+- <u><b>Watch this first</b></u> before trying the Rigify add-on.
+- Great introduction into setting up the essential bones for a simple face rig.
+When setting up the <b>jaw bone</b>, keep in mind the <u>pivot location</u> of the jaw (below and front of the ears): 
+- [<a href="https://gfycat.com/likelyillbullmastiff"><b>Demo 1</b></a>] [<a href="https://gfycat.com/presentdarkbluejay-cursing-the-gif-tree-border-movements"><b>Demo 2</b></a>]
+- Don't forget to check the <a href="https://archive.blender.org/wiki/index.php/Extensions:2.6/Py/Scripts/Rigging/Rigify/"><b>Bone Positioning Guide</b></a> (Archived).
+
+[Right click videos to change speed]
+Fixing <b class="hotkey">SourceFilmmaker</b> eyes in Blender: [<a href="https://gfycat.com/wellwornunlawfularctichare"><b>Part 1</b></a>] [<a href="https://gfycat.com/speedyelementaryinsect"><b>Part 2</b></a>]
+Fixing <b class="hotkey">SourceFilmmaker</b> eyelids in Blender: [<a href="https://gfycat.com/passionatesameinchworm"><b>Part 1</b></a>] [<a href="https://gfycat.com/showyexcellentirishwolfhound"><b>Part 2</b></a>]
+</li>
+<hr>
+<li>Rigging a face with the <b>Rigify</b> Add-on:
+<a href="https://www.youtube.com/watch?v=j_IIXKdc5yQ"><img class="demo" src="https://img.youtube.com/vi/j_IIXKdc5yQ/mqdefault.jpg" width="320" height="180"></a>
+- The video is for an older version of Rigify, but it <u>can still be applied to the latest Rigify version</u>.
+- <b>You don't need to watch the whole video.</b>
+- Start watching from <b>0:44:25</b></li>
+Make sure you are familiar with the <a href="https://archive.blender.org/wiki/index.php/Extensions:2.6/Py/Scripts/Rigging/Rigify/" title="Blender 2.79 - Bone Positioning Guide for Rigify"><b>Bone Positioning Guide</b></a> (Archived).
+<hr>
+<li><a href="https://i.imgur.com/dErKSpZ.png"><img class="demo" src="https://i.imgur.com/dErKSpZm.png" alt="Weight Brush" title="Weight Brush" width="226" height="320"></a><a href="https://i.imgur.com/EqHfo5s.png"><img class="demo" src="https://i.imgur.com/EqHfo5s.png" alt="Weight Tools" title="Weight Tools" width="140" height="300"></a>
+- <a href="https://www.youtube.com/watch?v=v6_m3xFSlIU"><b>Normalize Weights - Tip</b></a>
+- <a href="https://www.youtube.com/watch?v=_y8mOQBOHxA"><b>Normalize Weights - Troubleshoot</b></a>
+
+<b><u>View Clipping Region</u></b>:
+<a href="https://gfycat.com/occasionalillinformedeland"><img class="demo" src="https://thumbs.gfycat.com/OccasionalIllinformedEland-mobile.jpg" alt="Demo: View Clipping Region" title="Demo: View Clipping Region" width="150" height="84"></a>
+- Use <a href="https://docs.blender.org/manual/en/dev/editors/3dview/navigate/regions.html" title="Click to read"><b>View Clipping Region</b></a> to easily work in difficult areas in a 3D model.
+- <b>Demo:</b> <a href="https://www.youtube.com/watch?v=g-iFNaiQHIk"><b>View Clipping Region and Weight Paint</b></a> [Starts at 04:10]
+- Blender 2.8 Shortcut: <b class="hotkey">Alt</b> + <b class="hotkey">B</b></li>
+<hr></ul>
+</pre>
+</details>
+<div align="center">If you want something even easier, see <b class="section">[SECTION 9]</b>.</div>
+<hr class="redorange">
+
+<!-- SECTION 9 -->
+<h1><font color="green">[SECTION 9]</font></h1>
+<div align="center">
+<img src="https://i.imgur.com/3QFVg2Qm.jpg" alt="Shape Keys" title="Shape Keys" width="320" height="256">
+<h1>Shape Keys</h1>
+<b>An Easier Alternative to Rigging</b>
+</div>
+<details><summary>Click to Show</summary>
+<UL><hr>
+<li>Introduction to Shape Keys:
+<BR><a href="https://www.youtube.com/watch?v=-W8LkAyvpEU"><img class="demo" src="https://img.youtube.com/vi/-W8LkAyvpEU/mqdefault.jpg" alt="Blender Shapekeys Beginner tutorial" title="Blender Shapekeys Beginner tutorial" width="320" height="180"></a>
+<BR>- To make things easier, use <a href="https://www.youtube.com/watch?v=8bhGenDwfH0">Proportional Editing</a>.</li>
+<hr>
+<li>Blinking Eyelids with Shape Keys:
+<BR><a href="https://www.youtube.com/watch?v=gScAPFxTfv0"><img class="demo" src="https://img.youtube.com/vi/gScAPFxTfv0/mqdefault.jpg" alt="Blender 2.6 Tutorial 38 - Shape Keys: Blinking" title="Blender 2.6 Tutorial 38 - Shape Keys: Blinking" width="320" height="180"></a>
+<BR>- To make things easier, use the appropriate <a href="https://gfycat.com/fewwarpedafricanparadiseflycatcher">Pivot Points</a>.</li>
+<hr>
+<li>Mouth Shape Keys:
+<BR><a href="https://www.youtube.com/watch?v=cIjOLUoURtY"><img class="demo" src="https://img.youtube.com/vi/cIjOLUoURtY/mqdefault.jpg" alt="Face rigging - make shape key" title="Face rigging - make shape key" width="320" height="180"></a>
+<BR>- To make things easier, use <a href="https://www.youtube.com/watch?v=8bhGenDwfH0">Proportional Editing</a>.</li>
+</UL>
+</details>
+<hr class="redorange">
+
+<!-- RIGGING/WEIGHT PAINTING VIDEOS -->
+<h3><u>Rigging and Weight Painting Videos:</u></h3>
+<UL>
+<li><b class="orange">[Blender 2.80]</b> <a href="https://www.youtube.com/watch?v=KBs-QJmyZkA"><b>Blender 2.8 3D Female Bone Positioning (Hips, Breasts, Shoulders, Hands, Feet, Spine)</b></a></li>
+<li><b class="orange">[Blender 2.80]</b> <a href="https://www.youtube.com/watch?v=zVIFbqQAykk" title="Video"><b>Blender 2.8 Weight Painting mini-tutorial (and how to undo a "neck fix")</b></a>
+<BR>- Mostly Weight Painting</li>
+<li><b class="orange">[Blender 2.78]</b> <a href="https://www.youtube.com/watch?v=WpgDjKIxYOA"><b>Blender Human Meta-Rig. Clear HD tutorial</b></a>
+<BR>- Excellent tips for preparing the mesh and setting up bones and rolls</li>
+<li><b class="orange">[Blender 2.77]</b> <a href="https://www.youtube.com/watch?v=P6dfsJkiOh8"><b>Blender: Weight Painting (Part 1 of 2)</b></a>
+<BR>- Vertex Group tips, Weight Painting tips</li>
+<li><b class="orange">[Blender 2.76]</b> <a href="https://www.youtube.com/watch?v=9Zh0wleYR8A"><b>How To Rig A Simple Female Character In Blender 2 .76</b></a>
+<BR>- Rigging with metarig, fixing bone rolls, custom IK controls, custom foot roll controls, Automatic Weights, breast physics</li>
+<li><b class="orange">[Blender 2.69]</b> <a href="https://www.youtube.com/watch?v=mJwWTKt12ak"><b>Simple rigging of a character in Blender</b></a>
+<BR>- Setting up a custom rig from scratch with IK controls, custom bone shapes, and Automatic Weights</li>
+Work In Progress...
+</UL>
+
+<!-- EXTRA RESOURCES -->
+<h3><u>Extra Resources:</u></h3>
+<UL>
+<li><a href="https://www.youtube.com/watch?v=dxz7LQ-xKjM"><b>Controlling Armature Deformation</b></a>
+<BR>- Fundamentals of bones, deformation, vertex groups, weight painting</li>
+<li><a href="https://www.youtube.com/watch?v=o4zMfknrkyg"><b>Auto Rig Pro Showcase</b></a></li>
+<li><a href="https://www.youtube.com/watch?v=9snzMiNxI2A"><b>Blender Armature Tutorial Bending a Tube Using Bone Envelopes, Vertex Groups and Weight Painting</b></a></li>
+<li><a href="https://blender.stackexchange.com/questions/58913/simple-methods-to-smooth-out-weight-paints"><b>Simple methods to smooth out weight paints?</b></a></li>
+<li><a href="https://blender.stackexchange.com/questions/10457/rigging-why-are-some-of-my-vertex-groups-affecting-blue-areas"><b>(Rigging) Why are some of my vertex groups affecting blue areas?</b></a></li>
+</UL>
+
+<!--Troubleshooting-->
+<h3><u>Troubleshooting:</u></h3>
+<ul>
+<li>And how to add a bone to centre of eyeball?
+<BR>- <a href="https://gfycat.com/femalepowerlesslamb" title="Watch Demo"><b>Demo - Setup Eye Bone</b></a></li>
+<li>Can you show me how to add eye bones for supergirl model (SFM)?
+<BR>- Demo: [<a href="https://gfycat.com/wellwornunlawfularctichare"><b>Part 1</b></a>] [<a href="https://gfycat.com/speedyelementaryinsect"><b>Part 2</b></a>]</li>
+<li>After fix legs (SFM DazV4), how to save "fixed version"? And how to fix this? [<a href="https://sta.sh/0djmyuv4nt4" title="View Image"><b>Image</b></a>]
+<BR>- Demo: [<a href="https://gfycat.com/disguisedpersonalkite"><b>Part 1</b></a>] [<a href="https://gfycat.com/fatblackesok"><b>Part 2</b></a>]</li>
+<li>Do you know how to weight paint RE2R model? I want to fix legs but don't know how to do this right. [<a href="https://www.deviantart.com/dddkhakha1/art/Legs-problem-799845011" title="View Image"><b>Image</b></a>]
+<BR>- <a href="https://gfycat.com/blindcooperativedingo" title="Watch Demo"><b>Demo - Troubleshooting a rigged Resident Evil model</b></a></li>
+<li>I don't know why I can't Mirror Vertex Group. I ticked at X Mirror in Option tab from Context, still can't work. [<a href="https://sta.sh/0yjw903c7sf"><b>Image</b></a>]
+<BR>- Some 3D meshes are <a href="https://www.dictionary.com/browse/asymmetrical" title="Definition - not symmetrical"><u>asymmetrical</u></a> in order to mimic natural appearances. In these cases, Mirror Vertex Group may not always work. 
+<BR>- You will have to either make the 3D mesh symmetrical or <u>manually</u> weight paint both sides.</li>
+<li>Can you make a demo that you clean and fix that eyelid (SFM)?
+<BR>- Demo: [<a href="https://gfycat.com/passionatesameinchworm"><b>Part 1</b></a>] [<a href="https://gfycat.com/showyexcellentirishwolfhound"><b>Part 2</b></a>]</li>
+<li>How to copy bone weights to another bone, or how to merge weights from different vertex groups?
+<BR>- Demo: [<a href="https://gfycat.com/disloyalgiftedgar"><b>Part 1</b></a>] [<a href="https://gfycat.com/thriftyzestyiberianmole"><b>Part 2</b></a>]</li>
+</ul>
+
+<BR>Work In Progress...
+<hr class="redorange">
+
+<!-- RIG FREE MODELS -->
+<div align="center"><img src="https://i.imgur.com/JJL5Siz.png" width="150" height="150"></div><h2 align="center">Want to rig some free models?</h2><h3 align="center">Try these...</h3>
+<b>
+<BR>- <a href="https://p3dm.ru/">Pack 3D Models</a>
+<BR>- <a href="https://www.models-resource.com/">Models Resource</a>
+<BR>- <a href="https://free3d.com/">Free3D</a>
+<BR>- <a href="https://www.deviantart.com/sweet-berrie">Sweet-Berrie</a>
+<BR>- <a href="https://www.deviantart.com/gr-85">GR-85</a>
+<BR>- <a href="https://www.deviantart.com/kittyinhiding">KittyInHiding</a>
+<BR>- <a href="https://sketchfab.com/">Sketchfab</a>
+</b>
+
+<P><div align="center">Don't throw away any of these valuable texture maps!</div><div align="center">They are extremely helpful!</div><div align="center"><a href="https://i.imgur.com/pCxrBBn.jpg"><img class="demo" src="https://i.imgur.com/pCxrBBnm.jpg" width="320" height="161"></a></div> 
+<hr>
+<h2 align="center">Submit 3D Models and Resources:</h2>
+<div align="center"><a href="https://open3dlab.com" title="Open3DLab.com"><img class="demo" src="https://i.imgur.com/mFFmLGc.png" width="160" height="139"></a> <a href="https://smutba.se" title="SmutBa.se (NSFW)"><img class="demo" src="https://i.imgur.com/9vcKn0U.png" width="168" height="139"></a>
+</div>
+<hr>
+
+<h2 align="center">Common Mistakes Made in Blender</h2>
+<div align="center"><a href="https://open3dlab.com/tutorials/view/17/"><img class="demo" src="https://i.imgur.com/RBrLfkN.png" alt="Blender - Common Mistakes &amp; Tips" title="Blender - Common Mistakes &amp; Tips" width="256" height="256"></a></div>
+
+<h2 align="center">Rip Your Favorite 3D Game Character Models FREE</h2>
+<div align="center"><a href="https://open3dlab.com/tutorials/view/16/"><img class="demo" src="https://i.imgur.com/CfvpcmEt.jpg" alt="Rip Your Favorite 3D Game Character Models FREE" title="Rip Your Favorite 3D Game Character Models FREE" width="160" height="160"></a></div><hr>
+<b><u>Contact:</u></b><ul>
+<li><a href="https://www.deviantart.com/xcurtainx"><b>https://www.deviantart.com/xcurtainx</b></a> (DeviantArt sucks)</li>
+<li><a href="https://www.mumble.info/"><b>Mumble</b></a> (Text only | Microphone is not required)
+<br>- <b class="green">Address:</b> voip.worldhotspot.org
+<br>- <b class="green">Port:</b> 64738
+<br>- <b class="green">Label:</b> Worldhotspot
+<br>- <b>Selfmade-Channels</b> <b>&rarr;</b> <b>Blender3D</b>
+<br>You can wait in the channel until I or someone else comes to help you.</li></ul>
+<hr>
+<a name="riggingchangelog"></a>
+
+<!-- CHANGE LOG -->
+<DETAILS>
+<SUMMARY><b>Click for Change Log</b></SUMMARY>
+<div align="left">
+<PRE>
+Apr 22 2020
+Updated: [SECTION 8] Rigging a Face
+Added 2 demos showcasing the real pivot location of the jaw bone. This should reduce some confusion about jaw bone placement.
+- https://gfycat.com/likelyillbullmastiff
+- https://gfycat.com/presentdarkbluejay-cursing-the-gif-tree-border-movements
+
+Jan 17 2020
+Updated Troubleshooting Section
+Added: How to copy bone weights to another bone, or how to merge weights from different vertex groups?
+- Demo: [<a href="https://gfycat.com/disloyalgiftedgar"><b>Part 1</b></a>] [<a href="https://gfycat.com/thriftyzestyiberianmole"><b>Part 2</b></a>]
+
+Jan 7 2020
+Updated: [SECTION 7] Methods for Assigning Weights: [Transfer Weights]
+- https://gfycat.com/badhighlevelkissingbug
+- https://www.youtube.com/watch?v=OCpXiz-8bjY
+- https://www.youtube.com/watch?v=U7lKIFfHffY
+
+Jan 2 2020
+Updated: [SECTION 7] Methods for Assigning Weights
+- Added Method: [Vertex Weights Panel]
+- https://i.imgur.com/YvcRVyR.png
+- https://gfycat.com/clutteredbiodegradablehectorsdolphin
+- https://i.imgur.com/XN9oxsB.jpg
+
+Dec 28 2019
+Important: There is a known bug in Blender that occurs when attempting to Undo (CTRL + Z) in Weight Paint mode or Sculpt mode.
+- https://gfycat.com/completeskinnycougar
+- https://developer.blender.org/T71759
+- Workaround: After adjusting the brush values (Weight, Radius, or Strength), switch to a different brush (Add, Subtract, Mix, etc.), and then switch back. Undo should work as expected.
+
+Dec 19 2019
+Updated: [SECTION 5] How to Prepare/Clean the 3D model before rigging? [Alignment]
+- Recalculate Bone Rolls to Active Bone: 
+- https://gfycat.com/maleidolizedcrow
+
+Dec 16 2019
+Updated: [SECTION 7] Methods for Assigning Weights
+Forgot to add demos for [Assign Automatic from Bones] and [Set Parent to Bone]
+- https://gfycat.com/fatherlyindolentborderterrier 
+- https://gfycat.com/appropriateadmiredgrosbeak
+
+Dec 13 2019
+Added info about Bone Naming Conventions
+- https://docs.blender.org/manual/en/latest/animation/armatures/bones/editing/naming.html
+Updated [SECTION 8] Rigging a Face
+- Added demo for setting up eye bone
+- https://gfycat.com/femalepowerlesslamb
+
+Dec 4 2019
+Swapped [Section 6] and [Section 7]
+- Added how to properly select bones in Weight Paint Mode.
+- Added how to select faces or vertices in Weight Paint Mode.
+
+Nov 26 2019
+Added a demo showcasing how to use the metarig to generate a rig, and then apply Automatic Weights.
+- https://gfycat.com/exhaustedgoodnaturedcuttlefish
+
+Nov 1 2019
+Added: View Clipping Region tip
+- Use View Clipping Region to easily work in difficult areas in a 3D model.
+- https://gfycat.com/occasionalillinformedeland
+- [Starts at 04:10] https://www.youtube.com/watch?v=g-iFNaiQHIk
+- https://docs.blender.org/manual/en/dev/editors/3dview/navigate/regions.html
+- Blender 2.8 Shortcut: Alt + B
+Added: more Rigging and Weight Painting Videos
+
+Oct 25 2019
+Updated: How to Prepare/Clean the 3D model before Rigging?
+- added info about Snap to Symmetry
+Important: If you plan to use Rigify, check this page for the Bone Positioning Guide:
+- https://wiki.blender.jp/Extensions:2.6/Py/Scripts/Rigging/Rigify
+According to some reports, Automatic Weights may not work properly for Mesh Objects with dimensions smaller than 1m (1 Meter = 1 Blender Unit)
+
+Sep 4 2019
+Minor Update:
+Blender 2.80 Fundamentals: Vertex Groups
+- https://www.youtube.com/watch?v=dKZrzG5r13g
+Blender 2.80 Fundamentals: Bone Layers
+- https://www.youtube.com/watch?v=MVl7FQw-x6M
+
+Sep 3 2019
+Update:
+Added Fixing Automatic Weights Demo
+- https://gfycat.com/formalemptyichneumonfly 
+- https://gfycat.com/mixedjauntyhochstettersfrog 
+- https://gfycat.com/barrenshamelesskingbird
+
+Aug 30 2019
+Update:
+Added Set Normals from Faces: https://gfycat.com/elegantlastingcrayfish
+Added new Methods for Assigning Weights
+- Weight Paint - Vertex Selection Masking: https://gfycat.com/oddaromaticbangeltiger
+- Weight Paint - Face Selection Masking: https://gfycat.com/wellinformedsomberchihuahua
+
+May 19 2019
+Update:
+Added Transfer Weights demo for Blender 2.7.
+
+May 17 2019
+Update:
+Added Normalize Weights Tip &amp; Troubleshoot for those struggling with weight influence.
+- Normalize Weights - Tip: https://www.youtube.com/watch?v=v6_m3xFSlIU
+- Normalize Weights - Troubleshoot: https://www.youtube.com/watch?v=_y8mOQBOHxA
+I'm still researching this topic, let me know if anything is still unclear.
+
+Mar 28 2019
+Update:
+Added an easier alternative to rigging: Shape Keys
+- Shape Keys are also known as Flexes or Morph Targets.
+
+Mar 9 2019
+Minor Update:
+Added another example of Non-Manifold/Loose Geometry that may cause rigging failure"
+- https://gfycat.com/ecstaticnegativedachshund
+Make sure those overlapping vertices (double vertices) are merged together: Remove Doubles
+
+Mar 8 2019
+Update:
+Added resources for Rigging a Face.
+Added another example of Non-Manifolds for cleaning your mesh. [Important]
+- https://i.imgur.com/By31B6h.gif
+
+Mar 1 2019
+Minor Update:
+Added tip about Lock Object Modes.
+- You can disable Lock Object Modes in Blender 2.8, if you want weight paint workflow similar to Blender 2.7.
+- https://i.imgur.com/FBdpPoR.png
+
+Feb 21 2019
+Update:
+Added Demonstration for Armature Deform with Empty Groups
+
+Feb 15 2019
+Update:
+Added links to free models for rigging practice.
+Added little examples for overlapping and interior mesh.
+PSA: Please don't throw away any of these valuable texture maps.
+- https://i.imgur.com/pCxrBBn.jpg
+They are extremely helpful!
+
+Feb 14 2019
+Update:
+Added details of the different Parenting options and Rigging options
+- Armature Deform, Empty Groups, Automatic Weights, etc.
+Added explanation and Demo for Vertex Groups
+Added explanation and Demo for Assign Automatic from Bones
+
+Feb 13 2019
+Update: 
+Added tip for [Bone Heat Weighting: failed to find solution for one or more bones]
+- If your character has overlapping armor, clothing, weapons, etc., then try separating them into separate Mesh Objects.
+- https://gfycat.com/thickwavycormorant
+</PRE>
+</div>
+</DETAILS>
+
+<P>
+<hr>
+<a href="https://www.blender.org/foundation/donation-payment/"><b><span style="color:#00FF00;">DONATE!</span></b> <span style="color:orange;"><b>The Blender Development Fund!</b></span></a>
+<div align="center"><a href="https://i.imgur.com/J8xd9Lh.jpg"><img src="https://i.imgur.com/J8xd9Lht.jpg" width="125" height="160"></a>
+<BR>Where is <a href="https://i.imgur.com/QWunzE1.png"><b>Ghislaine Maxwell</b></a>?!</div>
+
+</div>
+</body>
+
+</html>
