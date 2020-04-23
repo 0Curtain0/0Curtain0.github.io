@@ -1,0 +1,667 @@
+<html>
+
+<head>
+<style>
+html {
+    background-color:black;
+    font-family:Verdana, Geneva, sans-serif;
+    color:white;
+}
+body.bodytut {
+    background-color:gray;
+    color:orange;
+    font-family:Verdana, Geneva, sans-serif;
+}
+div.tut {
+    background-color:black;
+    color:white;
+    font-family:Verdana, Geneva, sans-serif;
+}
+pre {
+    background-color:black;
+    color:white;
+    font-family:Verdana, Geneva, sans-serif;
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+summary {
+    font-family:Verdana, Geneva, sans-serif;
+    font-size:15px;
+    color:#090;
+    font-weight:bold;
+    padding:2px 6px;
+    width:15em;
+    background-color:#2C3539;
+    border:none;
+    box-shadow:3px 3px 4px black;
+}
+table {
+  color:white;
+  font-family: Verdana, Geneva, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  background-color: black;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+img.blur {
+  -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
+  filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+}
+.orangehr {height:10px;border-width:1;color:orange;background-color:red;}
+.orangegrhr {height:10px;border-width:3;color:green;background-color:orange;}
+.hotkey {color:yellow;font-weight:bold;}
+.orange {color:orange;font-weight:bold;}
+.red {color:red;font-weight:bold;}
+.green {color:green;font-weight:bold;}
+.blue {color:blue;font-weight:bold;}
+.cyan {color:cyan;font-weight:bold;}
+.demo {border:10px dotted orange;}
+</style>
+</head>
+
+<body class="bodytut">
+<div class="tut">
+
+<!--Title Image-->
+<div align="center"><a href="https://gfycat.com/amazingremoteeagle"><img class="demo" src="https://thumbs.gfycat.com/AmazingRemoteEagle-small.gif" width="300" height="300" alt="Catwoman [Blender Cycles]" title="Catwoman [Blender Cycles]"></a>
+<BR><img src="https://i.imgur.com/EnUVQV5.png" width="100" height="100"><img src="https://i.imgur.com/vFD2SGr.png" width="100" height="100">
+<!--Title-->
+<h1 class="orange"><u><b>Blender - Play with SFM Models</b></u></h1></div>
+<div align="center"><h1><b>**UNDER CONSTRUCTION**</b></h1>
+<BR>Last Update: Apr 10th 2020
+<BR><b>(See <a href="#sfmchangelog">Change Log</a> at the bottom)</b></div>
+<hr class="orangehr">
+
+<!-- Rewriting Section for SFM-->
+<div align="center">
+<pre>
+Do you want to <strong><b class="orange"><u>Pose</u></b>/<b class="orange"><u>Animate</u></b>/<b class="orange"><u>Edit</u></b>/<b class="orange"><u>Render</u></b></strong> <b class="hotkey">SFM</b> characters in <b class="orange">Blender</b>?
+
+This guide will show you how to import models from <b class="hotkey">Source Engine</b> games into <b class="orange">Blender</b>, apply textures to the models, and prepare the models for posing and animations.
+
+The <b>User Interface</b> shown in the gifs below has been changed slightly to help new users identify the different <b>Editors/Windows</b> within <b>Blender</b>.
+For <b>eye comfort</b>, feel free to change the appearance of Blender's <b>User Interface</b> via <b>File - User Preferences</b>.
+</pre>
+<hr>
+Report broken Gfycat links or try changing the URL to this: <b style="color:red;font-size:20px">https://<span style="color:yellow">giant.</span>gfycat.com/<span style="color:white">GfycatID</span><span style="color:yellow">.webm</span></b>
+</div><hr class="orangehr">
+
+If you are completely new to <b class="orange">Blender 2.8</b>, make sure you understand the basic fundamentals:
+<BR>- <a href="https://www.youtube.com/playlist?list=PLa1F2ddGya_-UvuAqHAksYnB0qL9yWDO6"><b>Blender Fundamentals</b></a> (It's quick, I promise.)
+<BR>- If you don't do this, you will accidentally press something and not know why it's negatively impacting your work.
+<p>After that, make sure to keep the following page open in a separate browser window or tab:
+<BR>- <a href="https://open3dlab.com/tutorials/view/17/"><b>Blender - Common Mistakes & Tips</b></a></p>
+
+<p>While waiting for the finished guide, you can take a look at some of the following resources:
+<BR>- <a href="https://open3dlab.com/tutorials/view/1/"><b>Importing Source Filmmaker models into Blender</b></a> by Ganonmaster
+<BR>- <b>SFM To Blender 2016 [<a href="https://www.youtube.com/watch?v=kTgrZ3BZ26k">Part 1</a>] [<a href="https://www.youtube.com/watch?v=xwb-BAUWT_I">Part 2</a>]</b> by Lizendy
+<BR>- <b>SFM To Blender 2018 [<a href="https://www.youtube.com/watch?v=jKeact6rOmM">Part 1</a>] [<a href="https://www.youtube.com/watch?v=W5Qp2pUMeQE">Part 2</a>]</b> by Lizendy<hr><hr><hr>
+</p>
+
+<p>
+<h2 class="green">Tools/Add-ons that will be discussed in the guide:</h2>
+<!--INDENT START--><blockquote>
+<BR><a href="https://www.youtube.com/watch?v=MXd_1aKBTF8"><img class="demo" src="https://img.youtube.com/vi/MXd_1aKBTF8/mqdefault.jpg" alt="Video: Blender - Import SMD, DMX, VTA and QC to Blender 2.79 and 2.81 for Editing" title="Blender - Import SMD, DMX, VTA and QC to Blender 2.79 and 2.81 for Editing" width="320" height="180"></a>
+<BR><a href="https://steamcommunity.com/groups/CrowbarTool"><b>Crowbar</b></a> | <a href="http://nemesis.thewavelength.net/index.php?p=41"><b>VTFEdit</b></a> | <a href="http://steamreview.org/BlenderSourceTools/"><b>Blender Source Tools</b></a> (Blender Add-on)
+<BR>- These 3 tools are currently being used to import/export source models to and from Blender.<hr>
+<BR><a href="https://gfycat.com/glumopenalaskajingle"><img class="demo" src="https://thumbs.gfycat.com/GlumOpenAlaskajingle-mobile.jpg" alt="[Blender 2.79] Import Source MDL and VTF (SourceIO - No Crowbar needed)" title="[Blender 2.79] Import Source MDL and VTF (No Crowbar needed)" width="160" height="90"></a> 
+<a href="https://gfycat.com/contentsomeamericanbittern"><img class="demo" src="https://thumbs.gfycat.com/ContentSomeAmericanbittern-mobile.jpg" alt="[Blender 2.79] Look Mom, No Crowbar!" title="[Blender 2.79] Look Mom, No Crowbar!" width="160" height="90"></a>
+<BR><a href="https://github.com/REDxEYE/SourceIO"><b>SourceIO</b></a>
+<BR>- A new experimental Blender add-on that imports <b>MDL</b> and <b>VTF</b> directly into Blender without the use of <b>Crowbar</b>, <b>Blender Source Tools</b>, or <b>VTFEdit</b>.<hr>
+<BR><a href="https://www.youtube.com/watch?v=fFQ22ZZUgMg"><img class="demo" src="https://img.youtube.com/vi/fFQ22ZZUgMg/mqdefault.jpg" alt="Video: Basic SourceOps tutorial" title="Basic SourceOps tutorial" width="320" height="180"></a>
+<BR><a href="https://github.com/bonjorno7/SourceOps"><b>SourceOps</b></a>
+<BR>- A new experimental Blender add-on meant to be a more convenient alternative to Blender Source Tools. 
+<BR>- SourceOps only does export<hr>
+<BR><a href="https://i.imgur.com/hfsMuTh.png"><img class="demo" src="https://i.imgur.com/hfsMuTht.png" alt="Image: SFM to Blender Skeleton Script" title="SFM to Blender Skeleton Script" with="160" height="122"></a>
+<BR><a href="https://open3dlab.com/project/59/"><b>SFM to Blender skeleton script</b></a>
+<BR>- A Blender add-on that connects bones together and setup IK controls.
+<!--INDENT END--></blockquote>
+</p><hr><hr><hr>
+
+<p>
+These demos need to be organized, remade for Blender 2.8, and will have written sections for them:
+<BR><a href="https://gfycat.com/glumopenalaskajingle"><b>[Blender 2.79] Import Source MDL and VTF</b></a> (SourceIO - No Crowbar/VTFEdit)
+<BR><a href="https://gfycat.com/contentsomeamericanbittern"><b>[Blender 2.79] Look Mom, No Crowbar!</b></a>
+<BR><a href="https://gfycat.com/disguisedpersonalkite"><b>[Blender 2.8] DAZv4 - Fix Non-Manifolds</b></a>
+<BR><a href="https://gfycat.com/fatblackesok"><b>[Blender 2.8] DAZv4 - Set New Base Key</b></a>
+<BR><a href="https://gfycat.com/oldfashionedincomparableasianwaterbuffalo"><b>[Blender 2.8] Fixing SFM Eye Texture with Shader Editor</b></a>
+<BR><a href="https://gfycat.com/favoriteacademicharvestmen"><b>[Blender 2.8] Fixing SFM Eye Texture with UV Editor</b></a>
+<BR><a href="https://gfycat.com/calmshinyboto"><b>[Blender 2.82a] Fixing Missing UV Map for Eyes</b></a>
+<BR><a href="https://gyazo.com/064ff21414609df1a48c75ba5f207ffd">https://gyazo.com/064ff21414609df1a48c75ba5f207ffd</a>
+<BR><a href="https://gfycat.com/embellishedslipperybrahmancow"><b>[Blender 2.8] View textures in Solid Shading with Flat Lighting</b></a>
+<BR>More demos are coming...
+</p>
+<hr class="orangehr">
+
+
+<!--BLENDER SHORTCUTS & HOTKEYS-->
+<!--NEW IMAGE HERE
+<img src="https://i.imgur.com/g4SQCvP.webp" width="480" height="270" alt="Blender - Shortcuts & Hotkeys" title="Blender - Shortcuts & Hotkeys">
+-->
+<h1>Shortcuts & Hotkeys</h1>
+<!--INDENT--><blockquote>
+<!--Blender 2.7 Hotkeys-->
+<details><summary><u><b class="orange">Blender 2.7</b> - <b>Hotkeys</b></u></summary>
+<BR><a href="https://i.imgur.com/MbTcQsk.png"><img class="demo"src="https://i.imgur.com/MbTcQskm.png" alt="List of Basic Hotkeys for Blender" title="Basic Blender Hotkeys" width="233" height="320"></a>
+<BR>- Don't panic if you forget a keyboard shortcut. Just press <b class="hotkey">spacebar</b> key.
+<BR>- I highly recommend you activate the <b>Dynamic Context Menu</b> addon for more spacebar functionality.
+</details>
+<hr align="left" width="30%">
+
+<!--Blender 2.8 Hotkeys-->
+<details><summary><u><b class="orange">Blender 2.8</b> - <b>Hotkeys</b></u></summary>
+<pre>
+<b class="orange"><u>Selection Hotkeys:</u></b>
+<b class="hotkey">LEFTMOUSE</b> = make a selection
+  <b class="hotkey">SHIFT</b>-<b class="hotkey">LEFTMOUSE</b> = make multiple selections
+<b class="hotkey">CTRL</b>-<b class="hotkey">RIGHTMOUSE</b> = Lasso select
+<b class="hotkey">ALT</b>-<b class="hotkey">LEFTMOUSE</b> = Select Object Menu [<a href="https://gfycat.com/hardtofindfarcat"><b>Demo</b></a>]
+
+<b class="hotkey">A</b> = Select All
+  <b class="hotkey">ALT</b>-<b class="hotkey">A</b> = De-select All
+<b class="hotkey">B</b> = Box select
+<b class="hotkey">C</b> = Circle select
+<b class="hotkey">L</b> = select Linked [<a href="https://gfycat.com/thickwavycormorant-blender-captain-rigging-marvel"><b>Demo</b></a>] [<a href="https://gfycat.com/whisperedyounghogget"><b>Bones</b></a>]
+<hr align="left" width="50%">
+<b class="orange"><u>Transform Hotkeys:</u></b>
+<b class="hotkey">G</b> = <b>Grab/Move</b> selection
+  <b class="hotkey">ALT</b>-<b class="hotkey">G</b> = Reset <u>Location</u>
+<b class="hotkey">R</b> = <b>Rotate</b> selection
+  <b class="hotkey">ALT</b>-<b class="hotkey">R</b> = Reset <u>Rotation</u>
+<b class="hotkey">S</b> = <b>Scale</b> selection
+  <b class="hotkey">ALT</b>-<b class="hotkey">S</b> = Reset <u>Scale</u>
+[ Press <b class="red">X</b>,<b class="green">Y</b>, or <b class="blue">Z</b> to lock a transformation to an <u>axis</u> ]
+<hr align="left" width="50%">
+<b class="hotkey">X</b> = Delete selection
+<b class="hotkey">M</b> = Move selection to a collection
+<b class="hotkey">H</b> = Hide selection
+  <b class="hotkey">ALT</b>-<b class="hotkey">H</b> = Unhide selection
+  <b class="hotkey">SHIFT</b>-<b class="hotkey">H</b> Hide everything except selection
+<hr align="left" width="50%">
+<b class="hotkey">SHIFT</b>-<b class="hotkey">A</b> = Add new Object/Bone/Node
+<b class="hotkey">SHIFT</b>-<b class="hotkey">D</b> = Duplicate selection
+<hr align="left" width="50%">
+<b class="hotkey">T</b> = Tool Shelf
+<b class="hotkey">N</b> = Properties Shelf
+<hr align="left" width="50%">
+<b class="hotkey">SHIFT</b>-<b class="hotkey">S</b> = Snap Menu
+<b class="hotkey">SHIFT</b>-<b class="hotkey">C</b> = Set <b class="red">3D</b> <b>Cursor</b> location to center [<b class="red">0</b>,<b class="green">0</b>,<b class="blue">0</b>]
+<hr align="left" width="50%">
+<b class="hotkey">HOME</b> = view entire scene
+<b class="hotkey">NUMPAD_PERIOD</b> = view only selection(s)
+<hr align="left" width="50%">
+<b class="hotkey">TAB</b> = switch to <b class="orange">Edit Mode</b>/<b class="orange">Object Mode</b>/<b class="orange">Sculpt Mode</b>/<b class="orange">Texture Paint</b>/<b class="orange">Weight Paint</b>/<b class="orange">Vertex Paint</b>
+<b class="hotkey">~</b> = activate 3D view pie menu
+<b class="hotkey">Z</b> = Viewport Shading Mode
+<b class="hotkey">Q</b> = Quick Favorites Menu
+<b class="hotkey">F3</b> = Search for any Blender function or tool
+
+Work in progress..
+<hr align="left" width="50%">
+For more shortcuts, check the links below.
+- <a href="https://docs.blender.org/manual/en/latest/interface/keymap/introduction.html"><b>Keymaps</b></a>
+- <a href="https://www.youtube.com/playlist?list=PLa1F2ddGya_-UvuAqHAksYnB0qL9yWDO6"><b>Blender Fundamentals 2.80</b></a>
+</pre>
+</details>
+<!--END INDENT--></blockquote>
+<hr class="orangehr">
+
+<!--BLENDER USER INTERFACE TIPS-->
+<!--
+<span style="color:#307D7E"><h1><b><u>Blender User Interface Tips</u></b></h1></span>
+<img src="https://i.imgur.com/8jlsMsAl.png" width="498" height="280">
+<DETAILS><SUMMARY><span style="color:green;font-size:150%;"><b>Click to Show</b></span></SUMMARY>
+<blockquote>
+<ul><li><b>1. Editor Types:</b> <a href="https://gfycat.com/MatureAgedAndalusianhorse">https://gfycat.com/MatureAgedAndalusianhorse</a></li>
+<li><b>2. Check for errors:</b> <a href="https://gfycat.com/OccasionalLoneHorsefly">https://gfycat.com/OccasionalLoneHorsefly</a></li>
+<li><b>3. Split and Join Editors/Windows:</b> <a href="https://gfycat.com/HomelyTallHoneybee">https://gfycat.com/HomelyTallHoneybee</a></li>
+<li><b>4. Widget Locations:</b> <a href="https://i.imgur.com/ZEeH2WH.png">https://i.imgur.com/ZEeH2WH.png</a>
+<BR>- <span style="color:yellow;"><b>Left_Click</b></span> and drag the corner widget to split the window/editor.
+<BR>- <span style="color:yellow;"><b>Right_Click</b></span> on the <b>border/edge</b> of the <b>editor</b> to <b>Join</b> or <b>Split</b>.
+<BR>- <span style="color:yellow;"><b>Shift</b></span>+<span style="color:yellow;"><b>Left_Click</b></span> and drag the <b>corner widget</b> to <b>open the editor in a new Blender window.</b></li>
+<li><b>5. Object Types:</b>
+<BR><img src="https://i.imgur.com/wDjVQL2.png" alt="List of Object Types in Blender" title="Object Types" width="300" height="300"></li>
+<li><b>6. Transformation Manipulators:</b>
+<BR><img src="https://i.imgur.com/jCwgK3L.png" width="228" height="40">
+<BR>- Keep both Transformation Manipulators (Rotate and Translate) enabled.
+<BR>- They will help you see the pivot point during rotation and other operations.
+<BR><b>Example:</b> 
+<BR><a href="https://gfycat.com/FewWarpedAfricanparadiseflycatcher"><img class="demo" src="https://thumbs.gfycat.com/FewWarpedAfricanparadiseflycatcher-mobile.jpg" alt="Demo: Transformation Manipulators" title="Demo: Transformation Manipulators" width="246" height="150"></a></li></ul>
+<a href="https://i.imgur.com/ylSvi0F.png"><img class="demo" src="https://i.imgur.com/ylSvi0F.png" alt="Blender 2.7 - Pivot Points" title="Blender 2.7 - Pivot Points" width="188" height="150"></a> <a href="https://i.imgur.com/2klSoKA.png"><img class="demo" src="https://i.imgur.com/2klSoKA.png" alt="Blender 2.8 - Pivot Points" title="Blender 2.8 - Pivot Points" width="184" height="150"></a>
+<BR><span style="color:red;background-color:yellow;"><b>IMPORTANT:</b></span> <a href="https://www.youtube.com/watch?v=y3ECvX6DdNE" title="Watch Video"><b>Blender 2.8 - Pivot and Orientation Points</b></a>
+</blockquote>
+</DETAILS>
+-->
+<hr class="orangehr">
+
+<!--BLENDER ADD-ONS USED IN GUIDE-->
+<!--REWRITE FOR SFM
+<span style="color:#307D7E"><h1><u><b>Blender Addons used in Guide</b></u></h1></span>
+<img src="https://i.stack.imgur.com/Gz5val.gif" width="431" height="280">
+<details><summary><span style="color:green;font-size:150%;"><b>Click to Show</b></span></summary>
+<ul><li><b><u>XPS Tools</u></b> [Required]
+<BR>- <a href="https://github.com/johnzero7/XNALaraMesh"><b>Download</b></a> (GitHub)
+<BR>- <span style="color:orange;"><b>Blender 2.8</b></span> users can access the <b>XPS Tools</b> menu by pressing the <span style="color:yellow;"><b>N</b></span> key and selecting the <b>XPS</b> tab on the <u>right</u> side of the <span style="color:#1569C7;"><b>3D Viewport</b></span>.</li>
+
+<li><b><u>3D Viewport Pie Menus</u></b>
+<BR><a href="https://i.stack.imgur.com/Gz5va.gif"><img class="demo" src="https://i.stack.imgur.com/Gz5vas.gif" width="90" height="90"></a>
+<BR>- Shading Pie: Hotkey: <b>'<span style="color:yellow;">Z</span>'</b> (Quickly change the rendering of the 3D viewport)
+<BR>- Mode Switch Pie: Hotkey: '<b><span style="color:yellow;">Tab</span></b>' (Quickly change Mode)
+<BR>- View Numpad Pie: Hotkey: <b>'<span style="color:yellow;">Q</span>'</b> (Quickly change viewport direction and perspective)
+<BR>[<a href="https://gfycat.com/skinnyabandonedcow"><b>Blender 2.80 - Pie Menu</b></a>]</li></ul>
+</details>
+<hr class="orangehr">
+
+Before you continue with this guide, please open the following page in a separate tab or window:
+<BR>- <a href="https://open3dlab.com/tutorials/view/17/"><b>Blender - Common Mistakes and Tips</b></a>
+<BR>- This should help you if you are confused about something in Blender.
+-->
+<hr class="orangehr">
+
+<!--HOW TO GET SFM MODELS WORKING IN BLENDER?-->
+<h1 align="center"><span style="color:orange;"><u><b>How to Get SFM Models Working in Blender?</b></u></span></h1>
+<div align="center"><a href="https://i.stack.imgur.com/12SfY.gif" title="click to see demo"><b>**</b>Change <b>Blender Render</b> to <b>Cycles Render</b> (top header)<b>**</b></a>
+<h1>UNDER CONSTRUCTION</h1></div>
+
+<!--STEP 1. BASIC LIGHT SETUP-->
+<!-- REWRITE FOR SFM
+<h1><span style="color:#307D7E"><b>Step 1. <u>Basic Light Setup</u></b></span> <b>(Optional)</b></h1> 
+<img src="https://i.imgur.com/d0TU9CRm.jpg" width="320" height="240">
+<DETAILS><SUMMARY><span style="color:green;font-size:150%"><b>Click to Show</b></span></SUMMARY>
+<blockquote>
+<BR>- <b><span style="color:orange;">Blender 2.7</span> Basic Lighting:</b> <a href="https://gfycat.com/DapperDiligentIndianringneckparakeet">https://gfycat.com/DapperDiligentIndianringneckparakeet</a>
+<BR>- <b><span style="color:orange;">Blender 2.7</span> Advanced Lighting:</b> <a href="https://www.youtube.com/watch?v=gTMORaEygRE">https://www.youtube.com/watch?v=gTMORaEygRE</a>
+<BR>- <b><span style="color:orange;">Blender 2.8</span> Advanced Lighting:</b> <a href="https://www.youtube.com/watch?v=gTMORaEygRE">https://www.youtube.com/watch?v=MFNurQ1AF2I</a>
+<BR>- <b><span style="color:orange;">Blender 2.8</span> Setup an HDRI Environment Background:</b> <a href="https://www.youtube.com/watch?v=6VBkj_I-ONk">https://www.youtube.com/watch?v=6VBkj_I-ONk</a>
+<BR>----------
+<BR>Keyboard Shortcuts Used In Basic Demo:
+<BR><span style="color:yellow;"><b>Z</b></span> = Shading Pie Menu (<span style="color:orange;"><b>Addon:</b></span> Pie Menu: 3D Viewport Pie Menus)
+<BR><span style="color:yellow;"><b>X</b></span> = Delete selected object(s)
+</blockquote>
+</DETAILS>
+<hr class="orangegrhr">
+-->
+
+<!--STEP 2. IMPORT SFM MODEL-->
+<!--
+<h1><span style="color:#307D7E"><b>Step 2. <u>Import XPS Model</u></b></span> (<b>.xps</b> or <b>generic_item.mesh</b>)</h1>
+<img src="https://i.imgur.com/7Iw1E87m.png" width="291" height="320">
+<DETAILS><SUMMARY><span style="color:green;font-size:150%"><b>Click to Show</b></span></SUMMARY>
+<blockquote>
+<pre>
+<b>Demonstration:</b>
+<a href="https://gfycat.com/remoteshrillamericanratsnake"><img class="demo" src="https://thumbs.gfycat.com/RemoteShrillAmericanratsnake-mobile.jpg" width="160" height="90" alt="Blender 2.8 Demo: Import XPS Model" title="Blender 2.8 Demo: Import XPS Model"></a> <a href="https://gfycat.com/FrankMintyCockerspaniel"><img class="demo" src="https://i.imgur.com/uLf8b8qt.png" width="160" height="90" alt="Blender 2.7 Demo: Import XPS Model" title="Blender 2.7 Demo: Import XPS Model"></a>
+When importing multiple character models, feel free to rename the Armatures to something suitable:
+<b class="orange">Armature.Catwoman</b>
+<b class="orange">Armature.Batman</b>
+You can do this by double clicking on the <b class="orange">Armature</b> name in the <span style="color:cyan;"><b>Outliner Editor</b></span>
+<img src="https://i.imgur.com/w3nPe4s.jpg" width="393" height="288" alt="Image - Outliner Editor" title="Outliner Editor">
+----------
+Keyboard Shortcuts Used:
+<b class="hotkey">Numpad_Period</b> = View selected object(s)
+- Useful if selected object(s) are far away or off screen
+</pre>
+</blockquote>
+</DETAILS>
+<hr class="orangegrhr">
+-->
+
+<!--STEP 3. APPLY MATERIALS AND TEXTURES (USING XPS TOOLS)-->
+<!--REWRITE FOR SFM
+<h1><b><span style="color:#307D7E">Step 3. <u>Apply Materials and Textures</u></span> (using XPS Tools)</b></h1>
+<img src="https://t00.deviantart.net/0o3oQITauI9mCY1wxuqt3m_lg5E=/fit-in/700x350/filters:fixed_height(100,100):origin()/pre00/914b/th/pre/f/2016/164/b/a/harley_quinn_where_s_my_makeup_mod_xps_by_deluwyrn-da61uz8.png" width="700" height="270" alt="Image by deluwyrn" title="Image by deluwyrn">
+<DETAILS><SUMMARY><span style="color:green;font-size:150%"><b>Click to Show</b></span></SUMMARY>
+<blockquote>
+<ul>
+<a href="https://gfycat.com/frankmintycockerspaniel"><img class="demo" src="https://thumbs.gfycat.com/FrankMintyCockerspaniel-mobile.jpg" width="160" height="90" alt="Method New" title="Method New"></a>
+<BR><u><b class="orange">Blender 2.7</b></u>
+<blockquote>
+<li><b><u>Method New:</u></b> <a href="https://gfycat.com/frankmintycockerspaniel"><b>https://gfycat.com/frankmintycockerspaniel</b></a>
+<BR>- <span style="color:cyan;"><b>XPS Tools v1.8.5+</b></span> will automatically apply textures+materials with the new <a href="https://www.youtube.com/watch?v=4H5W6C_Mbck" title="Watch Video - Principled Shader"><b>Principled Shader</b></a></li>
+<li><s><b><u>Method Old:</u></b> <a href="https://gfycat.com/FlashyGratefulJellyfish"><b>https://gfycat.com/FlashyGratefulJellyfish</b></a></s></li>
+</blockquote></ul>
+<blockquote>
+----------
+<BR>Keyboard Shortcuts Used:
+<BR><b class="hotkey">CTRL</b>-<b class="hotkey">LEFTMOUSE</b> = selects the object and its children <b>(<span style="color:cyan;">Outliner Editor</span>)</b>
+<BR><b class="hotkey">T</b> = opens the Tools Shelf
+<BR>----------
+</blockquote>
+
+<pre>
+<a href="https://gfycat.com/embellishedslipperybrahmancow"><img class="demo" src="https://thumbs.gfycat.com/EmbellishedSlipperyBrahmancow-mobile.jpg" width="160" height="90" alt="Blender 2.8 - View textures in Solid Shading with Flat Lighting" title="Blender 2.8 - View textures in Solid Shading with Flat Lighting"></a>
+<b><u><b class="orange">Blender 2.8</b> (Optional)</u>:</b> Speed up <b>3D Viewport</b> performance by switching to <b>Solid Shading</b> with <u>visible textures</u>.
+</pre>
+
+<pre>
+Keep in mind, your character model may have extra clothes, hairstyles and body parts overlapping each other (it may look weird).
+You can hide those extra parts or move them to a separate layer. 
+In <b class="orange">Object Mode</b>, select the part(s) you don't need, and then press <b class="hotkey">M</b> key to move them to a different <b>Layer</b> or <b>Collection</b>.
+- <b>Example:</b> 
+<a href="https://gfycat.com/EveryShoddyBooby"><img class="demo" src="https://i.imgur.com/yctKlOMt.jpg" alt="Demo: Move to Different Layer" title="Demo: Move to Different Layer" width="160" height="90"></a>
+</pre>
+
+<pre>
+Depending on your model, you may need to do a few tweaks:
+<a href="https://gfycat.com/mintylatehen"><img class="demo" src="https://thumbs.gfycat.com/MintyLateHen-mobile.jpg" alt="Watch Demo" title="Watch Demo" width="160" height="90"></a> <a href="https://gfycat.com/waterloggedbriskjenny"><img class="demo" src="https://thumbs.gfycat.com/WaterloggedBriskJenny-mobile.jpg" alt="Watch Demo" title="Watch Demo" width="160" height="90"></a> <a href="https://gfycat.com/piercingdeliciouskitfox"><img class="demo" src="https://thumbs.gfycat.com/PiercingDeliciousKitfox-mobile.jpg" alt="Watch Demo" title="Watch Demo" width="160" height="90"></a>
+<a href="https://i.imgur.com/qebvylt.jpg"><img class="demo" src="https://i.imgur.com/qebvyltm.jpg" width="160" height="90" alt="Fix Checkered Mesh with Backface Culling" title="Fix Checkered Mesh with Backface Culling"></a>
+
+<a href="https://gfycat.com/impracticallameblowfish"><img class="demo" src="https://thumbs.gfycat.com/ImpracticalLameBlowfish-mobile.jpg" width="160" height="90" alt="Demo: Fix Mesh Seam" title="Demo: Fix Mesh Seam"></a>
+If you want more cleaning tips, click <a href="https://open3dlab.com/tutorials/view/15/#prepmesh"><b>HERE</b></a>.
+</pre>
+</blockquote>
+</DETAILS>
+-->
+<hr class="orangegrhr">
+
+<!--STEP 4. APPLY MATERIALS AND TEXTURES (NODE EDITOR)-->
+<h1 ID="applymatnode"><b><span style="color:#307D7E">Step X. <u>Apply Materials and Textures</u></span> (using Node Editor)</b></h1>
+<img src="https://t00.deviantart.net/CcRE7m55MPbztRbArdx5hr9571o=/fit-in/700x350/filters:fixed_height(100,100):origin()/pre00/7dd4/th/pre/i/2017/342/3/e/harley_quinn_by_klutt-dbw35u4.png" width="622" height="350" alt="Image by kLuTT" title="Image by kLuTT">
+<BR>I recommend using the Node Editor to avoid any problems.
+<DETAILS><SUMMARY><span style="color:green;font-size:150%"><b>Click to Show</b></span></SUMMARY>
+<blockquote>
+<pre>
+<span style="color:orange;"><b><u>Blender 2.7</u></b></span>
+<a href="https://streamable.com/3zlyx"><img class="demo" src="https://thumbs.gfycat.com/AchingRashIridescentshark-mobile.jpg" alt="Blender - Apply Materials and Textures (Node Editor)" title="Blender - Apply Materials and Textures (Node Editor)" width="160" height="90"></a>
+[Right click video to change video speed]
+- Mirror Gfycat: [<a href="https://gfycat.com/HeartfeltThreadbareFairyfly"><b>Part 1</b></a>] [<a href="https://gfycat.com/AchingRashIridescentshark"><b>Part 2</b></a>]
+You can learn more about the awesome <b>Principled Shader</b> <a href="https://www.youtube.com/watch?v=4H5W6C_Mbck" title="Watch Video - Principled Shader"><b>HERE</b></a> and <a href="https://www.youtube.com/watch?v=QcTApanvYEg" title="Watch Video - Blender 2.8 : The Secret To MASTERING Principled BSDF (FOR NEW USERS)"><b>HERE</b></a>.
+
+<span style="color:orange;"><b><u>Blender 2.8</u></b></span>
+- You can quickly switch to the <b>Shading</b> workspace to apply materials and textures for the <u>selected</u> <span style="color:orange;"><b>Mesh Object</b></span>.
+<a href="https://i.imgur.com/MvK24lR.png"><img class="demo" src="https://i.imgur.com/MvK24lRt.png" alt="Blender 2.8 - Shading Workspace (Shader Editor)" title="Blender 2.8 - Shading Workspace (Shader Editor)" width="160" height="90"></a> <a href="https://www.youtube.com/watch?v=vANLudW371k"><img class="demo" src="https://img.youtube.com/vi/vANLudW371k/mqdefault.jpg" width="160" height="90" alt="Watch Video - Apply all Texture Maps (In 2 Minutes)" title="Watch Video - Apply all Texture Maps (In 2 Minutes)"></a>
+
+<u><b>TIP:</b></u> <b>Hair &amp; Eyelashes</b> (Alpha Transparency Textures): 
+<a href="https://gfycat.com/IdolizedDenseBighorn"><img class="demo" src="https://i.imgur.com/Io8Gi8It.jpg" alt="DEMO: Alpha Transparency Textures" title="DEMO: Alpha Transparency Textures" width="160" height="90"></a> <a href="https://www.youtube.com/watch?v=-adzszsgdz8"><img class="demo" src="https://img.youtube.com/vi/-adzszsgdz8/mqdefault.jpg" width="160" height="90" alt="Blender 2.8 - Transparent Maps in 30 Seconds" title="Blender 2.8 - Transparent Maps in 30 Seconds"></a>
+
+<u><b>NOTE:</b></u> If your <b>Viewport Shading</b> is set to <b>Texture</b>, the model will only show the <u>active</u> <u>selected</u> <b>Image Texture Node</b>:
+<a href="https://gfycat.com/LoneAngryJackrabbit"><img class="demo" src="https://i.imgur.com/8OWlbPct.jpg" alt="DEMO: Viewport Shading" title="DEMO: Viewport Shading" width="166" height="90"></a>
+
+<u><b>BONUS:</b></u> Shading a Human Skin in Blender:
+<a href="https://www.youtube.com/watch?v=0ybRLcBU564"><img class="demo" src="https://i.imgur.com/F0BOsHst.png" alt="VIDEO: Shading a Human Skin in Blender" title="VIDEO: Shading a Human Skin in Blender" width="160" height="90"></a>
+</pre>
+----------
+<BR>Keyboard Shortcuts Used:
+<BR><b class="hotkey">Q</b> or <b class="hotkey">~</b> = View Numpad Pie Menu (<span style="color:orange;"><b>Addon:</b></span> Pie Menu: 3D Viewport Pie Menus)
+<BR><span style="color:yellow;"><b>X</b></span> = Delete selected object(s) or node(s)
+<BR><span style="color:yellow;"><b>Shift</b></span>+<span style="color:yellow;"><b>A</b></span> = Add new object or node
+</blockquote>
+
+<pre>
+<a href="https://gfycat.com/embellishedslipperybrahmancow"><img class="demo" src="https://thumbs.gfycat.com/EmbellishedSlipperyBrahmancow-mobile.jpg" width="160" height="90" alt="Blender 2.8 - View textures in Solid Shading with Flat Lighting" title="Blender 2.8 - View textures in Solid Shading with Flat Lighting"></a>
+<b><u><b class="orange">Blender 2.8</b> (Optional)</u>:</b> Speed up <b>3D Viewport</b> performance by switching to <b>Solid Shading</b> with <u>visible textures</u>.
+</pre>
+
+<pre>
+Keep in mind, your character model may have extra clothes, hairstyles and body parts overlapping each other (it may look weird).
+You can hide those extra parts or move them to a separate layer. 
+In <b class="orange">Object Mode</b>, select the part(s) you don't need, and then press <b class="hotkey">M</b> key to move them to a different <b>Layer</b> or <b>Collection</b>.
+- <b>Example:</b> 
+<a href="https://gfycat.com/EveryShoddyBooby"><img class="demo" src="https://i.imgur.com/yctKlOMt.jpg" alt="Demo: Move to Different Layer" title="Demo: Move to Different Layer" width="160" height="90"></a>
+</pre>
+
+<pre>
+Depending on your model, you may need to do a few tweaks:
+<a href="https://gfycat.com/mintylatehen"><img class="demo" src="https://thumbs.gfycat.com/MintyLateHen-mobile.jpg" alt="Watch Demo" title="Watch Demo" width="160" height="90"></a> <a href="https://gfycat.com/waterloggedbriskjenny"><img class="demo" src="https://thumbs.gfycat.com/WaterloggedBriskJenny-mobile.jpg" alt="Watch Demo" title="Watch Demo" width="160" height="90"></a> <a href="https://gfycat.com/piercingdeliciouskitfox"><img class="demo" src="https://thumbs.gfycat.com/PiercingDeliciousKitfox-mobile.jpg" alt="Watch Demo" title="Watch Demo" width="160" height="90"></a>
+<a href="https://i.imgur.com/qebvylt.jpg"><img class="demo" src="https://i.imgur.com/qebvyltm.jpg" width="160" height="90" alt="Fix Checkered Mesh with Backface Culling" title="Fix Checkered Mesh with Backface Culling"></a>
+
+<a href="https://gfycat.com/impracticallameblowfish"><img class="demo" src="https://thumbs.gfycat.com/ImpracticalLameBlowfish-mobile.jpg" width="160" height="90" alt="Demo: Fix Mesh Seam" title="Demo: Fix Mesh Seam"></a>
+If you want more cleaning tips, click <a href="https://open3dlab.com/tutorials/view/15/#prepmesh"><b>HERE</b></a>.
+</pre>
+
+</DETAILS>
+<hr class="orangegrhr">
+
+<!--STEP 5. POSING AND IMPORTING POSES/ANIMATIONS (.POSE)-->
+<!--
+<h1><b><span style="color:#307D7E">Step X. <u>Posing and Importing Poses/Animations</u></span> <u>(.pose)</u></b></h1>
+<img src="https://i.imgur.com/wHXPTzn.webp" width="497" height="280">
+<DETAILS><SUMMARY><span style="color:green;font-size:150%"><b>Click to Show</b></span></SUMMARY>
+<!--INDENT START-->
+--><blockquote>
+<!--REWRITE FOR SFM<pre>
+<ul><li><u>Posing similar to <b>XNALara</b>:</u> 
+<a href="https://gfycat.com/GorgeousSilentAntlion"><img class="demo" src="https://i.imgur.com/Of1KIupt.jpg" alt="Posing similar to XNALara" title="Posing similar to XNALara" width="160" height="90"></a> 
+- Press <b class="hotkey">N</b> key to open the 3D Viewport's <u><b>Properties Shelf</b></u></li>
+
+<li><u>Posing without Inverse Kinematics:</u> 
+<a href="https://gfycat.com/LittleRareBordercollie"><img class="demo" src="https://i.imgur.com/FOhnAuSt.jpg" alt="Posing without Inverse Kinematics" title="Posing without Inverse Kinematics" width="160" height="90"></a>
+- To start posing your character, select the character's <span style="color:orange;"><b>Armature</b></span>, then switch to <span style="color:cyan;"><b>Pose Mode</b></span>. 
+- Select a bone, and use any of the <b>Transform Hotkeys</b>:
+<b class="hotkey">G</b> = <b>Grab/Move</b>
+<b class="hotkey">R</b> = <b>Rotate</b> (Double Tap <b class="hotkey">R</b> = <b>Trackball Rotation</b> Mode<strong>)</strong>
+<b class="hotkey">S</b> = <b>Scale</b>
+Press <b class="hotkey">ENTER</b> or <b class="hotkey">LEFTMOUSE</b> during a <b>Transform</b> to <b class="hotkey">Accept</b> new pose.
+Press <b class="hotkey">ESC</b> or <b class="hotkey">RIGHTMOUSE</b> during a <b>Transform</b> to <b class="hotkey">Cancel</b> new pose.</li></ul>
+If you prefer to pose characters with Inverse Kinematics, continue reading this guide.
+
+<b>**</b>Some XPS models come with custom <span style="color:cyan;"><b>.pose</b></span> files you can apply to your character
+	- Select the character's <b class="orange">Armature</b> (object mode)
+	- Open XPS Tools Menu, then click <b>'Import: Pose'</b>
+	- Select a <span style="color:cyan;"><b>.pose</b></span> file, and then click the import button.
+<b>Want to try out some pose files?</b> Try <a href="https://xcurtainx.deviantart.com/favourites/75400695/Favorite-Pose-Packs" class="postlink">these</a>!
+	- Save the pose files any where you want.
+<b>**</b><u>Import pose files as <b>animation</b>:</u>
+<a href="https://gfycat.com/LividExcitableBengaltiger"><img class="demo" src="https://i.imgur.com/KWtgqDYt.jpg" alt="Import Poses as Animation" title="Import Poses as Animation" width="160" height="90"></a>
+- <span style="color:orange;"><b>Blender 2.8</b></span> users can access the <b>XPS Tools</b> menu by pressing the <span style="color:yellow;"><b>N</b></span> key and selecting the <b>XPS</b> tab on the <u>right</u> side of the <span style="color:#1569C7;"><b>3D Viewport</b></span>.
+
+You may come across a XPS model that has incorrect bone relations:
+<a href="https://i.imgur.com/8KR898R.jpg"><img class="demo" src="https://i.imgur.com/8KR898Rm.jpg" alt="Image: Bad Bone Relationship" title="Bad Bone Relationship" width="320" height="180"></a> <a href="https://gfycat.com/tallbaggyirishterrier"><img class="demo" src="https://thumbs.gfycat.com/TallBaggyIrishterrier-mobile.jpg" alt="Demo: Fixing a rigged XPS model" title="Demo: Fixing a rigged XPS model" width="320" height="180"></a>
+</pre>
+<!--INDENT END-->--><!--</blockquote>
+</DETAILS>
+<hr class="orangegrhr">-->
+
+<!--STEP 6. SETUP BONES FOR EASY MIRROR POSING/SYMMETRICAL POSING-->
+<h1><span style="color:#307D7E"><b>Step X. <u>Setup Bones for Easy Mirror Posing/Symmetrical Posing</u></b></span></h1>
+<img src="https://i.imgur.com/kynBQIml.jpg" width="360" height="640" alt="Image by kLuTT" title="Image by kLuTT">
+<BR><b>Want to pose your left/right bones in a symmetrical fashion?</b>
+<DETAILS><SUMMARY><span style="color:green;font-size:150%"><b>Click to Show</b></span></SUMMARY>
+<blockquote>
+<pre>
+<h1>UNDER CONSTRUCTION</h1>
+<hr>
+<b class="orange"><u>Bone Naming Conventions</u></b> [<a href="https://docs.blender.org/manual/en/latest/animation/armatures/bones/editing/naming.html"><b>INFO</b></a>]
+Naming conventions in Blender are not only useful for you in finding the right bone, but also to tell Blender when any two of them are counterparts.
+If you have a bone that has a copy on the other side (a pair), like a hand, give it one of the following separators:
+
+<table>
+ <tr>
+  <th>Separators</th>
+  <th><b class="green">LEFT</b></th>
+  <th><b class="red">RIGHT</b></th>
+ </tr>
+ <tr>
+  <td></td>
+  <td>hand<b class="green">Left</b></td>
+  <td>hand<b class="red">Right</b></td>
+ </tr>
+ <tr>
+  <td>underscore <b>_</b></td>
+  <td>hand<b class="green">_L</b></td>
+  <td>hand<b class="red">_R</b></td>
+ </tr>
+ <tr>
+  <td>dot <b>.</b></td>
+  <td>hand<b class="green">.l</b></td>
+  <td>hand<b class="red">.r</b></td>
+ </tr>
+ <tr>
+  <td>dash <b>-</b></td>
+  <td>hand<b class="green">-l</b></td>
+  <td>hand<b class="red">-r</b></td>
+ </tr>
+ <tr>
+  <td>space</td>
+  <td>hand <b class="green">LEFT</b></td>
+  <td>hand <b class="red">RIGHT</b></td>
+ </tr>
+</table>
+If there is a lower or upper case “<b class="green">L</b>”, “<b class="red">R</b>”, “<b class="green">left</b>” or “<b class="red">right</b>”, Blender handles the counterpart correctly. 
+Pick one and stick to it as close as possible when rigging; it will pay off.
+Note:
+- Placing the <b class="green">left</b>/<b class="red">right</b> part <u>before</u> the bone name is also valid.
+- The <u>short</u> "<b class="green">L</b>"/"<b class="red">R</b>" code can only be used with a <u>separator</u> (e.g. “hand<b class="green">L</b>”/ “hand<b class="red">R</b>” will not work!).
+</pre>
+</blockquote>
+</DETAILS>
+<hr class="orangegrhr">
+
+<!--STEP 7. CHANGE RESTING POSE (A-POSE to T-POSE) FOR IK RIG SETUP-->
+<!--REWRITE FOR SFM
+<h1><span style="color:#307D7E"><b>Step 7. <u>Change Resting Pose (A-Pose to T-Pose) for IK Rig Setup</u></b></span></h1>
+<img src="https://thumbs.gfycat.com/WhirlwindSmallHyena-mobile.jpg" width="498" height="280">
+<DETAILS><SUMMARY><span style="color:green;font-size:150%"><b>Click to Show</b></span></SUMMARY>
+<blockquote>
+<ul>
+<li><b><u>New Method:</u></b> Due to a new <u>XPS Tools</u> <b>update</b> (v1.8.0+), there is now an <b>easier</b> and <b>quicker</b> method:
+<BR><a href="https://gfycat.com/ReflectingTerribleHind"><img class="demo"src="https://i.imgur.com/LUJPuFJt.jpg" alt="Changing Resting Pose in Blender" title="Changing Resting Pose in Blender" width="160" height="90"></a>
+<BR>--- <span style="color:cyan;"><b>Pose</b></span> your character
+<BR>--- Switch to <span style="color:orange;"><b>Object Mode</b></span>
+<BR>--- <b class="hotkey">CTRL</b>-<b class="hotkey">LEFTMOUSE</b> the Armature in the <span style="color:cyan;"><b>Outliner</b></span> (this will select the Armature and all of its children)
+<BR>--- Open the <b>XPS Tools Menu</b>, and click <b>New Rest Pose</b>.</li>
+
+<li><s><u>Old Method</u>: <a href="https://gfycat.com/UnequaledGracefulBull">https://gfycat.com/UnequaledGracefulBull</a></s></li>
+</ul>
+</blockquote>
+</DETAILS>
+<hr class="orangegrhr">
+-->
+
+<!--STEP 8. SETUP BASIC IK RIG-->
+<!--REWRITE FOR SFM
+<h1><span style="color:#307D7E"><b>Step 8. <u>Setup Basic IK Rig</u></b></span></h1>
+<img src="https://thumbs.gfycat.com/PleasantGoodnaturedBernesemountaindog-mobile.jpg" height="280" width="498">
+<DETAILS><SUMMARY><span style="color:green;font-size:150%"><b>Click to Show</b></span></SUMMARY>
+<blockquote>
+<pre>
+[Right click video to change video speed]
+<b>-- <span style="color:yellow;">A.</span></b> - <a href="https://gfycat.com/WhirlwindSmallHyena">https://gfycat.com/WhirlwindSmallHyena</a>
+<b>-- <span style="color:yellow;">B.</span></b> - <a href="https://gfycat.com/MeagerOldfashionedGalapagoshawk">https://gfycat.com/MeagerOldfashionedGalapagoshawk</a>
+<b>-- <span style="color:yellow;">C.</span></b> Work In Progress... - <a href="https://gfycat.com/PleasantGoodnaturedBernesemountaindog">https://gfycat.com/PleasantGoodnaturedBernesemountaindog</a>
+<u><b>Explanation of IK Setup and Posing (Very Easy)</b></u>
+- <a href="https://youtube.com/watch?v=DZ_ocmY8xEI">https://youtube.com/watch?v=DZ_ocmY8xEI</a>
+
+Click <a href="https://open3dlab.com/tutorials/view/15/" title="Blender Guide - Rigging & Weight Painting"><b>HERE</b></a> for more Rigging tips.
+
+If you are familiar with <b class="orange">Python</b> programming and want to come up with a faster way to give <b>XPS</b> or <b>SFM</b> models the <a href="https://gfycat.com/hospitableuglyaztecant"><b>Rigify treatment</b></a>, please let me know <a href="https://www.deviantart.com/xcurtainx"><b>HERE</b></a>.
+<b>Video:</b> <a href="https://www.youtube.com/watch?v=xwb-BAUWT_I"><b>Rigifying a SFM Model</b></a> 
+- In the future, I will try to demo a faster alternative method.
+</pre>
+</blockquote>
+</DETAILS>
+<hr class="orangegrhr">
+-->
+
+<!--STEP 9. SETUP CAMERA-->
+<h1><span style="color:#307D7E">Step X. <u>Setup Camera</u></span></h1>
+<DETAILS><SUMMARY><span style="color:green;font-size:150%"><b>Click to Show</b></span></SUMMARY>
+<blockquote>
+<h1>UNDER CONSTRUCTION</h1>
+<iframe width="420" height="315"
+src="https://www.youtube.com/watch?v=w7qGL3LIvcc?controls=1">
+</iframe>
+<BR>- <a href="https://www.youtube.com/watch?v=w7qGL3LIvcc">https://www.youtube.com/watch?v=w7qGL3LIvcc</a>
+<BR>[Work in Progress...]
+</blockquote>
+</DETAILS>
+<hr class="orangegrhr">
+
+<!--STEP 10. SETUP RENDER-->
+<h1><span style="color:#307D7E">Step X. <u>Setup Render</u></span></h1>
+<DETAILS><SUMMARY><span style="color:green;font-size:150%"><b>Click to Show</b></span></SUMMARY>
+<blockquote>
+<iframe width="420" height="315"
+src="https://www.youtube.com/watch?v=25N775uHb_4?controls=1">
+</iframe>
+<BR>- <a href="https://www.youtube.com/watch?v=25N775uHb_4">https://www.youtube.com/watch?v=25N775uHb_4</a>
+<BR>[Work in Progress...]
+</blockquote>
+</DETAILS>
+<hr class="orangegrhr">
+
+<!--BLENDER RANDOM TIPS-->
+<span style="color:orange;"><h1 align="center"><u><b>Blender Random Tips</b></u></h1></span>
+<BR>1. You can use <b>Old</b> and <b>New</b> versions of <span style="color:orange;"><b>Blender</b></span> any time, using the <span style="color:orange;"><b>portable</b></span> (<span style="color:orange;"><b>.zip</b></span>) versions instead of the <b>installer</b> (<b>.msi</b>).
+<BR>- <span style="color:orange;"><b>Portable</b></span> (<span style="color:orange;"><b>.zip</b></span>) versions are exactly the same as the installer, in terms of performance and features.
+<BR>- <span style="color:orange;"><b>Portable</b></span> (<span style="color:orange;"><b>.zip</b></span>) versions require no installation (unzip and run)
+<BR>- Download Old and New versions of Blender from here: <a href="https://www.blender.org/download/releases/">https://www.blender.org/download/releases/</a>
+<BR><a href="https://www.blender.org/download/releases/"><img class="demo" src="https://i.imgur.com/a50iuq2m.jpg" width="320" height="261"></a>
+
+<P>
+2. What is a <span style="color:#6C2DC7;"><b>Normal Map</b></span> and what is it used for?
+<BR>- <a href="https://gfycat.com/UniformEntireHartebeest">https://gfycat.com/UniformEntireHartebeest</a>
+</P>
+
+<P>
+3. Help! I can't <b>Scale</b> or <b>Rotate</b> anymore in Blender!
+<BR><iframe width="420" height="315"
+src="https://www.youtube.com/watch?v=6viFpjdOkjk?controls=1">
+</iframe>
+</P>
+<hr>
+<div align="center"><h1><a href="https://open3dlab.com/tutorials/view/17/">Blender - Common Mistakes and Tips</a></h1><a href="https://open3dlab.com/tutorials/view/17/"></a></div>
+<div align="center"><a href="https://open3dlab.com/tutorials/view/17/"><img class="demo" src="https://i.imgur.com/RBrLfkN.png" width="256" height="256" title="Blender - Common Mistakes and Tips" alt="Blender - Common Mistakes and Tips"></a></div>
+<hr>
+
+If you want a true introduction to Blender, check out these resources: <a href="https://www.blender.org/tutorials/"><b>https://www.blender.org/tutorials/</b></a>
+<ul><li><b><a href="https://www.youtube.com/playlist?list=PLa1F2ddGya_-UvuAqHAksYnB0qL9yWDO6">Blender Fundamentals</a></b></li>
+<li><b><a href="https://www.youtube.com/channel/UCOKHwx1VCdgnxwbjyb9Iu1g/playlists">Blender Guru</a></b></li>
+<li><b><a href="https://www.youtube.com/playlist?list=PLZpDYt0cyiuu-sxJKbuYh8OjtgmXNacCV">Royal Skies LLC - Blender 2.8 Speed Tutorials</a></b></li>
+<li><b><a href="https://www.youtube.com/channel/UCG8AxMVa6eutIGxrdnDxWpQ/playlists">CG Geek</a></b></li>
+<li><b><a href="https://www.youtube.com/channel/UCyu4kn_ROhA34jug2g_AwJA/playlists">Darrin Lile</a></b></li>
+<li><b><a href="https://www.youtube.com/channel/UCdioEctcBLd2nw2aQkl8msw/playlists">BornCG</a></b></li>
+<li><b><a href="https://www.youtube.com/channel/UCRO5YyUuUMSYbta8XoKsyeQ/playlists">Bryson Jack</a></b></li>
+<li><b><a href="https://www.youtube.com/channel/UC-qkWBQi0MIYPGhBz3xzb5A">Pte Jack</a></b></li>
+<li><b><a href="https://www.youtube.com/channel/UC8lRPwgOqo7ZMMTBtoLlsHQ">Lizendy</a></b></li>
+<li>and many more...</li></ul>
+<pre>
+If any of the videos are blocked in your country, replace 
+www.<b>YouTube.com</b>/watch?v= 
+with 
+www.<b>Invidio.us</b>/watch?v=
+</pre>
+<hr>
+<b>Contact:</b> <a href="https://www.deviantart.com/xcurtainx"><b>XCurtainX</b></a>
+<hr class="orangehr">
+
+<!--CHANGE LOG-->
+<DETAILS ID="sfmchangelog"><SUMMARY><b>Show Change Log</b></SUMMARY>
+<pre>
+Apr 10 2020
+Added Demo for fixing Missing UV Maps for Eyes
+- https://gfycat.com/calmshinyboto
+
+Jan 13 2020
+Added Basic SourceOps tutorial
+- https://www.youtube.com/watch?v=fFQ22ZZUgMg
+
+Jan 12 2020
+Added Pte Jack Video: Blender - Import SMD, DMX, VTA and QC to Blender 2.79 and 2.81 for Editing
+- https://www.youtube.com/watch?v=MXd_1aKBTF8
+
+Jan 9 2020
+Guide is currently work-in-progress
+</pre>
+</DETAILS>
+
+<hr class="orangehr">
+<a href="https://www.blender.org/foundation/donation-payment/"><b><span style="color:lime;">DONATE!</span> <span style="color:orange;">Blender Development Fund</span></b></a>
+<hr>
+<div style="text-align:center;"><a href="https://smutba.se/"><img class="blur" src="https://i.imgur.com/xSwNlpE.gif" width="432" height="128" alt="Image: Visit SmutBase (NSFW)" title="Visit SmutBase (NSFW)"></a></div>
+
+</div>
+</body>
+
+</html>
