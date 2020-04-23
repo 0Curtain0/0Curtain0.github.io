@@ -1,0 +1,678 @@
+<html>
+
+<head>
+<style> 
+html {
+    background-color:black;
+    font-family:Verdana, Geneva, sans-serif;
+    color:white;
+}
+body.bodytut {
+    background-color:gray;
+    color:orange;
+    font-family:Verdana, Geneva, sans-serif;
+}
+div.tut {
+    background-color:black;
+    color:white;
+    font-family:Verdana, Geneva, sans-serif;
+}
+pre {
+    background-color:black;
+    color:white;
+    font-family:Verdana, Geneva, sans-serif;
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+hr.orangehr {height:10px;border-width:0;color:red;background-color:orange;}
+h1.turtle {color:#438D80;font-weight:bold;text-decoration:underline;text-decoration-style:dotted;}
+h1.title {color:orange;font-weight:bold;text-align:center;}
+.demo {border:10px dotted orange;}
+.folder {color:#F3E5AB;font-weight:bold;}
+.d3d {color:brown;font-weight:bold;}
+.hotkey {color:yellow;font-weight:bold;}
+.ninja {color:white;font-weight:bold;text-shadow: 0 0 3px #FF0000;}
+.noesis {color:#848b79;font-weight:bold;}
+.lime {color:lime;font-weight:bold;}
+.red {color:red;font-weight:bold;}
+.green {color:green;font-weight:bold;}
+.blue {color:blue;font-weight:bold;}
+.orange {color:orange;font-weight:bold;}
+summary {font-size:20px;color:#090;font-weight:bold;padding:2px 6px;width:15em;background-color:#2C3539;border:none;box-shadow:3px 3px 4px black;}
+summary.game {color:red;font-weight:bold;width:20em;}
+blockquote.tip {border-left:10px solid red;color:red;font-weight:normal;display:block;margin-top:1em;margin-bottom:1em;margin-left:40px;margin-right:40px;}
+</style>
+</head>
+
+<body class="bodytut">
+<div class="tut">
+<!--Title Image-->
+<div align="center"><img src="https://thumbs.gfycat.com/GiddyShamelessIriomotecat-max-1mb.gif" alt="Ninja Ripper Guide | Ninja Ripper Tutorial" title="3D Model ripped from DC Universe Online" width="240" height="240">
+</div>
+<!--Title-->
+<h1 class="title">Ninja Ripper - Rip Your Favorite 3D Game Character Models</h1>
+<div align="center">
+<b>**</b> Updated: December 4th 2019 <b>**</b>
+<BR><a href="#ripchangelog"><b>Change Log</b></a> at bottom 
+</div>
+<hr class="orangehr">
+
+<!--[Introduction]-->
+<h1 class="turtle">[Introduction]</h1>
+<!--INDENT START--><blockquote>
+<pre>
+<b class="ninja">Ninja Ripper</b> works a little differently from other extraction tools.
+- While a game is running, it will directly rip all the meshes and textures that are loaded in-game.
+- You might get better textures compared to some extraction tools.
+- It does not rip rigged skeletons/armatures/bones.
+</pre>
+
+<pre>
+If you like to see <u>new features</u> added to <b class="ninja">Ninja Ripper</b>, consider making a <u>donation</u> to the author (<b>blackninja</b>): 
+- <a href="http://cgig.ru/forum/viewtopic.php?f=5&amp;t=224"><b>CG In Games</b></a>
+</pre>
+
+<pre>
+<b>Discord:</b>
+- <a href="https://discord.gg/2PMeU2R"><b>English</b></a>
+- <a href="https://discord.gg/czcB2AG"><b>Русский</b></a>
+</pre>
+
+<pre>
+Before trying Ninja Ripper, check the <a href="#3rdpartyresources"><b><u>3rd Party Resources</u></b></a> below to see if the community already created a better tool to extract 3D meshes, textures, and bone data for your specific game.
+If other extraction tools won't let you extract these resources, then use <b class="ninja">Ninja Ripper</b>.
+</pre>
+
+<pre>
+<b>Note:</b>
+<ul>
+<li><b><u>Mobile games</u></b> (Android, iOS) will need an emulator to run on your PC. 
+- For more info, check the <a href="#3rdpartyresources"><b><u>3rd Party Resources</u></b></a> below.</li>
+<li><b><u>OpenGL</u></b> is not natively supported by Ninja Ripper. 
+- GLIntercept (<a href="https://www.deviantart.com/comments/1/753410159/4777647118">suggested</a> by evileaterk)
+- Please check the <a href="#3rdpartyresources"><b><u>3rd Party Resources</u></b></a> to find out how to rip/extract 3D resources from OpenGL games/applications.</li>
+<li><b><u>Linux</u></b> has not yet been tested with Ninja Ripper, please let me know of your results.
+- You can try experimenting with <a href="https://github.com/baldurk/renderdoc"><b>RenderDoc</b></a> or <a href="https://github.com/apitrace/apitrace"><b>apitrace</b></a>.</li>
+</ul>
+</pre>
+<!--INDENT END--></blockquote>
+<hr class="orangehr">
+
+<!--How Useful is Ninja Ripper?-->
+<h1 class="turtle">How Useful is Ninja Ripper?</h1>
+<!--INDENT START--><blockquote>
+<pre>
+Ninja Ripper will rip the <u>3D mesh</u> and <u>textures</u> of the 3D models visible on your game screen.
+In some games, you may already see a 3D model actively rendered in the Main Menu/Character Selection/Login Screen.
+<b>Example:</b> 
+<b class="lime">DC Universe Online</b> (MMO Game)
+<img src="https://i.imgur.com/EOQrvnL.jpg" alt="3D model actively rendered in the Character Creation menu" title="3D model actively rendered in the Character Creation menu" width="600" height="387">
+- In the image above, you can actually rip that character model directly from the main menu.
+Or maybe you found a random player online with a rare skin/armor piece:
+<a href="https://gfycat.com/GiddyShamelessIriomotecat"><img class="demo" src="https://i.imgur.com/CfvpcmEt.jpg" alt="Ripped Someone's Character" title="Ripped Someone's Character" width="160" height="160"></a>
+- You can rip their models too, but you may need to be in close proximity to them so their high-resolution textures are loaded in-game.
+</pre>
+<!--INDENT END--></blockquote>
+<hr class="orangehr">
+
+<!--What does the Ninja Ripper interface look like?-->
+<h1 class="turtle">What does the Ninja Ripper interface look like?</h1>
+<a href="https://i.imgur.com/J7e4BAZ.png"><img class="demo" src="https://i.imgur.com/J7e4BAZm.png" alt="Ninja Ripper's main interface" title="Ninja Ripper's main interface" width="397" height="220"></a><a href="https://i.imgur.com/aVUBTtl.png"><img class="demo" src="https://i.imgur.com/aVUBTtlm.png" alt="Ninja Ripper's Settings" title="Ninja Ripper's Settings" width="421" height="220"></a>
+<!--INDENT START--><blockquote>
+<pre>
+- It's a very small program.
+- Explanation of the interface will be available below.
+</pre>
+<!--INDENT END--></blockquote>
+<hr class="orangehr">
+
+<!--[Requirements]-->
+<div align="center"><img src="https://i.imgur.com/f1YWa8Nm.png" alt="Requirements" title="Requirements" width="320" height="165"></div>
+<h1 class="turtle">[Requirements]</h1>
+<!--INDENT START--><blockquote>
+<pre>
+* Make sure your <b>Antivirus</b> has been disabled or has whitelisted Ninja Ripper
+* Make sure your <b>Screen Capture</b>/<b>FPS Monitoring</b> software isn't running. [Fraps, OBS, Bandicam, ShadowPlay, software with game/window overlay hooking ability]
+* Make sure you are familiar with <a href="https://open3dlab.com/tutorials/view/17/"><b>Blender - Common Mistakes &amp; Tips</b></a>.
+</pre>
+<!--INDENT END--></blockquote>
+<hr>
+
+<!--[Downloads]-->
+<div ID="downloads" align="center"><img src="https://i.imgur.com/5SLspfH.png" alt="Downloads" title="Downloads" width="256" height="256"></div>
+<h1 class="turtle">[Downloads]</h1>
+<ul><li><a href="http://cgig.ru/ninjaripper/"><b>Ninja Ripper</b></a> 
+<BR>- Allows you to rip 3D meshes (<b>.RIP</b>) and textures (<b>.DDS</b>) from games.</li>
+<li><a href="http://www.richwhitehouse.com/index.php?content=inc_projects.php&amp;showproject=91"><b>Noesis</b></a> 
+<BR>- Allows you to view and convert ripped meshes (<b>.RIP</b> files) to <b>.OBJ</b>.</li>
+<li><a href="https://www.blender.org/download/"><b>Blender</b></a> [Available on <a href="https://store.steampowered.com/app/365670/Blender/">Steam</a>] 
+<BR>- You can import the converted models here for 3D editing, rigging, animation, porting, etc.</li>
+<li><a href="https://www.xnview.com/"><b>XnView</b></a> or <a href="https://www.irfanview.com/"><b>IrfanView</b></a> 
+<BR>- View and convert all image formats including <b>.DDS</b> textures.</li>
+<li><a href="https://www.7-zip.org/"><b>7-Zip</b></a> 
+<BR>- Allows you to open <b>ZIP</b>, <b>7z</b>, and <b>RAR</b> file formats.</li>
+<li><u><b>Game</b></u>
+<BR>- An installed game you wish to rip from [ We will use Mass Effect below ]</li></ul>
+
+<pre>
+<img src="https://i.imgur.com/EnUVQV5.png" alt="Blender" width="100" height="100">
+<b class="orange">[Optional]</b>
+Instead of using Noesis, you can use a <b>Blender addon</b> to <u>import <b>.RIP</b> files directly into Blender</u>.
+Explained later in the tutorial.
+</pre>
+<blockquote>
+<b><u>Blender Add-On Downloads:</u></b> (Choose one - do not activate both add-ons at the same time)
+<ul><li><b class="orange">[Blender 2.80]</b> <a href="https://github.com/xpawelsky/RipImport">https://github.com/xpawelsky/RipImport</a>
+<BR>- A recent Blender 2.8 update appears to have broken the add-on for <u>Linux</u> and <u>Mac</u> users - waiting for fix</li>
+<li><b class="orange">[Blender 2.79]</b> <a href="https://github.com/Dummiesman/RipImport">https://github.com/Dummiesman/RipImport</a></li>
+<li><b class="orange">[Blender 2.79]</b> <a href="https://github.com/REDxEYE/io_mesh_ninjaripper">https://github.com/REDxEYE/io_mesh_ninjaripper</a>
+<BR>- Invert/Flip UV option available</li>
+<li><b class="orange">[Blender 2.78]</b> <a href="https://github.com/angavrilov/blender-import-ninjaripper">https://github.com/angavrilov/blender-import-ninjaripper</a>
+<BR>- Invert/Flip UV option available</li></ul>
+</blockquote>
+
+<small><small>
+If you know someone who is bored, needs programming practice, or wants to learn about the Blender Python API, ask them if they would be interested in developing/updating add-ons for Blender. 
+<BR><u>Blender 2.8 Updating Addon Python Scripts:</u> 
+<BR>- <a href="https://www.youtube.com/watch?v=Mjy-zGG3Wk4">https://www.youtube.com/watch?v=Mjy-zGG3Wk4</a>
+<BR><b>Blender Python API Documentation:</b>
+<BR>- [<a href="https://docs.blender.org/api/2.79/">2.79 API</a>] [<a href="https://docs.blender.org/api/current/">2.80 API</a>]
+</small></small>
+<hr class="orangehr">
+
+<!--[Installing Ninja Ripper]-->
+<h1 class="turtle">[Installing Ninja Ripper]</h1>
+<DETAILS><SUMMARY>Click to Show</SUMMARY>
+<!--INDENT START--><blockquote>
+We will install <b>Ninja Ripper v1.7.1</b> (latest at the time of this post)
+<ol><li>First organize. Create a folder anywhere, and name it <b class="folder">My_NinjaRipper_Folder</b> (or whatever you want).</li>
+<li>Download/Save <b>ninjaripper1.7.1</b>.7z to that folder (<b class="folder">My_NinjaRipper_Folder</b>).</li>
+<li>Right click the <b>.7z</b> file and select '<b>Extract Here</b>'.</li>
+<li><b>ninjaripper1.7.1</b> folder has been created.</li>
+<li>You are ready for the next step.</li></ol>
+<!--INDENT END--></blockquote>
+</DETAILS>
+<hr class="orangehr">
+
+<!--[Using Ninja Ripper]-->
+<h1 class="turtle">[Using Ninja Ripper]</h1>
+<DETAILS><SUMMARY>Click to Show</SUMMARY>
+<!--INDENT START--><blockquote>
+<ol><li><b>Ninja Ripper</b> comes with <b class="blue">32-bit</b> and <b class="green">64-bit</b> executables.
+<hr></li>
+<li>If the game you’re trying to rip from is <b class="blue">32-bit</b>, use Ninja Ripper's <b class="blue">x86</b> executable. 
+<BR>If the game is <b class="green">64-bit</b>, use Ninja Ripper's <b class="green">x64</b> executable.
+<BR>- Example: Mass Effect: Andromeda is a 64-bit game.
+<hr></li>
+<li>Right-click <b>NinjaRipper.exe</b> and <b>Run as Administrator</b>.
+<BR><img src="https://i.imgur.com/J7e4BAZ.png" width="500" height="277">
+<hr></li>
+<li>For the <b>Target Exe</b>, click the <b>[…]</b> button and select the executable for the game you’re ripping from.
+<BR><img src="https://i.imgur.com/RCScW8F.png" width="500" height="277">
+<hr></li>
+<li>Change the <b>Output Directory</b> to where you want all the models and textures to be ripped to.
+<BR><img src="https://i.imgur.com/25k5DMj.png" width="500" height="277">
+<hr></li>
+<li>The wrapper/injection options are for injecting Ninja Ripper into the game.
+<BR><img src="https://i.imgur.com/VpnZogR.png" width="500" height="277">
+<BR>To find out which injection method to use, try the following:
+<BR>- Google search the directx version of the game (Mass Effect: Andromeda uses DX11)
+<BR>- Or trial-and-error, starting with "Intruder Inject".
+<BR>- For DirectX 12 games, you can try D3D11 wrapper.
+<hr></li>
+<li>After clicking <b>'Run'</b>, the wrapper will silently create a <b class="d3d">d3d</b>X<b class="d3d">.dll</b> (the <b>X</b> is the version number of the wrapper you chose) which will be in the <u>same location as the <b>Target Exe</b></u> (game's executable).
+<BR><img src="https://i.imgur.com/TGXPcfJ.png" width="597" height="390">
+<BR>- You can delete the <b class="d3d">d3d</b>X<b class="d3d">.dll</b> file when you're finished ripping.
+<BR>- If you are doing trial-and-error and/or making changes to Ninja Ripper settings/wrapper, make sure to delete the <b class="d3d">d3d</b>X<b class="d3d">.dll</b> each time before pressing the <b>Run</b> button.
+<BR>- If the game developer releases a new game update/patch, make sure to <b>Run</b> Ninja Ripper again to create a brand new <b class="d3d">d3d</b>X<b class="d3d">.dll</b> file.
+<hr></li>
+<li>Click the <b>Settings</b> button in the lower left, this is where you set the shortcut keys for ripping.
+<BR><img src="https://i.imgur.com/aVUBTtl.png" width="500" height="261">
+<blockquote><FONT COLOR="Yellow"><b>All</b></FONT> - Rips both <u>Meshes</u> and <u>Textures</u>
+<BR><FONT COLOR="Yellow"><b>Textures</b></FONT> - Rips only <u>Textures</u>
+<BR><FONT COLOR="Yellow"><b>Forced</b></FONT> - Uses the <u>Forced Rip Interval</u> (seconds)
+
+<P>
+<b style="color:red;background-color:yellow;">WARNING:</b> In some games, the <FONT COLOR="Tan"><b>F1</b></FONT> - <FONT COLOR="Tan"><b>F12</b></FONT> keys may have hidden functions that can interrupt Ninja Ripper.
+<BR>- Avoid using the game's screenshot key.
+<BR>- Avoid using a key that opens a menu interface.
+<BR>- Avoid using a key that loads a new area or new objects.
+<BR>- Use a key that you know for certain isn't being used for anything.
+<BR>- You can use a key that has a known simple action that won't interfere with Ninja Ripper (Example: flashlight, etc.)</blockquote>
+- Feel free to increase the <b>Forced Rip Interval</b>. It can help with many large/high-polygon models.
+<BR>- It may also create duplicates of the models [This will be explained later in the guide].
+</P>
+<hr></li>
+
+<li>After clicking the <b>'Run'</b> button, Ninja Ripper will launch the game.
+<BR>- It might take some time to launch, so give it a minute.
+<BR>- If the game doesn't launch, skip to the <a href="#troubleshootninjaripper"><b>[Troubleshoot Ninja Ripper]</b></a> section below.
+<hr></li>
+
+<li>Once you're ingame, locate the model you wish to rip.
+<BR>- Try to get close to the model for high-resolution textures to load.
+<BR>- Make sure the model is in your field of view.
+<hr></li>
+
+<li>Press the Rip button hotkey.
+<BR>- If the game freezes, that means it worked.
+<BR>- Wait for a few seconds to a minute for the game to unfreeze.
+<BR>- After game unfreezes, you may exit the game.
+<BR>- If the game crashes or doesn't unfreeze after 3-5 minutes, force exit the game.
+<hr></li>
+
+<li>Navigate to your <b>Output</b> folder. There should now be a <b class="folder">_NinjaRipper</b> folder.
+<BR>- Inside that folder, there should be another folder with a name like "<b class="folder">2017.03.30_22.13.09_GameName.exe_238</b>", this should have a bunch of <b>.RIP</b> and <b>.DDS</b> files in it.
+<BR>- <b>.RIP</b> files = 3D meshes
+<BR>- <b>.DDS</b> files = textures
+<BR>- If there are no <b>.RIP</b> or <b>.DDS</b> files in that folder, skip to the <a href="#troubleshootninjaripper"><b><u>[Troubleshoot Ninja Ripper]</u></b></a> section.
+<hr></li></ol>
+
+<pre>
+<b style="color:lime;background-color:blue;">**TIP**</b>
+If you're trying to rip a <u>single</u> 3D character model, there is still a chance you will rip both the character and other scene characters/objects in the background.
+- Try ripping the 3D character model in an <b>empty/unpopulated</b> location.
+- The 3D character model may appear in <b>multiple locations</b> ingame. Try finding a location with the <b>least amount</b> of background 3D models.
+- Try ripping the 3D character model from a <b>menu</b> (some games may have a live 3D rendering of your character in a menu)
+</pre>
+<!--INDENT END--></blockquote>
+</DETAILS>
+<hr class="orangehr">
+
+<!--[Troubleshoot Ninja Ripper]-->
+<h1 ID="troubleshootninjaripper" class="turtle">[Troubleshoot Ninja Ripper]</h1>
+<DETAILS><SUMMARY>Click to Show</SUMMARY>
+<!--INDENT START--><blockquote>
+<blockquote>
+If Ninja Ripper isn't working as intended, try the following:
+<BR>- Right-click the game's <b>.exe</b> file -&gt; <b>Properties</b> -&gt; <b>Compatibility</b> -&gt; <b>Run this program as an administrator</b>
+
+<pre>
+For some games, especially online multiplayer games, their <FONT color="green"><b>gamename.exe</b></FONT> can't be started directly, except from a <FONT color="green">gamename</FONT><FONT color="blue"><b>Launcher.exe</b></FONT>. 
+[Sometimes the <FONT color="green"><b>gamename.exe</b></FONT> and the <FONT color="green">gamename</FONT><FONT color="blue"><b>Launcher.exe</b></FONT> are located in separate folders]
+- Go to the game's folder that has the <b class="d3d">d3d</b>X<b class="d3d">.dll</b> (the one previously created by Ninja Ripper), and delete the <b class="d3d">d3d</b>X<b class="d3d">.dll</b> file.
+- In Ninja Ripper, set the <b>Target Exe</b> to the <FONT color="green">gamename</FONT><FONT color="blue"><b>Launcher.exe</b></FONT> file instead.
+- Click the <b>Run</b> button, and the game's launch menu will appear.
+- <u>Do not start the game.</u> Ninja Ripper silently created a fresh new <b class="d3d">d3d</b>X<b class="d3d">.dll</b> file in the same location as the <FONT color="green">gamename</FONT><FONT color="blue"><b>Launcher.exe</b></FONT>
+- Copy the new <b class="d3d">d3d</b>X<b class="d3d">.dll</b> file from that folder, and paste it into the same folder as the <FONT color="green"><b>gamename.exe</b></FONT>
+- Now you can start the game.
+</pre>
+</blockquote>
+<b>Example:</b> <a href="https://i.imgur.com/NXoC47x.png"><b>The Elder Scrolls V: Skyrim</b></a>
+<hr>
+<pre>
+- Have you tried running the game in <b>Fullscreen</b> or <b>Windowed mode</b>?
+- Before making changes to Ninja Ripper (Rip Keys, Target Exe, etc.), make sure to delete the <b class="d3d">d3d</b>X<b class="d3d">.dll</b> file that was previously created by Ninja Ripper.
+- <b>Intruder inject</b> will not work if there's a <b class="d3d">d3d</b>X<b class="d3d">.dll</b> file already, you will have to delete it.
+- If you're still having trouble, please answer the <a href="#troubleshootingquestions"><u><b>Troubleshooting Questions</b></u></a> near the bottom of this guide.
+</pre>
+<!--INDENT END--></blockquote>
+</DETAILS> 
+<hr class="orangehr">
+
+<!--Using Noesis-->
+<div ID="usingnoesis" align="center"><img src="https://i.imgur.com/3IbIyg3m.jpg" alt="Using Noesis" title="Using Noesis" width="288" height="320"></div>
+<h1 class="turtle">[Using Noesis]</h1>
+<DETAILS><SUMMARY>Click to Show</SUMMARY>
+<!--INDENT START--><blockquote>
+<pre>
+1. Use <b>Noesis</b> to convert <b>.RIP</b> files to <b>.OBJ</b> files.
+- <b>Noesis</b> requires a plugin to read <b>.RIP</b> files.
+- You can get the plugin from the <FONT COLOR="Tan"><b>My_NinjaRipper_Folder</b></FONT> you created earlier.
+<strong><b class="folder">My_NinjaRipper_Folder</b>\<b class="folder">ninjaripper1.7.1</b>\<b class="folder">tools</b>\<b class="folder">noesis_importer</b>\</strong>
+<img src="https://i.imgur.com/QpIMd2h.png" alt="Open the tools folder" title="Open the tools folder" width="780" height="280">
+<img src="https://i.imgur.com/6JkKFSh.png" alt="Open the noesis_importer folder" title="Open the noesis_importer folder" width="750" height="200">
+<img src="https://i.imgur.com/PkKeL6K.png" alt="Choose an addon to install" title="Choose an addon to install" width="900" height="120">
+- If the first plugin doesn't work, try the second plugin.
+
+<P>- Copy <b>fmt_ninjaripper_rip.py</b> from the Ninja Ripper folder to the <strong><b class="folder">plugins</b>/<b class="folder">python</b></strong> folder in the Noesis folder.
+<img src="https://78.media.tumblr.com/848179891832b39bd0509ce09b4a7839/tumblr_inline_onnr9l0nLY1sz5zfm_640.png" width="609" height="328">
+</P>
+</pre>
+<hr>
+2. Run <b>Noesis</b>
+<BR><img src="https://78.media.tumblr.com/f9585367e9262a60de8bf616d6ab5112/tumblr_inline_onnrl68qaR1sz5zfm_1280.png" width="1189" height="696">
+<BR>- Find the folder with all the <b>.RIP</b> and <b>.DDS</b> files in the left panel. When you select it they should pop up in the middle panel.
+<BR>- Find the model you're looking for. In this case, we're looking for a head model.
+<BR>- To make things easier, <u>sort the file sizes from large to small</u>. There is no way the head model will be <b>1KB</b>.
+<BR>- In the case of Mass Effect: Andromeda, it turns out the head models are usually between <b>600KB-800KB</b>.
+<BR><img src="https://78.media.tumblr.com/c5f735bd1766bf7fcc1dccc22129d732/tumblr_inline_onnryrAzom1sz5zfm_1280.png" width="1189" height="696">
+<hr>
+3. Once you find a model you’re interested in, click <b>File</b> &gt; <b>Export</b> and export it. You may need to experiment with settings to get the correct output.
+<BR><img src="https://78.media.tumblr.com/735be0a8aa9276e97c2a68ff50b2cdbe/tumblr_inline_onns2tjkll1sz5zfm_500.png" width="500" height="500">
+<BR>- For Mass Effect: Andromeda, Flip UV’s is necessary, otherwise you’ll have to do it manually for the textures to work.
+<hr>
+4. Import the <b>.OBJ</b> file(s) into <b>Blender</b>.
+
+<P>
+Work In Progress...
+</P>
+<!--INDENT END--></blockquote>
+</DETAILS>
+<hr style="height:10px;border-width:0;color:red;background-color:orange">
+
+<!--[Using Blender Instead of Noesis]-->
+<div ID="usingblender" align="center"><img src="https://i.imgur.com/n3225vv.png" alt="Using Blender Instead of Noesis" title="Using Blender Instead of Noesis" width="542" height="173"></div>
+<h1 class="turtle">[Using Blender Instead of Noesis]</h1>
+<DETAILS><SUMMARY>Click to Show</SUMMARY>
+<!--INDENT START--><blockquote>
+Instead of Noesis, you can use a Blender <u>add-on</u> to import <b>.RIP</b> files directly into Blender. 
+<BR>Check the <a href="#downloads"><b><u>[Downloads]</u></b></a> section (near top of page) for the appropriate add-on to download. 
+
+<P>
+If you have the add-on installed and enabled/activated, we can use the method below.
+</P>
+
+<P>
+The example below is using the <b>RipImport</b> add-on (by Dummiesman) for Blender 2.79.
+</P>
+
+<P>
+In this example, Ninja Ripper generated a folder with <b>4007 .RIP</b> files and <b>144 .DDS</b> textures.
+<b>356MB total</b>
+<BR>The large file size is mostly just the <b>.DDS</b> textures, which we won't have to worry about.
+</P>
+
+<P>
+In Blender, select <b>File</b>, <b>Import</b>, then <b>NinjaRipper(.rip)</b>.
+<BR>In the <b>Ninja Ripper</b> import menu, the <b>Import Entire Folder</b> option was selected.
+<BR><img src="https://i.imgur.com/KplxpF4.png" width="390" height="270">
+<BR>For some reason, I couldn't select the individual <b>.RIP</b> files I wanted to import, so I went with the <b>Import Entire Folder</b> option.
+<BR>It took <b>13 minutes</b> for <b>Blender</b> to import the folder.
+<BR>After importing the <b>RIP</b> files, press the <b>Home</b> key or zoom out to view the entire scene in the <b>3D Viewport</b>.
+</P>
+
+<div align="center">Here is a <b>demo</b> [Right-Click the video to change the speed]</div><div align="center"><a href="https://gfycat.com/FailingIckyAmericanalligator"><img class="demo" src="https://i.imgur.com/KeKe3SSm.jpg" alt="Imported .RIP meshes" title="Imported .RIP meshes" width="320" height="180"></a></div><ul>
+<li>To make things easier to see, increase the <b>View Clip</b> distance (<b class="hotkey">N</b> key) of the <b>3D Viewport</b> to <b>50000</b> (I recommend higher, but you may have to type the value in instead of slider.)</li>
+<li>Use <b>Wireframe Shading</b> (you can switch back and forth between Wire and Solid) to find the <b>silhouette</b> of the <b>character</b>. (character model is usually in the center of the world)</li>
+<li>Use <b>Box Select</b> around the <b>character</b> (I recommend using <b>Orthographic View</b> for this), and move the <b>character</b> to a <a href="https://gfycat.com/everyshoddybooby">new layer</a> with <b class="hotkey">M</b> key.</li>
+<li><b>Box Select</b> may still have selected <b>non-character objects</b> near the <b>Character</b>, we can fix that.</li>
+<li>By changing the camera view (Orthographic): Front, Back, Left, Right, Top, Bottom, you can keep <b>Box Selecting</b> around the character and either delete or move the clutter to a <a href="https://gfycat.com/everyshoddybooby">new layer</a> with <b class="hotkey">M</b> key.</li></ul>
+
+Your <b>Character</b> model may have duplicate meshes. You can delete them if you like.
+<BR>After removing the duplicates, you may have to <a href="https://www.youtube.com/watch?v=ADBmqYzxcwo" title="Watch Video"><b>Remove Doubles</b></a> on the <b>Character</b> model.
+
+<P>
+<FONT color="red" style="background-color:yellow;"><b>WARNING:</b></FONT> There's a chance you may encounter UVmap issues similar to the link below:
+<BR><a href="https://i.imgur.com/c7DJy3A.gif"><img class="demo" src="https://i.imgur.com/c7DJy3At.gif" alt="UVMap Messed Up" title="UVMap Messed Up" width="138" height="160"></a>
+<BR>- https://forum.facepunch.com/f/fbx/rryu/Quake-Champions-Model-Rips/1/ 
+<BR>If you experience the same problem, try using the <b>Forced</b> hotkey and increase the <b>Forced Rip Interval</b>.
+<BR>- This will rip more things from the scene, but it may also create duplicate models.
+<BR>- You may get lucky and discover 1 or more of the duplicates has a proper UV Map.
+<BR>- In the 3D Viewport, the duplicate(s) that contain a proper UV Map will have a slightly different shading compared to the other duplicates with broken/missing UV Map.
+</P>
+<hr>
+
+For some game models you may need to manually put mesh pieces together.
+<BR><a href="https://gfycat.com/fairwellwornaphid"><img class="demo" src="https://thumbs.gfycat.com/FairWellwornAphid-mobile.jpg" alt="Blender - Putting Mesh Objects Together" title="Blender - Putting Mesh Objects Together" width="160" height="90"></a>
+<BR><a href="https://gfycat.com/highhairygalapagospenguin"><img class="demo" src="https://i.imgur.com/ad0jQr1m.jpg" alt="Quake Champions - Nyx (Ruby)" title="Quake Champions - Nyx (Ruby)" width="320" height="135"></a>
+<BR><a href="https://i.imgur.com/ad0jQr1.png"><b>Nyx</b></a> from <b>Quake Champions</b>. 
+<BR><a href="https://github.com/egtwobits/mesh_mesh_align_plus" title="click to open"><b>Mesh Align Plus</b></a> (Blender Add-on) can help with putting the pieces together.
+
+<P>
+<a href="https://gfycat.com/elegantlastingcrayfish"><img class="demo" src="https://thumbs.gfycat.com/ElegantLastingCrayfish-mobile.jpg" alt="Blender - Set Normals from Faces" title="Blender - Set Normals from Faces" width="160" height="90"></a>
+<BR>- <a href="https://gfycat.com/elegantlastingcrayfish" title="Watch Demo">Set Normals from Faces</a>.
+<BR>- For more tips like this, check out <a href="https://open3dlab.com/tutorials/view/17/" title="Blender - Common Mistakes and Tips"><b>Blender - Common Mistakes and Tips</b></a>.
+<BR>- If you want tips for cleaning and preparing the 3D mesh, check out <a href="https://open3dlab.com/tutorials/view/15/#prepmesh" title="Blender Guide - Rigging/Weight Painting"><b>Blender Guide - Rigging &amp; Weight Painting</b></a>.
+</P>
+<!--INDENT END--></blockquote>
+</DETAILS>
+<hr class="orangehr">
+
+<!--[Apply Materials and Textures]-->
+<div align="center"><img src="https://t00.deviantart.net/CcRE7m55MPbztRbArdx5hr9571o=/fit-in/700x350/filters:fixed_height(100,100):origin()/pre00/7dd4/th/pre/i/2017/342/3/e/harley_quinn_by_klutt-dbw35u4.png" alt="Image by kLuTT" title="Image by kLuTT" width="355" height="200"></div>
+<div align="center"><a href="https://i.stack.imgur.com/12SfY.gif" alt="Blender - Switch to Cycles Render engine" title="Blender - Switch to Cycles Render engine">[Switch to <b>Cycles Render</b> or <b>Eevee</b> Engine]</a></div>
+<h1 class="turtle">[Apply Materials and Textures]</h1>
+<DETAILS><SUMMARY>Click to Show</SUMMARY>
+<!--INDENT START--><blockquote>
+<pre>
+<a href="https://streamable.com/3zlyx"><img class="demo" src="https://thumbs.gfycat.com/AchingRashIridescentshark-mobile.jpg" alt="Blender - Apply Materials and Textures (Node Editor)" title="Blender - Apply Materials and Textures (Node Editor)" width="160" height="90"></a>
+[Right click video to change video speed]
+Mirror Gfycat: <a href="https://gfycat.com/HeartfeltThreadbareFairyfly"><b>[Part 1]</b></a> <a href="https://gfycat.com/AchingRashIridescentshark"><b>[Part 2]</b></a>
+
+You can learn more about the awesome <b>Principled Shader</b> <a href="https://www.youtube.com/watch?v=4H5W6C_Mbck" title="Watch Video - How to use Blender's New Ultimate Shader: The Principled BSDF"><b>HERE</b></a> and <a href="https://www.youtube.com/watch?v=QcTApanvYEg" title="Watch Video - Blender 2.8: The Secret To MASTERING Principled BSDF (FOR NEW USERS)"><b>HERE</b></a>.
+
+If you want to see the rest of the tips, check <b>Step 4. <u>Apply Materials and Textures</u> (using Node Editor)</b> <a href="https://open3dlab.com/tutorials/view/18/#applymatnode" title="click to open"><b>HERE</b></a>.
+<a href="https://i.imgur.com/stMFMiI.png"><img class="demo" src="https://i.imgur.com/stMFMiIt.png" alt="Blender - Node Editor (Shader Editor)" title="Blender - Node Editor (Shader Editor)" width="160" height="90"></a>
+- <a href="https://i.imgur.com/stMFMiI.png">Example:</a> Using Blender's <b>Node Editor</b> (Shader Editor) to make the floor shiny/reflective.
+- <a href="https://www.youtube.com/watch?v=wZ_02BhPPGw" title="Watch Video">How to assign materials in Blender?</a>
+</pre>
+<hr>
+
+<pre>
+<b>Ninja Ripper</b> ripped this model and its textures from <b class="lime">DC Universe Online</b>:
+<a href="https://gfycat.com/RespectfulPlushGypsymoth"><img class="demo" src="https://i.imgur.com/FlPUfznt.jpg" alt="Ripped Model with Textures applied in Blender" title="Ripped Model with Textures applied in Blender" width="160" height="160"></a><a href="https://i.imgur.com/3twLLkZ.png"><img class="demo" src="https://i.imgur.com/3twLLkZt.png" alt="Ripped Texture for Character Legs" title="Ripped Texture for Character Legs" width="160" height="156"></a>
+- Interestingly, the ripped textures were only <b class="red">Red</b>, <b class="green">Green</b>, and <b class="blue">Blue</b>.
+- I believe this is because the game has a <b class="red">R</b><b class="green">G</b><b class="blue">B</b> <a href="https://gfycat.com/excellentweightybengaltiger" title="Demo"><b>slider</b></a> for players to customize character color.
+</pre>
+
+<pre>
+I used <b>Blender's Node Editor</b> to replace the <b class="red">Red</b>, <b class="green">Green</b>, and <b class="blue">Blue</b> values with new color values.
+<a href="https://i.imgur.com/b0oKCj0.jpg"><img class="demo" src="https://i.imgur.com/b0oKCj0t.jpg" alt="Separate RGB Node" title="Separate RGB Node" width="160" height="138"></a><a href="https://gfycat.com/ConventionalOnlyDamselfly"><img class="demo" src="https://i.imgur.com/qlaipHBt.jpg" alt="Ripped Model with Colors Replaced" title="Ripped Model with Colors Replaced" width="160" height="160"></a>
+Demo: <a href="https://www.youtube.com/watch?v=Em0qBjSjew0" title="Watch Video"><b>Separate RGB Node</b></a>
+
+- Or, you can use Photoshop or <a href="https://www.gimp.org/"><b>GIMP</b></a> to replace the colors.
+</pre>
+<!--INDENT END--></blockquote>
+</DETAILS>
+
+<P></P>
+<hr class="orangehr">
+<pre>
+<b>Ninja Ripper</b> ripped this model from a Nintendo <b>Wii</b> game, <b>The Secret Saturdays: Beasts of the 5th Sun</b>, using an emulator (<b>Dolphin</b>):
+<a href="https://gfycat.com/lazygenerouskingsnake"><img class="demo" src="https://thumbs.gfycat.com/LazyGenerousKingsnake-mobile.jpg" alt="Demo: Ripped model from a Nintendo Wii game" title="Demo: Ripped model from a Nintendo Wii game" height="90"></a>
+- For some games, the 3D character model may not rip in a <a href="https://i.imgur.com/fPPldLt.png" alt="Image: T-Pose" title="Image: T-Pose"><b>T-Pose</b></a> (reference pose) or <a href="https://thumbs.gfycat.com/GiddyShamelessIriomotecat-mobile.jpg" alt="Image: A-Pose" title="Image: A-Pose"><b>A-Pose</b></a>. 
+Take a closer look, this ripped model appears to be a combination of <b>T-Pose</b> + <b>In-game Pose</b>.
+<a href="https://i.imgur.com/cid0MXS.gif"><img class="demo" src="https://i.imgur.com/cid0MXSt.gif" alt="T-Pose and In-game Pose" title="T-Pose and In-game Pose" width="160" height="122"></a>
+- If needed, you can use <a href="https://github.com/egtwobits/mesh_mesh_align_plus" title="Blender Add-on - Mesh Align Plus"><b>Mesh Align Plus</b></a> to put pieces together.
+- Your ripped model may need some manual tweaking:
+<a href="https://gfycat.com/recentheavydutchsmoushond"><img class="demo" src="https://i.imgur.com/CqvOpMRt.png" alt="Demo" title="Demo" width="160" height="90"></a>
+- If your ripped character model isn't in a <b>A</b>/<b>T-Pose</b>, you can use the techniques shown in this <a href="https://www.youtube.com/watch?v=WpgDjKIxYOA"><b>VIDEO</b></a> <b>[Starts at 3:30]</b> for manually changing the pose of an unrigged 3D character model.
+
+For help with ripping 3D models from emulators, check out the <a href="#3rdpartyresources"><b><u>3rd Party Resources</u></b></a> below.
+</pre>
+<hr style="height:10px;border-width:0;color:red;background-color:orange">
+
+<div align="center">Please don't throw away any of these valuable texture maps!</div><div align="center">They are extremely helpful!</div><div align="center"><a href="https://i.imgur.com/pCxrBBn.jpg"><img class="demo" src="https://i.imgur.com/pCxrBBnm.jpg" width="320" height="161"></a></div>
+
+<hr>
+This Ninja Ripper tutorial uses resources from nerotips: 
+<BR>- https://nerotips.tumblr.com/post/159024040760/ninja-ripper-guide
+<hr class="orangehr">
+
+<!--Troubleshooting Question-->
+<div ID="troubleshootingquestions" align="center"><img src="https://i.imgur.com/MSg2a9d.png" STYLE="background-color:#438D80" width="256" height="256">
+<h1 class="turtle">Troubleshooting Questions</h1></div>
+Copy/Paste <u>all of the questions below</u>, and answer them in the <a href="https://www.deviantart.com/xcurtainx/journal/Rip-Your-Favorite-3D-Game-Character-Models-FREE-753410159">comment section</a>:
+<DETAILS><SUMMARY>Click to Show</SUMMARY>
+<ol>
+<li>What is the <u>name</u> of the <b>game</b> or <b>application</b> you are ripping from?</li>
+<li>Which <u>engine</u> is the game using? (Unreal Engine 3, CryENGINE 2, Unity, etc.)
+<li>Did you disable your <b>Antivirus</b> software?</li>
+<li>Which Operating System are you using? (Windows XP, 7, 10, Linux, Mac, etc.)</li>
+<li><a href="https://www.computerhope.com/issues/ch001121.htm" title="click to open">Is the Operating System 32bit or 64bit?</a></li>
+<li><a href="https://superuser.com/questions/1054826/how-do-i-see-if-a-process-is-running-in-32-bit-or-64-bit-mode-in-the-windows-8-1" title="click to open">Is the game 32bit or 64bit?</a></li>
+<li>Are you using <b>x86</b> or <b>x64</b> Ninja Ripper?</li>
+<li>Are you using the <a href="http://cgig.ru/ninjaripper/" title="click to open">latest version</a> of Ninja Ripper?</li>
+<li>Before using Ninja Ripper, did you try running the game directly from its <b>game</b>.exe? <a href="https://i.imgur.com/NXoC47x.png"><b>[Example]</b></a></li>
+<li>What is the <b>Target Exe</b> set to? game.exe or gamelauncher.exe?</li>
+<li>Is the game running in <b>Fullscreen</b> or <b>Windowed</b> mode?</li>
+<li><a href="http://www.differencebetween.info/difference-between-dedicated-and-integrated-graphics-card" title="click to open">Are you using <b>Integrated</b> or <b>Dedicated</b> graphics?</a></li>
+<li>Is your <b>Graphics Performance</b> using the <u>lowest</u> or <u>highest</u> <b>Power Management Mode</b>/<b>Power Savings</b> option?</li>
+<li>Which <u>graphics API</u> and <u>version</u> is the game using? (DirectX 9, OpenGL 2, Vulkan, etc.)</li>
+<li>Which <u>platform</u> is the game running on? (PC, Web Browser, Xbox, PlayStation, Android, iOS, etc.)</li>
+<li>Is the game running inside an <b>Emulator</b>? [For non-PC games]</li>
+<li>Did the <a href="https://www.deviantart.com/xcurtainx/journal/Rip-Your-Favorite-3D-Game-Character-Models-FREE-753410159">Comment Section</a> solve the problem you are having?</li>
+<li>Are any of the web links or images in the tutorial broken for you?</li>
+<li>Are you viewing this tutorial from a <b>PC</b> or <b>mobile device</b> (Android, iPhone, Blackberry, etc.)?</li>
+<li>Which <u>version</u> of <b class="orange">Blender</b> are you using? <b class="orange">[Blender Troubleshooting Only]</b></li>
+<li>Which <u>version</u> of <b class="noesis">Noesis</b> are you using? <b class="noesis">[Noesis Troubleshooting Only]</b></li></ol>
+If you encounter any Blender error messages, take a look at the <a href="https://gfycat.com/occasionallonehorsefly"><b>Info Editor</b></a>.
+<BR>- <b class="hotkey">Right Click</b> the error message to select it, then <b>Copy</b>|<b>Paste</b> (<b class="hotkey">Ctrl</b>+<b class="hotkey">C</b>|<b class="hotkey">Ctrl</b>+<b class="hotkey">V</b>) message here or into Notepad.
+<BR>- Or take a screenshot.
+<BR>To create screenshots/gifs easily, install <a href="https://getsharex.com" title="click to open"><b>ShareX</b></a>.
+</DETAILS>
+<p></p><hr>
+
+<!--3rd Party Resources-->
+<div ID="3rdpartyresources" align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Vector_search_icon.svg/221px-Vector_search_icon.svg.png" width="221" height="239">
+<h1 class="turtle">3rd Party Resources</h1></div>
+I don't have all the answers, so please take a look at these helpful resources. 
+<BR>For help with ripping 3D meshes (including Emulators and Web Browsers), check out the following sites:
+<DETAILS><SUMMARY>3rd Party Resources</SUMMARY>
+<!--INDENT START--><blockquote>
+<ul><pre>
+<li><a href="http://forum.xentax.com/"><b>XeNTaX</b></a> 
+- [<a href="https://forum.xentax.com/viewforum.php?f=31&amp;sid=4b26a4274df590dff3139f4d28fa7336">Tools &amp; Programs</a>]
+- [<a href="https://forum.xentax.com/viewforum.php?f=29&amp;sid=4b26a4274df590dff3139f4d28fa7336">Tutorials</a>]
+- [<a href="https://forum.xentax.com/viewtopic.php?f=33&amp;t=9782&amp;sid=d8ff6bf7a465966085dc20c2e60b56e5">Ninja Ripper</a>]</li>
+<li><a href="https://zenhax.com/"><b>ZenHAX</b></a>
+- [<a href="https://www.zenhax.com/viewforum.php?f=17&amp;sid=e4fb178a63629295a0a9d815afcf7826">Collection of Tools &amp; Links</a>]
+- [<a href="https://www.zenhax.com/viewforum.php?f=4&amp;sid=e4fb178a63629295a0a9d815afcf7826">Tutorials</a>]</li>
+<li><a href="https://www.vg-resource.com/"><b>VG-Resource</b></a> 
+- [<a href="https://www.vg-resource.com/forum-145.html">General Ripping</a>]</li>
+<li><a href="https://forum.facepunch.com/"><b>FacePunch</b></a> 
+- [<a href="https://lite.knockout.chat/subforum/11">Knockout Gaming Community</a>]</li>
+<li><a href="https://p3dm.ru/forum/"><b>Pack 3D Models</b></a>
+- [<a href="https://p3dm.ru/tutorials/">Tutorials</a>]</li>
+<li><a href="https://steamcommunity.com/discussions/"><b>Steam Discussions</b></a></li>
+<li><a href="https://www.gildor.org/smf/"><b>Gildor's Forums</b></a></li></pre></ul>
+Unfortunately, I don't speak or read Russian, so it's a little difficult to follow new developments on blackninja's forum (CGIG).
+<BR>If anyone here is familiar with the Russian language, please let me know if anything in this tutorial is outdated or incorrect.
+<!--INDENT END--></blockquote>
+</DETAILS>
+<hr style="text-align:left;margin-left:0;width:30%;">
+
+<!--Tips From Other Users-->
+<details><summary>Tips From Other Users</summary>
+<!--Indent Games--><blockquote>
+<!--Game: Blade and Soul-->
+<details><summary class="game">Game: Blade and Soul</summary>
+<a href="https://www.deviantart.com/comments/1/753410159/4725018489">https://www.deviantart.com/comments/1/753410159/4725018489</a>
+<blockquote class="tip"><pre>
+Okay, i tried it again. 
+Start the launcher, copy the d3d9.dll into the client folder, and run the launcher again and start the game through the launcher. 
+And it worked :)
+- Raosai
+</pre></blockquote>
+</details>
+<!--End Blade and Soul-->
+
+<!--Game: Cosmic Break-->
+<details><summary class="game">Game: Cosmic Break</summary>
+<a href="https://www.deviantart.com/comments/1/753410159/4777347121">https://www.deviantart.com/comments/1/753410159/4777347121</a>
+<blockquote class="tip"><pre>
+Finally done... This game need directX 9 but it runs openGL... I got a tools on ripping OpenGL 3d model and it works. 
+Thanks you for helping.
+--------
+It is GLIntercept with OGLE plugin. 
+I follow this http://brian-horning.com/google-earth-to-obj-using-glintercept/ . 
+It is quite old but it works for me. Just changing google map to the game that runs openGL. 
+You need to edit "gliConfig.ini" if you install GLIntercept in different path. 
+But it output all models on the screen to one .obj file. 
+It takes much time for separating model and and add the texture to it. 
+So this is not good for ripping many models. 
+- evileaterk
+</pre></blockquote>
+</details>
+<!--End Cosmic Break-->
+
+<!--Game: IMVU-->
+<details><summary class="game">Game: IMVU</summary>
+<a href="https://www.deviantart.com/comments/1/753410159/4788860670">https://www.deviantart.com/comments/1/753410159/4788860670</a>
+<blockquote class="tip"><pre>
+well, what fixed it for me was essentially a "did you try turning it off and then on again" kind of fix 
+with setting the game to run as admin and then turning that off, 
+I'm not sure that'll always work for other people who run into the same issue but I suppose it's worth a shot. 
+- MMDKoala
+</pre></blockquote>
+</details>
+<!--END IMVU-->
+
+<!--World of Final Fantasy-->
+<details><summary class="game">Game: World of Final Fantasy</summary>
+<a href="https://www.deviantart.com/comments/1/753410159/4708643744">https://www.deviantart.com/comments/1/753410159/4708643744</a>
+<blockquote class="tip"><pre>
+kind of imbarasing. i had the game windowed this time. i didn't think it would effect it in any way 
+- albiek1
+</pre></blockquote>
+</details>
+<!--End World of Final Fantasy-->
+
+<!--WWE 2K18-->
+<details><summary class="game">Game: WWE 2K18</summary>
+<a href="https://www.deviantart.com/comments/1/753410159/4710043313">https://www.deviantart.com/comments/1/753410159/4710043313</a>
+<blockquote class="tip"><pre>
+Without realising, you just solved my problem, mate! Thank you so much! I'll explain what I did.
+
+While the game runs horribly slow when I do this, it still fixed my problem. I did the following:
+
+1) Navigated to my desktop and right-clicked.
+2) Clicked on Display settings.
+3) Click on Graphics settings.
+4) Added the game's EXE to my Graphics performance preference.
+5) Applied the Power saving option for it (because the Power saving option runs the game with my Intel HD graphics chip rather than my Nvidia graphics card.
+6) I was able to rip everything using the 'Forced' method rather than the first two options however, and obviously ran the game with the D3D11 wrapper.
+
+So now my question is, can't I run the game with my Nvidia GPU rather than the Intel chip? Lol. At least I have a preliminary solution. 
+- Ouji-chama
+</pre></blockquote>
+</details>
+<!--END WWE 2K18-->
+<!--END Indent Games--></blockquote>
+</details>
+
+<P></P>
+<hr class="orangehr">
+
+<!--Tutorials by xCurtainx-->
+<h2 align="center">Want to Pose your ripped 3D Character?</h2><div align="center"><a href="https://open3dlab.com/tutorials/view/15/"><img class="demo" src="https://i.imgur.com/GLNg9Rsm.png" alt="Blender Guide - Rigging &amp; Weight Painting" title="Blender Guide - Rigging &amp; Weight Painting" width="320" height="267"></a></div><div align="center"><a href="https://open3dlab.com/tutorials/view/15/" title="click to open">Blender Guide - Rigging &amp; Weight Painting</a></div><hr>
+<h2 align="center">Blender - Common Mistakes and Tips</h2><div align="center"><a href="https://open3dlab.com/tutorials/view/17/"><img class="demo" src="https://i.imgur.com/RBrLfkN.png" alt="Blender - Common Mistakes and Tips" title="Blender - Common Mistakes and Tips" width="256" height="256"></a></div><div align="center"><a href="https://open3dlab.com/tutorials/view/17/" title="click to open">Blender - Common Mistakes and Tips</a></div><hr> 
+
+<!--Change Log-->
+<DETAILS ID=ripchangelog><SUMMARY><b>Click for Change Log</b></SUMMARY> 
+<PRE>
+Dec 4th 2019
+Added: alternative page to view tutorial
+- https://smutba.se/tutorials/view/16/
+Added: Separate RGB Node Demo
+- https://www.youtube.com/watch?v=Em0qBjSjew0
+
+Aug 27th 2019
+Minor Update:
+- Added Demo: Set Normals from Faces - https://gfycat.com/elegantlastingcrayfish
+
+Aug 10th 2019
+Minor Update:
+- Added link to <a href="https://github.com/egtwobits/mesh_mesh_align_plus">Mesh Align Plus</a> (Blender Add-on) to help with putting mesh pieces together.
+
+Jul 2019
+Update:
+- Forgot to add ZenHAX.com to 3rd Party Resources
+- Added info and demo about lack of T-Pose in some games (especially from emulators).
+- Added demo for manually editing the model pose: 
+https://www.youtube.com/watch?v=WpgDjKIxYOA [Starts at 3:30]
+- For people who need to view or convert <b>.DDS</b> textures, there are 2 excellent image viewers available in the <b><u>[Downloads]</u></b> section.
+
+Apr 2019
+Minor Update:
+- Added <b>Apply Materials and Textures</b> (Copied from Step 4 in the <b>Play with XPS/XNALara models in Blender</b>). Hopefully this reduces some confusion.
+
+Mar 2019
+Added Troubleshooting Tips:
+- Are you using <b>Integrated</b> or <b>Dedicated</b> graphics?
+- Is your Graphics Performance using the lowest <b>Power Management Mode</b>/<b>Power Savings</b> option?
+- Before making changes to Ninja Ripper (Rip Keys, Target Exe, etc.), make sure to delete the <b>d3d</b>X<b>.dll</b> file that was previously created by Ninja Ripper.
+- Have you tried running the game in <b>Fullscreen</b> or <b>Windowed</b> mode?
+</PRE>
+</DETAILS>
+<hr style="height:5px;border-width:0;color:red;background-color:orange">
+<a href="https://www.blender.org/foundation/donation-payment/"><b><FONT COLOR="Lime">DONATE!</FONT> <FONT COLOR="Orange">Blender Development Fund</FONT></b></a>
+
+</div>
+</body>
+
+</html>
